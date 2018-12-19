@@ -27,7 +27,7 @@ public class TrainInfo {
 		String sstartCity = CityCode.format(startCity);
 		String sendCity = CityCode.format(endCity);
 
-		TrustManager[] tm = { new MyX509TrustManager() };
+		TrustManager[] tm = { new TrustManager() };
 		SSLContext sslContext = SSLContext.getInstance("SSL", "SunJSSE");
 		sslContext.init(null, tm, new java.security.SecureRandom());
 		// 从上述SSLContext对象中得到SSLSocketFactory对象

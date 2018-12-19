@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSONObject;
 import com.lt.journey.domain.User;
 import com.lt.journey.service.UserService;
 
 import com.lt.journey.util.SMSUtils;
+
+import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping("/")
@@ -40,25 +41,25 @@ public class UserController {
 
 		if (_user != null) {
 			resBody.put("code", "1");// 手机号已注册
-			JSONObject json = (JSONObject) JSONObject.toJSON(resBody);
+			JSONObject json = JSONObject.fromObject(resBody);
 			return json;
 		}
 
 		try {
-//			boolean isSuccess = SMSUtils.sendCode(user.getMobile());
-			boolean isSuccess = true;
-			if (isSuccess) {
+			String isSuccess = SMSUtils.sendCode(user.getMobile());
+			
+			if (isSuccess != null) {
 				resBody.put("code", "2");//验证码发送成功
-				JSONObject json = (JSONObject) JSONObject.toJSON(resBody);
+				JSONObject json = (JSONObject) JSONObject.fromObject(resBody);
 				return json;
 			} else {
 				resBody.put("code", "0");// 验证码发送失败
-				JSONObject json = (JSONObject) JSONObject.toJSON(resBody);
+				JSONObject json = (JSONObject) JSONObject.fromObject(resBody);
 				return json;
 			}
 		} catch (Exception e) {
 			resBody.put("code", "0");// 验证码发送失败
-			JSONObject json = (JSONObject) JSONObject.toJSON(resBody);
+			JSONObject json = (JSONObject) JSONObject.fromObject(resBody);
 			return json;
 		}
 	}
