@@ -8,7 +8,7 @@ import com.lt.journey.util.HttpUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 
-public class journeyInfo {
+public class JourneyInfo2 {
 	public static void main(String[] args) {
 		String host = "http://scenicspot.market.alicloudapi.com";
 		String path = "/lianzhuo/scenicspot";

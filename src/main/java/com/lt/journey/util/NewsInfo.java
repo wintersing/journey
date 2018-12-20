@@ -1,19 +1,9 @@
 package com.lt.journey.util;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import org.junit.Test;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 
-import com.alibaba.druid.support.json.JSONParser;
-
-import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import net.sf.json.processors.JsonValueProcessor;
-import net.sf.json.util.JSONUtils;
 
 public class NewsInfo {
 

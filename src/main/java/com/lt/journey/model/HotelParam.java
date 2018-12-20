@@ -1,8 +1,8 @@
 package com.lt.journey.model;
 
 public class HotelParam {
-	private Double lon;
-	private Double lat;
+	private String lon;
+	private String lat;
 	private String distance;
 	private String kw;
 	private String pageToken;
@@ -13,16 +13,16 @@ public class HotelParam {
 	private String businessDistrict;
 	private String sortByField;
 	private String appCode;
-	public Double getLon() {
+	public String getLon() {
 		return lon;
 	}
-	public void setLon(Double lon) {
+	public void setLon(String lon) {
 		this.lon = lon;
 	}
-	public Double getLat() {
+	public String getLat() {
 		return lat;
 	}
-	public void setLat(Double lat) {
+	public void setLat(String lat) {
 		this.lat = lat;
 	}
 	public String getDistance() {
