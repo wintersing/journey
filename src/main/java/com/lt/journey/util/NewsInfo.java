@@ -39,7 +39,7 @@ public class NewsInfo {
 		String result = object.getString("result");
 		JSONArray news = JSONObject.fromObject(result).getJSONArray(result);
 	}
-
+ 
 	@Test
 	public void name() {
 		getNewsInfo();
