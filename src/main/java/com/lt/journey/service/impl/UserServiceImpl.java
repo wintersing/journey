@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lt.journey.dao.UserDao;
-import com.lt.journey.domain.User;
+import com.lt.journey.model.User;
 import com.lt.journey.service.UserService;;
 
 @Service

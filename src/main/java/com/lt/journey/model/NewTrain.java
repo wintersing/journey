@@ -1,4 +1,4 @@
-package com.lt.journey.domain;
+package com.lt.journey.model;
 
 public class NewTrain {
 

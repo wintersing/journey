@@ -1,6 +1,6 @@
 package com.lt.journey.service;
 
-import com.lt.journey.domain.User;
+import com.lt.journey.model.User;
 
 public interface UserService{
     

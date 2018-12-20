@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lt.journey.domain.User;
+import com.lt.journey.model.User;
 import com.lt.journey.service.UserService;
 
 import com.lt.journey.util.SMSUtils;

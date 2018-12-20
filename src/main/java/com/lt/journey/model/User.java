@@ -1,5 +1,4 @@
-package com.lt.journey.domain;
-
+package com.lt.journey.model;
 
 /**
  * 用户信息

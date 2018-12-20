@@ -17,7 +17,7 @@ import net.sf.json.JSONObject;
 
 
 @SuppressWarnings("unused")
-public class Train {
+public class Train2 {
 	private static String URL = "https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date=2018-12-13&leftTicketDTO.from_station=BJP&leftTicketDTO.to_station=SHH&purpose_codes=ADULT";
 	
 	public static void main(String[] args) {
