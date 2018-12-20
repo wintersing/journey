@@ -166,12 +166,11 @@
 			<artifactId>ezmorph</artifactId>
 			<version>1.0.3</version>
 		</dependency>
-		<!-- 简化pojo插件jar -->
+		<!-- 工具包 -->
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.0</version>
-			<scope>provided</scope>
+			<groupId>commons-tools</groupId>
+			<artifactId>commons-tools</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
 	<build>
