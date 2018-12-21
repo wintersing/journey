@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
 
@@ -22,9 +23,9 @@ public class HttpRequest {
 		BufferedReader in = null;
 		try {
 			String urlNameString = url + "?" + param;
-			URL realUrl = new URL(urlNameString);
+			URL reqGet = new URL(urlNameString);
 			// 打开和URL之间的连接
-			URLConnection connection = realUrl.openConnection();
+			URLConnection connection = reqGet.openConnection();
 			// 设置通用的请求属性
 			connection.setRequestProperty("accept", "*/*");
 			connection.setRequestProperty("connection", "Keep-Alive");
@@ -38,14 +39,16 @@ public class HttpRequest {
 //				System.out.println(key + ":" + map.get(key));
 //			}
 			// 定义 BufferedReader输入流来读取URL的响应
-			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8")));
 			String line;
 			while ((line = in.readLine()) != null) {
 				result += line;
 			}
+			return result;
 		} catch (Exception e) {
 			System.out.println("发送GET请求出现异常！" + e);
 			e.printStackTrace();
+			return null;
 		}
 		// 使用finally块来关闭输入流
 		finally {
@@ -57,7 +60,6 @@ public class HttpRequest {
 				e2.printStackTrace();
 			}
 		}
-		return result;
 	}
 
 	/**
@@ -72,9 +74,9 @@ public class HttpRequest {
 		BufferedReader in = null;
 		String result = "";
 		try {
-			URL realUrl = new URL(url);
+			URL reqPost = new URL(url);
 			// 打开和URL之间的连接
-			URLConnection conn = realUrl.openConnection();
+			URLConnection conn = reqPost.openConnection();
 			// 设置通用的请求属性
 			conn.setRequestProperty("accept", "*/*");
 			conn.setRequestProperty("connection", "Keep-Alive");
@@ -89,14 +91,16 @@ public class HttpRequest {
 			// flush输出流的缓冲
 			out.flush();
 			// 定义BufferedReader输入流来读取URL的响应
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream(), Charset.forName("UTF-8")));
 			String line;
 			while ((line = in.readLine()) != null) {
 				result += line;
 			}
+			return result;
 		} catch (Exception e) {
 			System.out.println("发送 POST 请求出现异常！" + e);
 			e.printStackTrace();
+			return null;
 		}
 		// 使用finally块来关闭输出流、输入流
 		finally {
@@ -111,6 +115,5 @@ public class HttpRequest {
 				ex.printStackTrace();
 			}
 		}
-		return result;
 	}
 }

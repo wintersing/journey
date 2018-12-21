@@ -14,7 +14,7 @@ public class JourneyInfo {
 	private static String url = CommonsUtils.getProperties(path, "Journey_Url");
 	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
-	public static void getJourneyInfo(JourneyParam journeyParam) {
+	public static String getJourneyInfo(JourneyParam journeyParam) {
 		StringBuffer param = new StringBuffer();
 		param.append("apikey=" + apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(journeyParam);
@@ -24,7 +24,8 @@ public class JourneyInfo {
 			}
 		}
 		String ret = HttpRequest.sendGet(url, param.toString());
-		System.out.println(ret); 
+		System.out.println(ret);
+		return CommonsUtils.decodeUnicode(ret);
 	}
 	
 	@Test
@@ -32,6 +33,6 @@ public class JourneyInfo {
 		JourneyParam journeyParam = new JourneyParam();
 		journeyParam.setCityid("405");
 		journeyParam.setSort("1");
-		getJourneyInfo(journeyParam);
+		System.out.println(getJourneyInfo(journeyParam));
 	}
 }

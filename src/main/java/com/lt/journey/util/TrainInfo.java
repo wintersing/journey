@@ -4,7 +4,9 @@ import javax.xml.bind.JAXBException;
 
 import org.junit.Test;
 
-import com.lt.journey.model.Train;
+import com.lt.journey.model.Train1;
+
+import commons.utils.CommonsUtils;
 
 public class TrainInfo {
 
@@ -15,7 +17,7 @@ public class TrainInfo {
 			String param = "UserID=&StartStation=" + StartStation + "&ArriveStation=" + ArriveStation;
 			String ret = HttpRequest.sendGet(url, param);
 			System.out.println(ret);
-			Train train = JaxbUtil.xmlToBean(ret, Train.class);
+			Train1 train = CommonsUtils.xmlToBean(ret, Train1.class);
 			System.out.println(train);
 		} catch (JAXBException e) {
 			// TODO Auto-generated catch block
