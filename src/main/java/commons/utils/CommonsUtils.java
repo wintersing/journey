@@ -3,11 +3,17 @@ package commons.utils;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.commons.beanutils.BeanUtils;
+import java.util.Properties;
 
 /**
  * 当把Person类作为BeanUtilTest的内部类时，程序出错<br>
@@ -48,8 +54,36 @@ public class CommonsUtils {
 		} catch (Exception e) {
 			System.out.println("transBean2Map Error " + e);
 		}
-		
+
 		return map;
-		
+
 	}
+
+	/**
+	 * 使用java.util.Properties类的load()方法加载properties文件
+	 */
+	public static String getProperties(String path, String attr) {
+		try {
+			// 获取文件流（方法1或2均可）
+			InputStream inputStream = new BufferedInputStream(
+					new FileInputStream(new File(path))); // 方法1
+			// InputStream inputStream =
+			// Thread.currentThread().getContextClassLoader().getResourceAsStream("jdbc.properties");
+			// //方法2
+			Properties prop = new Properties();
+
+			prop.load(new InputStreamReader(inputStream, "UTF-8")); // 加载格式化后的流
+
+			return prop.getProperty(attr);
+
+		} catch (FileNotFoundException e) {
+			System.out.println("properties文件路径有误！");
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 }

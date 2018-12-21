@@ -1,5 +1,12 @@
 package com.lt.journey.util;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -8,25 +15,22 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.junit.Test;
 
+import commons.utils.CommonsUtils;
 import net.sf.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * 短信相关的工具类
  */
 public class SMSUtils {
 
-	private static final String NONCE = "123456";
-	private static final String APP_SECRET = "d4f8b55cec47";
-	private static final String APP_KEY = "39def0538236426a1965c197314d0eb2";
-	private static final String templateId = "9534165";
+	private static String path = "src/main/resources/apikey.properties";
+	private static final String NONCE = CommonsUtils.getProperties(path, "SMS_NONCE");
+	private static final String APP_SECRET = CommonsUtils.getProperties(path, "SMS_APP_SECRET");
+	private static final String APP_KEY = CommonsUtils.getProperties(path, "SMS_APP_KEY");
+	private static final String templateId = CommonsUtils.getProperties(path, "SMS_templateId");
+	private static final String url = CommonsUtils.getProperties(path, "SMS_Url");
 
 	/**
 	 * @param mobile 手机号码
@@ -38,20 +42,12 @@ public class SMSUtils {
 		return matcher.matches();
 	}
 
-	public static void main(String[] args) throws IOException {
-		sendCode("15779819842");
-	}
-
 	/**
 	 * 验证码类短信，注意：该短信中验证码不能自己生成，由网易云帮我们生成
-	 * 
-	 * @param mobile     手机号码
-	 * @param templateId 验证码模板ID
-	 * @return 是否发短信验证码
 	 */
-	public static final String sendCode(String mobile) throws IOException {
+	public static final String sendCode(String mobile) {
 		try {
-			HttpPost httpPost = new HttpPost("https://api.netease.im/sms/sendcode.action");
+			HttpPost httpPost = new HttpPost(url);
 
 			String currentTime = String.valueOf(new Date().getTime() / 1000L);
 			String checkSum = CheckSumBuilder.getCheckSum(APP_SECRET, NONCE, currentTime);
@@ -79,12 +75,17 @@ public class SMSUtils {
 			System.out.println(ret);
 
 			return code;
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 			return null;
 		}
+	}
+
+	@Test
+	public void name() {
+		sendCode("15779819842");
 	}
 
 }

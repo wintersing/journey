@@ -9,9 +9,9 @@ import com.lt.journey.model.HotelParam;
 import commons.utils.CommonsUtils;
 
 public class HotelInfo {
-
-	private static String url = "http://api01.idataapi.cn:8000/hotel/idataapi";
-	private static String apikey = "zq71QLetvWkIEefHcNCV7MTq5NrVGPrj8A0rLYoo3jSEv5es8OGd7c3zAQ0o592p";
+	private static String path = "src/main/resources/apikey.properties";
+	private static String url = CommonsUtils.getProperties(path, "Hotel_Url");
+	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
 	public static void getHotelInfo(HotelParam hotelParam) {
 		StringBuffer param = new StringBuffer();
@@ -23,9 +23,9 @@ public class HotelInfo {
 			}
 		}
 		String ret = HttpRequest.sendGet(url, param.toString());
-		System.out.println(ret); 
+		System.out.println(ret);
 	}
-	
+
 	@Test
 	public void name() {
 		HotelParam hotelParam = new HotelParam();

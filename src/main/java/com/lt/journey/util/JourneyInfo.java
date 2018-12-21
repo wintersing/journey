@@ -4,15 +4,15 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.lt.journey.model.HotelParam;
 import com.lt.journey.model.JourneyParam;
 
 import commons.utils.CommonsUtils;
 
 public class JourneyInfo {
 
-	private static String url = "http://api01.idataapi.cn:8000/sight/ctrip";
-	private static String apikey = "zq71QLetvWkIEefHcNCV7MTq5NrVGPrj8A0rLYoo3jSEv5es8OGd7c3zAQ0o592p";
+	private static String path = "src/main/resources/apikey.properties";
+	private static String url = CommonsUtils.getProperties(path, "Journey_Url");
+	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
 	public static void getJourneyInfo(JourneyParam journeyParam) {
 		StringBuffer param = new StringBuffer();
