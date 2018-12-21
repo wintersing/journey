@@ -41,7 +41,7 @@ public class SMSUtils {
 		Matcher matcher = pattern.matcher("15779819842");
 		return matcher.matches();
 	}
-
+	
 	/**
 	 * 验证码类短信，注意：该短信中验证码不能自己生成，由网易云帮我们生成
 	 */
