@@ -13,6 +13,7 @@ public class HotelParam {
 	private String businessDistrict;
 	private String sortByField;
 	private String appCode;
+	
 	public String getLon() {
 		return lon;
 	}

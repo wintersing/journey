@@ -1,22 +1,24 @@
 package com.lt.journey.util;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.lt.journey.model.Train;
 import com.lt.journey.model.TrainParam;
-import com.lt.journey.model.TrainInfo;
 
 import commons.utils.CommonsUtils;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import commons.utils.HttpRequest;
 
-public class Train {
+public class TrainInfo {
 
 	private static String path = "src/main/resources/apikey.properties";
 	private static String url = CommonsUtils.getProperties(path, "Train_Url");
 
-	public static ArrayList<TrainInfo> getTrainInfo(TrainParam trainParam) {
+	public static List<Train> getTrainInfo(TrainParam trainParam) {
 		String param = "r=train/trainTicket/getTickets";
 		param += "&primary[departureDate]=" + trainParam.getDepartureDate();
 		param += "&primary[departureCityCode]=" + trainParam.getDepartureCityCode();
@@ -26,16 +28,11 @@ public class Train {
 		param += "&primary[start]=" + trainParam.getStart();
 		param += "&primary[limit]=" + trainParam.getLimit();
 
-		String trainInfoStr = HttpRequest.sendGet(url, param);
-		JSONObject trainInfoObj = JSONObject.fromObject(trainInfoStr);
-		JSONArray trainInfoObjs = trainInfoObj.getJSONObject("data").getJSONArray("list");
-		ArrayList<TrainInfo> trainInfoList = new ArrayList<TrainInfo>();
-		for (int i = 0; i < trainInfoObjs.size(); i++) {
-			JSONObject trainInfo = trainInfoObjs.getJSONObject(i);
-			TrainInfo train = (TrainInfo) JSONObject.toBean(trainInfo, TrainInfo.class);
-			trainInfoList.add(train);
-		}
-		return trainInfoList;
+		String dataStr = HttpRequest.sendGet(url, param);
+		JSONObject dataObj = JSON.parseObject(dataStr);
+		String trainListStr = dataObj.getJSONObject("data").getJSONArray("list") + "";
+		List<Train> trainList = JSONObject.parseArray(trainListStr, Train.class);
+		return trainList;
 	}
 
 	@Test
@@ -48,7 +45,7 @@ public class Train {
 		trainParam.setDepartureDate("2019-01-01");
 		trainParam.setStart("0");
 		trainParam.setLimit("0");
-		ArrayList<TrainInfo> trainInfoList = getTrainInfo(trainParam);
-		System.out.println(trainInfoList);
+		List<Train> trainList = getTrainInfo(trainParam);
+		System.out.println(trainList);
 	}
 }

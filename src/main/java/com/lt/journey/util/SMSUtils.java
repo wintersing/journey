@@ -31,7 +31,7 @@ public class SMSUtils {
 	private static final String templateId = CommonsUtils.getProperties(path, "SMS_templateId");
 	private static final String url = CommonsUtils.getProperties(path, "SMS_Url");
 
-	/**
+	/** 
 	 * @param mobile 手机号码
 	 * @return 是否有效
 	 */

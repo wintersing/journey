@@ -32,7 +32,7 @@ public class User {
 		return code;
 	}
 	public void setCode(String code) {
-		code = code;
+		this.code = code;
 	}
 	public String getMobile() {
 		return mobile;

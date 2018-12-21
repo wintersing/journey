@@ -1,10 +1,16 @@
 package com.lt.journey.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.lt.journey.model.News;
+
 import commons.utils.CommonsUtils;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import commons.utils.HttpRequest;
 
 public class NewsInfo {
 
@@ -23,17 +29,28 @@ public class NewsInfo {
 //	caijing(财经),
 //	shishang(时尚)
 
-	public static void getNewsInfo() {
+	public static List<News> getNewsInfo() {
 		String param = "key=" + key + "&type=" + type;
-		String ret = HttpRequest.sendGet(url, param);
-		System.out.println(ret);
-		JSONObject object = JSONObject.fromObject(ret);
-		String result = object.getString("result");
-		JSONArray news = JSONObject.fromObject(result).getJSONArray(result);
+		String dataStr = HttpRequest.sendGet(url, param);
+		JSONObject dataObj = JSONObject.parseObject(dataStr);
+		String newsListStr = dataObj.getJSONObject("result").getJSONArray("data") + "";
+		List<News> newsList = JSONObject.parseArray(newsListStr, News.class);
+		return newsList;
+//		JSONObject newsObj = JSONObject.fromObject(dataStr);
+//		JSONArray newsObjs = newsObj.getJSONObject("result").getJSONArray("data");
+//		ArrayList<News> newsList = new ArrayList<News>();
+//		for (int i = 0; i < newsObjs.size(); i++) {
+//			JSONObject newsInfo = newsObjs.getJSONObject(i);
+//			News news= (News) JSONObject.toBean(newsInfo, News.class);
+//			newsList.add(news);
+//		}
+//		return newsList;
 	}
- 
+
 	@Test
 	public void name() {
-		getNewsInfo();
+		List<News> newsInfo = getNewsInfo();
+		System.out.println(newsInfo);
 	}
+
 }

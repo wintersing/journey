@@ -1,8 +1,6 @@
 package com.lt.journey.model;
 
-import net.sf.json.JSONArray;
-
-public class TrainInfo {
+public class Train {
 	private Integer trainId;
 	private String trainNum;
 	private Integer trainType;
@@ -12,7 +10,7 @@ public class TrainInfo {
 	private String departDepartTime;
 	private String destArriveTime;
 	private Integer duration;
-	private JSONArray prices;
+	private Price[] prices;
 	private Integer durationDay;
 	private Integer departStationType;
 	private Integer destStationType;
@@ -87,10 +85,10 @@ public class TrainInfo {
 	public void setDuration(Integer duration) {
 		this.duration = duration;
 	}
-	public JSONArray getPrices() {
+	public Price[] getPrices() {
 		return prices;
 	}
-	public void setPrices(JSONArray prices) {
+	public void setPrices(Price[] prices) {
 		this.prices = prices;
 	}
 	public Integer getDurationDay() {
