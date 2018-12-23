@@ -5,6 +5,6 @@
 <configuration>
     <!-- 设置别名 -->
     <typeAliases>
-        <package name="com.lt.journey.domain" />
+        <package name="com.lt.journey.model" />
     </typeAliases>
 </configuration>

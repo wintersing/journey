@@ -13,10 +13,8 @@
 <!-- CSS -->
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-<link rel="stylesheet"
-	href="/journey/assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="/journey/assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/journey/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/journey/assets/css/font-awesome.min.css">
 <link rel="stylesheet" href="/journey/assets/css/form-elements.css">
 <link rel="stylesheet" href="/journey/assets/css/style.css">
 
@@ -83,7 +81,7 @@
 
 	<!-- Javascript -->
 	<script src="/journey/assets/js/jquery-1.11.1.min.js"></script>
-	<script src="/journey/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/journey/assets/js/bootstrap.min.js"></script>
 	<script src="/journey/assets/js/jquery.backstretch.min.js"></script>
 	<script src="/journey/assets/js/retina-1.1.0.min.js"></script>
 	<script src="/journey/assets/js/scripts.js"></script>

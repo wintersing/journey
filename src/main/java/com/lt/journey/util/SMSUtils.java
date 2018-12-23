@@ -16,7 +16,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-import commons.utils.CommonsUtils;
+import com.lt.commons.utils.CommonsUtils;
+
 import net.sf.json.JSONObject;
 
 /**

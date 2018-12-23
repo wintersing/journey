@@ -5,7 +5,7 @@ public class JourneyParam {
 	private String id;
 	private String kw;
 	private String pageToken;
-	private String sort;
+	private String sort;//(人气最高：1，距离最近：2)
 	private String lon;
 	private String lat;
 	public String getCityid() {

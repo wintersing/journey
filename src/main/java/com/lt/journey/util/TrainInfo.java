@@ -7,11 +7,10 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.commons.utils.CommonsUtils;
+import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.Train;
 import com.lt.journey.model.TrainParam;
-
-import commons.utils.CommonsUtils;
-import commons.utils.HttpRequest;
 
 public class TrainInfo {
 

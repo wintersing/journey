@@ -1,16 +1,13 @@
 package com.lt.journey.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.commons.utils.CommonsUtils;
+import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.News;
-
-import commons.utils.CommonsUtils;
-import commons.utils.HttpRequest;
 
 public class NewsInfo {
 
@@ -36,15 +33,6 @@ public class NewsInfo {
 		String newsListStr = dataObj.getJSONObject("result").getJSONArray("data") + "";
 		List<News> newsList = JSONObject.parseArray(newsListStr, News.class);
 		return newsList;
-//		JSONObject newsObj = JSONObject.fromObject(dataStr);
-//		JSONArray newsObjs = newsObj.getJSONObject("result").getJSONArray("data");
-//		ArrayList<News> newsList = new ArrayList<News>();
-//		for (int i = 0; i < newsObjs.size(); i++) {
-//			JSONObject newsInfo = newsObjs.getJSONObject(i);
-//			News news= (News) JSONObject.toBean(newsInfo, News.class);
-//			newsList.add(news);
-//		}
-//		return newsList;
 	}
 
 	@Test

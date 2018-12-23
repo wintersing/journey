@@ -5,16 +5,12 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPObject;
+import com.lt.commons.utils.CommonsUtils;
+import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelParam;
-
-import commons.utils.CommonsUtils;
-import commons.utils.HttpRequest;
 
 public class HotelInfo {
 	private static String path = "src/main/resources/apikey.properties";

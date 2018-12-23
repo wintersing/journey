@@ -1,13 +1,13 @@
 package com.lt.journey.model;
 
 public class TrainParam {
-	private String departureDate; 
-	private String departureCityCode; 
-	private String departureCityName; 
-	private String arrivalCityCode; 
-	private String arrivalCityName; 
-	private String start;  
-	private String limit;
+	private String departureDate; 		//发车日期-
+	private String departureCityCode; 	//出发站码
+	private String departureCityName; 	//出发站名-
+	private String arrivalCityCode; 	//到达站码
+	private String arrivalCityName; 	//到达站名-
+	private String start;  				//起始值
+	private String limit;				//数量
 	public String getDepartureDate() {
 		return departureDate;
 	}
