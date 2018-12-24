@@ -9,7 +9,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
-import com.lt.journey.model.Journey;
 import com.lt.journey.model.TravelNotes;
 import com.lt.journey.model.TravelNotesParam;
 

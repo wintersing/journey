@@ -44,12 +44,12 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="index.html" class="nav-link">主页</a></li>
-					<li class="nav-item"><a href="places.html" class="nav-link">目的地</a></li>
-					<li class="nav-item"><a href="hotel.html" class="nav-link">酒店</a></li>
-					<li class="nav-item"><a href="blog.html" class="nav-link">游记</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">关于</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">联系</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}" class="nav-link">主页</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/placesView" class="nav-link">目的地</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/hotelView" class="nav-link">酒店</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/tavelNotesView" class="nav-link">游记</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/placesView" class="nav-link">火车</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/contactView" class="nav-link">联系</a></li>
 				</ul>
 			</div>
 		</div>

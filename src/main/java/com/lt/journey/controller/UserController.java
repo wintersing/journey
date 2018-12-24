@@ -28,7 +28,7 @@ public class UserController {
 	//注册
 	@RequestMapping("/registView")
 	public String view() {
-		return "register";
+		return "login-register";
 	}
 
 	@RequestMapping(value = "/sendSMScode", method = RequestMethod.POST)
