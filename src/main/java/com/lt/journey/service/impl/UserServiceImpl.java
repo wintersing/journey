@@ -7,7 +7,7 @@ import com.lt.journey.dao.UserDao;
 import com.lt.journey.model.User;
 import com.lt.journey.service.UserService;;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao userDao;

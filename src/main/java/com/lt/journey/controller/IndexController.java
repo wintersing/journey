@@ -9,6 +9,8 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String indexView() {
+		
 		return "index";
 	}
+	
 }

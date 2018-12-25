@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.journey.dao.KeyValuesDao">
+	<insert id="addKeyValues" parameterType="java.util.List">
+		<selectKey keyProperty="id" resultType="String"
+			order="BEFORE">
+			select uuid()
+		</selectKey>
+		insert into
+		keyvalues (`id`,`key`,`value`)
+		values
+		<foreach collection="list" item="item" index="index">
+			<foreach collection="item" item="keyValues" index="index" separator=",">
+				(#{keyValues.id},#{keyValues.key},#{keyValues.value})
+			</foreach>
+		</foreach>
+	</insert>
+</mapper>

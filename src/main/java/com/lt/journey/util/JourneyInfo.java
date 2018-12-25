@@ -4,14 +4,25 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
+import com.lt.journey.dao.GeoPointDao;
+import com.lt.journey.dao.KeyValuesDao;
+import com.lt.journey.model.GeoPoint;
 import com.lt.journey.model.Journey;
 import com.lt.journey.model.JourneyParam;
+import com.lt.journey.model.KeyValues;
+import com.lt.journey.service.JourneyService;
 
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "classpath*:spring-mybatis.xml" })
 public class JourneyInfo {
 
 	private static String path = "src/main/resources/apikey.properties";
@@ -34,19 +45,35 @@ public class JourneyInfo {
 		List<Journey> journeyList = JSONObject.parseArray(journeyListStr, Journey.class);
 		return journeyList;
 	}
-	
+
 	@Test
 	public void name() {
 		JourneyParam journeyParam = new JourneyParam();
 		journeyParam.setCityid("405");
 		journeyParam.setSort("1");
-		List<Journey> journeyInfo = getJourneyInfo(journeyParam);
-		System.out.println(journeyInfo);
+		List<Journey> journeyList = getJourneyInfo(journeyParam);
+		System.out.println(journeyList);
+//		journeyService.addJourney(journeyInfo);
+	}
+
+	@Autowired
+	private GeoPointDao geoPointDao;
+
+	@Test
+	public void name1() {
+		GeoPoint geoPoint = new GeoPoint();
+		geoPoint.setLat("12.4568413");
+		geoPoint.setLon("112.4568654");
+//		geoPointDao.addGeoPoint(geoPoint);
+	}
+	
+	@Autowired
+	private KeyValuesDao keyValuesDao;
+	@Test
+	public void name2() {
+		KeyValues keyValues= new KeyValues();
+		keyValues.setKey("ImageCount");
+		keyValues.setValue("0");
+//		keyValuesDao.addKeyValues(keyValues);
 	}
 }
-
-
-
-
-
-

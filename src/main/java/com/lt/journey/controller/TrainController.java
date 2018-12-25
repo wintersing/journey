@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class trainController {
+public class TrainController {
 	
 	@RequestMapping("/trainView")
 	public String trainView() {
