@@ -26,8 +26,13 @@ public class UserController {
 	private UserService userService;
 
 	//注册
-	@RequestMapping("/registView")
-	public String view() {
+	@RequestMapping("/registerView")
+	public String registerView() {
+		return "login-register";
+	}
+	//登陆
+	@RequestMapping("/loginView")
+	public String loginView() {
 		return "login-register";
 	}
 

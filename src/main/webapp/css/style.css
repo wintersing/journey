@@ -7900,8 +7900,8 @@ h1, h2, h3, h4, h5,
       color: #000000; }
   .destination:hover .icon {
     opacity: 1; }
-  .destination .text {
-    background: #fff; }
+/*  .destination .text {
+    background: #fff; }*/
     .destination .text h3 {
       font-size: 18px;
       font-weight: 500; }
@@ -9454,3 +9454,7 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.news{
+  color: #000000;
+}

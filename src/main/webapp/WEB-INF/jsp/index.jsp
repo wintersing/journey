@@ -32,28 +32,7 @@
 </head>
 
 <body>
-
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">人在旅途</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
-			 aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
-
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="${pageContext.request.contextPath}" class="nav-link">主页</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/placesView" class="nav-link">目的地</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/hotelView" class="nav-link">酒店</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/tavelNotesView" class="nav-link">游记</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/placesView" class="nav-link">火车</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/contactView" class="nav-link">联系</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
+	<%@ include file="./part/header.jsp" %>
 
 	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
 		<div class="overlay"></div>
@@ -116,7 +95,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md align-items-end">
+									<!-- <div class="col-md align-items-end">
 										<div class="form-group">
 											<label for="#">结束日期</label>
 											<div class="form-field">
@@ -141,7 +120,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 									<div class="col-md align-self-end">
 										<div class="form-group">
 											<div class="form-field">
@@ -158,19 +137,19 @@
 								<div class="row">
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">到达日期</label>
+											<label for="#">目的地</label>
 											<div class="form-field">
 												<div class="icon"><span class="icon-map-marker"></span></div>
-												<input type="text" class="form-control checkin_date" placeholder="到达日期">
+												<input type="text" class="form-control" placeholder="目的地">
 											</div>
 										</div>
 									</div>
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">目的地</label>
+											<label for="#">到达日期</label>
 											<div class="form-field">
 												<div class="icon"><span class="icon-map-marker"></span></div>
-												<input type="text" class="form-control" placeholder="目的地">
+												<input type="text" class="form-control checkin_date" placeholder="到达日期">
 											</div>
 										</div>
 									</div>
@@ -973,7 +952,7 @@
 		</div>
 	</section>
 
-	<section class="ftco-section">
+	<!-- <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
@@ -1087,13 +1066,13 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<section class="ftco-section bg-light">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h2><strong>Tips</strong> &amp; Articles</h2>
+					<h2><strong>旅游日记</strong> &amp; 文章</h2>
 				</div>
 			</div>
 			<div class="row d-flex">
@@ -1102,10 +1081,10 @@
 						<a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
 						</a>
 						<div class="text">
-							<span class="tag">Tips, Travel</span>
-							<h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>
+							<span class="tag">广州</span>
+							<h3 class="heading mt-3"><a href="#">深圳、广州、珠海、香港四地游记</a></h3>
 							<div class="meta mb-3">
-								<div><a href="#">October 3, 2018</a></div>
+								<div><a href="#">2013-10-11</a></div>
 								<div><a href="#">Admin</a></div>
 								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
 							</div>
@@ -1170,74 +1149,7 @@
 		</div>
 	</section>
 
-	<footer class="ftco-footer ftco-bg-dark ftco-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">人在旅途</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-							texts.</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">信息</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">关于我们</a></li>
-							<li><a href="#" class="py-2 d-block">在线咨询</a></li>
-							<li><a href="#" class="py-2 d-block">打电话给我们</a></li>
-							<li><a href="#" class="py-2 d-block">通用查询</a></li>
-							<li><a href="#" class="py-2 d-block">预订条件</a></li>
-							<li><a href="#" class="py-2 d-block">隐私和政策</a></li>
-							<li><a href="#" class="py-2 d-block">退款政策</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">经验</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">海滩</a></li>
-							<li><a href="#" class="py-2 d-block">冒险</a></li>
-							<li><a href="#" class="py-2 d-block">野生动物</a></li>
-							<li><a href="#" class="py-2 d-block">度蜜月</a></li>
-							<li><a href="#" class="py-2 d-block">性质</a></li>
-							<li><a href="#" class="py-2 d-block">派对</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">有问题吗？</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text"> 203假圣山景，旧金山，加利福尼亚州，美国</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- <div class="row">
-				<div class="col-md-12 text-center">
-
-					<p>
-						Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script> Colorlib All rights reserved | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
-						- Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-					</p>
-				</div>
-			</div> -->
-		</div>
-	</footer>
+ <%@ include file="./part/footer.jsp" %>
 
 
 

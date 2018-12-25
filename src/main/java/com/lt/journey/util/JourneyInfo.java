@@ -44,3 +44,9 @@ public class JourneyInfo {
 		System.out.println(journeyInfo);
 	}
 }
+
+
+
+
+
+

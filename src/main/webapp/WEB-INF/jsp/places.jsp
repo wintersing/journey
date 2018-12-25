@@ -1,69 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
-	<title>旅游攻略,自由行 - 人在旅途</title>
-	<title>Adventure - Free Bootstrap 4 Template by Colorlib</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>旅游攻略,自由行 - 人在旅途</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="css/animate.css">
 
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
 
-	<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/aos.css">
 
-	<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="css/ionicons.min.css">
 
-	<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
 
 
-	<link rel="stylesheet" href="css/flaticon.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">人在旅途</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
-			 aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+	<%@ include file="./part/header.jsp"%>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="${pageContext.request.contextPath}" class="nav-link">主页</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/placesView" class="nav-link">目的地</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/hotelView" class="nav-link">酒店</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/tavelNotesView" class="nav-link">游记</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/placesView" class="nav-link">火车</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/contactView" class="nav-link">联系</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- END nav -->
-
-	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+	<div class="hero-wrap js-fullheight"
+		style="background-image: url('images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-				<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-					<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span>
-						<span>Places</span></p>
-					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+				data-scrollax-parent="true">
+				<div class="col-md-9 text-center ftco-animate"
+					data-scrollax=" properties: { translateY: '70%' }">
+					<p class="breadcrumbs"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span>
+					</p>
+					<h1 class="mb-3 bread"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
 				</div>
 			</div>
 		</div>
@@ -78,12 +68,16 @@
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
-									<input name="city" type="text" class="form-control" placeholder="请输入您要所搜的城市">
+									<input name="city" type="text" class="form-control"
+										placeholder="请输入您要所搜的城市">
 								</div>
 								<div class="form-group">
 									<div class="select-wrap one-third">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="level" id="" class="form-control" placeholder="Keyword search">
+										<div class="icon">
+											<span class="ion-ios-arrow-down"></span>
+										</div>
+										<select name="level" id="" class="form-control"
+											placeholder="Keyword search">
 											<option value="">请选择酒店星级</option>
 											<option value="五星级/豪华">五星级/豪华</option>
 											<option value="四星级/高档">四星级/高档</option>
@@ -95,10 +89,12 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<input name="brandName" type="text" id="checkin_date" class="form-control" placeholder="请输入您要搜索的酒店品牌">
+									<input name="brandName" type="text" id="checkin_date"
+										class="form-control" placeholder="请输入您要搜索的酒店品牌">
 								</div>
 								<div class="form-group">
-									<input name="businessDistrict" type="text" id="checkin_date" class="form-control" placeholder="请输入您要搜索的酒店商圈">
+									<input name="businessDistrict" type="text" id="checkin_date"
+										class="form-control" placeholder="请输入您要搜索的酒店商圈">
 								</div>
 								<!-- <div class="form-group">
 											<div class="range-slider">
@@ -112,254 +108,285 @@
 											</div>
 										</div> -->
 								<div class="form-group">
-									<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+									<input type="submit" value="Search"
+										class="btn btn-primary py-3 px-5">
 								</div>
 							</div>
 						</form>
 					</div>
-					<!-- <div class="sidebar-wrap ftco-animate">
-						<h3 class="heading mb-4">Star Rating</h3>
-						<form method="post" class="star-rating">
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">
-									<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i
-											 class="icon-star"></i></span></p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">
-									<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i
-											 class="icon-star-o"></i></span></p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">
-									<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i
-											 class="icon-star-o"></i></span></p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">
-									<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i
-											 class="icon-star-o"></i></span></p>
-								</label>
-							</div>
-							<div class="form-check">
-								<input type="checkbox" class="form-check-input" id="exampleCheck1">
-								<label class="form-check-label" for="exampleCheck1">
-									<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i
-											 class="icon-star-o"></i></span></p>
-								</label>
-							</div>
-						</form>
-					</div> -->
-				</div><!-- END-->
+					<div class="sidebar-wrap ftco-animate">
+						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+					</div>
+				</div>
+				<!-- END-->
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
+								<a href="#"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-3.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
 									</div>
 								</a>
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#">Paris, Italy</a></h3>
+											<h3>
+												<a href="#">Paris, Italy</a>
+											</h3>
 											<p class="rate">
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star-o"></i>
-												<span>8 Rating</span>
+												<i class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star-o"></i> <span>8 Rating</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price">$200</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
-									<p class="days"><span>2 days 3 nights</span></p>
+									<p>Far far away, behind the word mountains, far from the
+										countries</p>
+									<p class="days">
+										<span>2 days 3 nights</span>
+									</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span>
-										<span class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+											class="ml-auto"><a href="#">Discover</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-4.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
+								<a href="#"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-4.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
 									</div>
 								</a>
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#">Paris, Italy</a></h3>
+											<h3>
+												<a href="#">Paris, Italy</a>
+											</h3>
 											<p class="rate">
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star-o"></i>
-												<span>8 Rating</span>
+												<i class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star-o"></i> <span>8 Rating</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price">$200</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
-									<p class="days"><span>2 days 3 nights</span></p>
+									<p>Far far away, behind the word mountains, far from the
+										countries</p>
+									<p class="days">
+										<span>2 days 3 nights</span>
+									</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span>
-										<span class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+											class="ml-auto"><a href="#">Discover</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-1.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
+								<a href="#"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-1.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
 									</div>
 								</a>
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#">Paris, Italy</a></h3>
+											<h3>
+												<a href="#">Paris, Italy</a>
+											</h3>
 											<p class="rate">
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star-o"></i>
-												<span>8 Rating</span>
+												<i class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star-o"></i> <span>8 Rating</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price">$200</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
-									<p class="days"><span>2 days 3 nights</span></p>
+									<p>Far far away, behind the word mountains, far from the
+										countries</p>
+									<p class="days">
+										<span>2 days 3 nights</span>
+									</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span>
-										<span class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+											class="ml-auto"><a href="#">Discover</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-2.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
+								<a href="#"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-2.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
 									</div>
 								</a>
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#">Paris, Italy</a></h3>
+											<h3>
+												<a href="#">Paris, Italy</a>
+											</h3>
 											<p class="rate">
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star-o"></i>
-												<span>8 Rating</span>
+												<i class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star-o"></i> <span>8 Rating</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price">$200</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
-									<p class="days"><span>2 days 3 nights</span></p>
+									<p>Far far away, behind the word mountains, far from the
+										countries</p>
+									<p class="days">
+										<span>2 days 3 nights</span>
+									</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span>
-										<span class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+											class="ml-auto"><a href="#">Discover</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-5.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
+								<a href="#"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-5.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
 									</div>
 								</a>
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#">Paris, Italy</a></h3>
+											<h3>
+												<a href="#">Paris, Italy</a>
+											</h3>
 											<p class="rate">
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star-o"></i>
-												<span>8 Rating</span>
+												<i class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star-o"></i> <span>8 Rating</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price">$200</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
-									<p class="days"><span>2 days 3 nights</span></p>
+									<p>Far far away, behind the word mountains, far from the
+										countries</p>
+									<p class="days">
+										<span>2 days 3 nights</span>
+									</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span>
-										<span class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+											class="ml-auto"><a href="#">Discover</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-6.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
+								<a href="#"
+									class="img img-2 d-flex justify-content-center align-items-center"
+									style="background-image: url(images/destination-6.jpg);">
+									<div
+										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
 									</div>
 								</a>
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#">Paris, Italy</a></h3>
+											<h3>
+												<a href="#">Paris, Italy</a>
+											</h3>
 											<p class="rate">
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star"></i>
-												<i class="icon-star-o"></i>
-												<span>8 Rating</span>
+												<i class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star"></i> <i class="icon-star"></i> <i
+													class="icon-star-o"></i> <span>8 Rating</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price">$200</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the countries</p>
-									<p class="days"><span>2 days 3 nights</span></p>
+									<p>Far far away, behind the word mountains, far from the
+										countries</p>
+									<p class="days">
+										<span>2 days 3 nights</span>
+									</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span>
-										<span class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
+											class="ml-auto"><a href="#">Discover</a></span>
 									</p>
 								</div>
 							</div>
@@ -380,25 +407,30 @@
 							</div>
 						</div>
 					</div>
-				</div> <!-- .col-md-8 -->
+				</div>
+				<!-- .col-md-8 -->
 			</div>
 		</div>
-	</section> <!-- .section -->
+	</section>
+	<!-- .section -->
 
 	<section class="ftco-section-parallax">
 		<div class="parallax-img d-flex align-items-center">
 			<div class="container">
 				<div class="row d-flex justify-content-center">
-					<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<div
+						class="col-md-7 text-center heading-section heading-section-white ftco-animate">
 						<h2>Subcribe to our Newsletter</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-							texts. Separated they live in</p>
+						<p>Far far away, behind the word mountains, far from the
+							countries Vokalia and Consonantia, there live the blind texts.
+							Separated they live in</p>
 						<div class="row d-flex justify-content-center mt-5">
 							<div class="col-md-8">
 								<form action="#" class="subscribe-form">
 									<div class="form-group d-flex">
-										<input type="text" class="form-control" placeholder="Enter email address">
-										<input type="submit" value="Subscribe" class="submit px-3">
+										<input type="text" class="form-control"
+											placeholder="Enter email address"> <input
+											type="submit" value="Subscribe" class="submit px-3">
 									</div>
 								</form>
 							</div>
@@ -409,82 +441,17 @@
 		</div>
 	</section>
 
-	<footer class="ftco-footer ftco-bg-dark ftco-section">
-		<div class="container">
-			<div class="row mb-5">
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Adventure</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-							texts.</p>
-						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-4">
-						<h2 class="ftco-heading-2">Information</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">About Us</a></li>
-							<li><a href="#" class="py-2 d-block">Online enquiry</a></li>
-							<li><a href="#" class="py-2 d-block">Call Us</a></li>
-							<li><a href="#" class="py-2 d-block">General enquiries</a></li>
-							<li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
-							<li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-							<li><a href="#" class="py-2 d-block">Refund policy</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Experience</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Beach</a></li>
-							<li><a href="#" class="py-2 d-block">Adventure</a></li>
-							<li><a href="#" class="py-2 d-block">Wildlife</a></li>
-							<li><a href="#" class="py-2 d-block">Honeymoon</a></li>
-							<li><a href="#" class="py-2 d-block">Nature</a></li>
-							<li><a href="#" class="py-2 d-block">Party</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
-						<div class="block-23 mb-3">
-							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco,
-										California, USA</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 text-center">
-
-					<p>
-						Copyright &copy;<script>
-							document.write(new Date().getFullYear());
-						</script> Colorlib All rights reserved | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
-						- Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-
+	<%@ include file="./part/footer.jsp"%>
 
 
 	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+	</div>
 
 
 	<script src="js/jquery.min.js"></script>
