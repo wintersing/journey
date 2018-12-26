@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.lt.journey.dao.GeoPointDao;
 import com.lt.journey.dao.JourneyDao;
 import com.lt.journey.model.Journey;
+import com.lt.journey.model.JourneyDes;
 import com.lt.journey.service.JourneyService;
 
 @Service("journeyService")
@@ -19,7 +20,7 @@ public class JourneyServiceImpl implements JourneyService {
 	@Autowired
 	private JourneyDao journeyDao;
 	
-	public void addJourney(List<Journey> journeyList) {
+	public void addJourney(List<JourneyDes> journeyList) {
 		geoPointDao.addGeoPoint(journeyList);
 		journeyDao.addJourney(journeyList);
 	}
@@ -27,6 +28,11 @@ public class JourneyServiceImpl implements JourneyService {
 	public String findCityidByCityName(String cityName) {
 		String cityid = journeyDao.findCityidByCityName(cityName);
 		return cityid;
+	}
+
+	@Override
+	public List<Journey> findJourneyRecommend() {
+		return journeyDao.findJourneyRecommend();
 	}
 
 }

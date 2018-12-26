@@ -7,7 +7,7 @@
 		(`id`,`location`,`rating`,`rank`,`url`,`country`,title,subtitle,city,imageUrls,tipInfo,
 		openingHours,description,price,commentCount,recommend,keyValues,geoPointID)
 		values
-		<foreach collection="list" item="journey" separator=",">
+		<foreach collection="list" item="journeyDes" separator=",">
 			(
 			#{journey.id},
 			#{journey.location},
@@ -25,7 +25,7 @@
 			#{journey.price},
 			#{journey.commentCount},
 			#{journey.recommend},
-			#{journey.keyValues},
+			#{journey.keyValues, typeHandler=com.lt.commons.utils.mybatis.handler.ArrayTypeHandler},
 			(SELECT `id` as `geoPointID` from geopoint where
 			`lon` = ${journey.geoPoint.lon} AND `lat` = ${journey.geoPoint.lat}))
 		</foreach>

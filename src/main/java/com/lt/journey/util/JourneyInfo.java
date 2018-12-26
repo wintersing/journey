@@ -16,7 +16,7 @@ import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.dao.GeoPointDao;
 import com.lt.journey.dao.KeyValuesDao;
 import com.lt.journey.model.GeoPoint;
-import com.lt.journey.model.Journey;
+import com.lt.journey.model.JourneyDes;
 import com.lt.journey.model.JourneyParam;
 import com.lt.journey.model.KeyValues;
 import com.lt.journey.service.JourneyService;
@@ -29,7 +29,7 @@ public class JourneyInfo {
 	private static String url = CommonsUtils.getProperties(path, "Journey_Url");
 	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
-	public static List<Journey> getJourneyInfo(JourneyParam journeyParam) {
+	public static List<JourneyDes> getJourneyInfo(JourneyParam journeyParam) {
 		StringBuffer param = new StringBuffer();
 		param.append("apikey=" + apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(journeyParam);
@@ -42,7 +42,7 @@ public class JourneyInfo {
 		String dataStr = CommonsUtils.unicodeToString(ret);
 		JSONObject dataObj = JSON.parseObject(dataStr);
 		String journeyListStr = dataObj.getJSONArray("data") + "";
-		List<Journey> journeyList = JSONObject.parseArray(journeyListStr, Journey.class);
+		List<JourneyDes> journeyList = JSONObject.parseArray(journeyListStr, JourneyDes.class);
 		return journeyList;
 	}
 
@@ -51,7 +51,7 @@ public class JourneyInfo {
 		JourneyParam journeyParam = new JourneyParam();
 		journeyParam.setCityid("405");
 		journeyParam.setSort("1");
-		List<Journey> journeyList = getJourneyInfo(journeyParam);
+		List<JourneyDes> journeyList = getJourneyInfo(journeyParam);
 		System.out.println(journeyList);
 //		journeyService.addJourney(journeyInfo);
 	}

@@ -11,4 +11,7 @@
 	<typeAliases>
 		<package name="com.lt.journey.model" />
 	</typeAliases>
+	<typeHandlers>
+		<typeHandler handler="com.lt.commons.utils.mybatis.handler.ArrayTypeHandler"/>
+	</typeHandlers>
 </configuration>

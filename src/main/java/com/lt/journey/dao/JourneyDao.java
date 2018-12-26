@@ -7,11 +7,15 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import com.lt.journey.model.Journey;
+import com.lt.journey.model.JourneyDes;
 
 @Repository
 public interface JourneyDao {
-	public void addJourney(List<Journey> journeyList);
+	public void addJourney(List<JourneyDes> journeyList);
 	
 	@Select("select cityid from journey_city where cityName = #{cityName}")
 	public String findCityidByCityName(@Param("cityName")String cityName);
+
+	@Select("select * from journey where recommend = 1")
+	public List<Journey> findJourneyRecommend();
 }

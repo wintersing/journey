@@ -4,26 +4,14 @@ import lombok.Data;
 
 @Data
 public class Journey {
+	private String[] imageUrls;		
 	private String location;
-	private String rating;
-	private String rank;			//综合排名
+	private Double rating;
 	private String id;
-	private String url;
-	private String country;
 	private String city;
+	private String country;
 	private String title;
 	private String subtitle;
-	private String imageUrls;		//字符串数组
-	private String tipInfo;			//提示信息
-	private String openingHours;
-	private String description;
 	private Double price;
-	private Integer commentCount;
-	private GeoPoint geoPoint;
-	private String keyValues;		//字符串数组
-	private String recommend = "0";		//是否推荐(1-推荐，0-不推荐)
-//	private String district;
-//	private String level;
-//	private String tags;
-//	private String telephones;
+	private String openingHours;
 }
