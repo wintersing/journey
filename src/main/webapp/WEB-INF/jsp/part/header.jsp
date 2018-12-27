@@ -5,17 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-	<style type="text/css">
-		.navigation {
-			padding-right: 400px;
-			display: inline;
-		}
-		.split{
-			height: 17px;
-			line-height: 51px;
-		}
-	</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">

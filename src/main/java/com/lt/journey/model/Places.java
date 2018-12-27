@@ -3,7 +3,7 @@ package com.lt.journey.model;
 import lombok.Data;
 
 @Data
-public class Journey {
+public class Places {
 	private String[] imageUrls;		
 	private String location;
 	private Double rating;

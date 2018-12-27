@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.journey.dao.HotelDao">
+	<insert id="addHotel" parameterType="java.util.List">
+		INSERT IGNORE INTO hotel
+		(`id`,`businessDistrict`,`brandId`,
+		`openingHours`,`commentCount`,`rating`,
+		tags,facilities,infrastructures,
+		goodTagDist,assistServices,
+		city,description, price, 
+		level, minPrice,telephones,
+		url,district,brandName,
+		address,hasWifi,title,
+		imageUrls,geoPointID
+		)
+		values
+		<foreach collection="list" item="hotelDes" separator=",">
+			(
+			#{hotelDes.id},
+			#{hotelDes.businessDistrict},
+			#{hotelDes.brandId},
+			#{hotelDes.openingHours},
+			#{hotelDes.commentCount},
+			#{hotelDes.rating},
+			#{hotelDes.tags},
+			#{hotelDes.facilities},
+			#{hotelDes.infrastructures},
+			#{hotelDes.goodTagDist},
+			#{hotelDes.assistServices},
+			#{hotelDes.city},
+			#{hotelDes.description},
+			#{hotelDes.price},
+			#{hotelDes.level},
+			#{hotelDes.minPrice},
+			#{hotelDes.telephones},
+			#{hotelDes.url},
+			#{hotelDes.district},
+			#{hotelDes.brandName},
+			#{hotelDes.address},
+			#{hotelDes.hasWifi},
+			#{hotelDes.title},
+			#{hotelDes.imageUrls},
+			(SELECT `id` as
+			`geoPointID` from geopoint where
+			`lon` = ${hotelDes.geoPoint.lon}
+			AND `lat` = ${hotelDes.geoPoint.lat}))
+		</foreach>
+	</insert>
+</mapper>

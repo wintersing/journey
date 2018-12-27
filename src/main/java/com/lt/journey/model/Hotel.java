@@ -4,43 +4,17 @@ import lombok.Data;
 
 @Data
 public class Hotel {
-	private String catName1;
-	private String titleAliases;
-	private ExternalIds[] externalIds;
-	private String businessDistrict;
-	private String infrastructures;
-	private String brandId;
-	private String id;
-	private String facilities;
-	private GeoPoint geoPoint;
-	private String openDate;
-	private Integer unifiedId;
-	private String appCode;
-	private String openingHours;
-	private String commentCount;
-	private String rating;
-	private String[] tags;
-	private String decorationDate;
-	private DoodTagDist[] goodTagDist;
-	private Integer roomCount;
-	private String city;
-	private String description;
-	private Double price;
-	private String level;
-	private String catId1;
-	private Integer minPrice;
-	private String[] telephones;
-	private String url;
-	private String[] assistServices;
-	private String district;
-	private String brandName;
-	private String address;
-	private Integer hasWifi;
-	private String title;
 	private String[] imageUrls;
-	private String catPathKey;
-	private Integer favoriteCount;
-	private String discountInfo;
-	private Integer floorCount;
-	private Double lowPrice;
+	private String title;
+	private String rating;
+	private String[] facilities;		//屋内设施
+	private String[] infrastructures;		//酒店设施
+	private DoodTagDist[] goodTagDist;	//正面标签分布
+	private String[] assistServices;	//服务
+	private String price;
+	private String minPrice;
+	private String description;
+	private String city;
+	private String district;			//地区
+	private String recommend = "0";
 }

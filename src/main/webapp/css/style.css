@@ -9458,3 +9458,28 @@ textarea.form-control {
 .news{
   color: #000000;
 }
+.openinghours{
+	width: 260px;
+	height: 40px;
+	display:block;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	overflow:hidden;
+}
+.hotel-des{
+	width: 273px;
+    height: 112px;
+    overflow: hidden;
+	display:-webkit-box;   
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:4;
+}
+
+.navigation {
+	padding-right: 400px;
+	display: inline;
+}
+.split{
+	height: 17px;
+	line-height: 51px;
+}

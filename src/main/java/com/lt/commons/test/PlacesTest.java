@@ -2,6 +2,7 @@ package com.lt.commons.test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,18 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.lt.journey.model.JourneyDes;
-import com.lt.journey.model.JourneyParam;
-import com.lt.journey.service.JourneyService;
-import com.lt.journey.util.JourneyInfo;
+import com.lt.journey.model.PlacesDes;
+import com.lt.journey.model.PlacesParam;
+import com.lt.journey.service.PlacesService;
+import com.lt.journey.util.PlacesInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:spring-*.xml","classpath*:mybatis-config.xml" })
-public class JourneyTest {
+public class PlacesTest {
 	@Autowired
-	private JourneyService journeyService;
+	private PlacesService placesService;
 
 
 //	@Test
@@ -40,15 +39,20 @@ public class JourneyTest {
 	}
 	
 	
-	@Test
-	public void name2() {
-		String cityid = journeyService.findCityidByCityName("北京");
-		JourneyParam journeyParam = new JourneyParam();
-		journeyParam.setCityid(cityid);
-		journeyParam.setSort("1");
-		List<JourneyDes> journeyList = JourneyInfo.getJourneyInfo(journeyParam);
-		journeyService.addJourney(journeyList);
-	}
+//	@Test
+//	public void name2() {
+//		String cityid = placesService.findCityidByCityName("泰国");
+//		PlacesParam placesParam = new PlacesParam();
+//		placesParam.setCityid(cityid);
+//		placesParam.setSort("1");
+//		Map<String, Object> dataMap = PlacesInfo.getPlacesInfo(placesParam);
+//		Object placesListObj = dataMap.get("placesList");
+//		if (placesListObj instanceof List) {
+//			List placesList_ = (List) placesListObj;
+//			List<PlacesDes> placesList = (List<PlacesDes>) placesList_;
+//			placesService.addPlaces(placesList);
+//		}
+//	}
 	
 }
 

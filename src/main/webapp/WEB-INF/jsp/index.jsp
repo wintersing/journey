@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -282,12 +283,19 @@
 		<div class="container-fluid">
 			<c:forEach var="i" begin="1" end="2">
 				<div class="row">
-					<c:forEach var="journeyItem" begin="${i*4-4 }" end="${i*4-1 }"
-						items="${journeyList }">
+					<c:forEach var="placesItem" begin="${i*4-4 }" end="${i*4-1 }" varStatus="status"
+						items="${placesList }">
 						<div class="col-sm col-md-6 col-lg ftco-animate">
-							<div class="destination">
-								<c:forEach var="imageItem" begin="1" end="1"
-									items="${journeyItem.imageUrls }">
+						<c:choose>
+							<c:when test="${status.index%2 == 1 }">
+								<div class="destination d-md-flex flex-column-reverse">
+							</c:when>
+							<c:otherwise>
+								<div class="destination">
+							</c:otherwise>
+						</c:choose>
+								<c:forEach var="imageItem" begin="0" end="0"
+									items="${placesItem.imageUrls }">
 									<a href="#"
 										class="img img-2 d-flex justify-content-center align-items-center"
 										style="background-image: url(${imageItem });">
@@ -297,28 +305,29 @@
 										</div>
 									</a>
 								</c:forEach>
-								<div class="text p-3">
+								<div class="text p-3 info">
 									<div class="d-flex">
 										<div class="one">
 											<h3>
-												<a href="#">${journeyItem.title }</a>
+												<a href="#">${placesItem.title }</a>
 											</h3>
-											<p class="rate"><fmt:parseNumber var="rating" type="number" value="${journeyItem.rating}" />
+											<p class="rate">
+											<fmt:parseNumber var="rating" type="number" value="${placesItem.rating}" />
 											<c:forEach begin="1" end="${rating }">
 												<i class="icon-star"></i> 
 											</c:forEach>
-											<c:if test="${journeyItem.rating%1 > 0}">
+											<c:if test="${placesItem.rating%1 > 0}">
 												<i class="icon-star-half"></i> 
 											</c:if>
-													<span>${journeyItem.rating}/5分</span>
+													<span>${placesItem.rating}/5分</span>
 											</p>
 										</div>
 										<div class="two">
 											<span class="price"> 
 												<c:choose>
-													<c:when test="${journeyItem.price > '0' }">
+													<c:when test="${placesItem.price > '0' }">
 														
-														￥${journeyItem.price }
+														￥${placesItem.price }
 														
 													</c:when>
 													<c:otherwise>
@@ -328,11 +337,11 @@
 											</span>
 										</div>
 									</div>
-									<p>${journeyItem.subtitle }</p>
-									<p class="days">开放时间：${journeyItem.openingHours }</p>
+									<p>${placesItem.subtitle }</p>
+									<p class="days openinghours">开放时间：${placesItem.openingHours }</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i>${journeyItem.country },${journeyItem.city }</span> <span
+										<span><i class="icon-map-o"></i>${placesItem.city }</span> <span
 											class="ml-auto"><a href="#">发现</a></span>
 									</p>
 								</div>
@@ -345,9 +354,7 @@
 		</div>
 	  
 	</section>
-	<div class="tlinks">
-		Collect from <a href="http://www.cssmoban.com/">网页模板</a>
-	</div>
+	
 	<section class="ftco-section ftco-counter img" id="section-counter"
 		style="background-image: url(images/bg_1.jpg);"
 		data-stellar-background-ratio="0.5">
@@ -405,187 +412,63 @@
 			</div>
 		</div>
 		<div class="container-fluid">
+			<c:forEach var="i" begin="1" end="2">
 			<div class="row">
+				<c:forEach var="hotelItem" begin="${i*4-4 }" end="${i*4-1 }" varStatus="status"
+					items="${hotelList }">
 				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="destination">
+					<c:choose>
+						<c:when test="${status.index%2 == 1 }">
+							<div class="destination d-md-flex flex-column-reverse">
+						</c:when>
+						<c:otherwise>
+							<div class="destination">
+						</c:otherwise>
+					</c:choose>
+					<c:forEach var="imageItem" begin="1" end="1"
+						items="${hotelItem.imageUrls }">
 						<a href="#"
 							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(images/hotel-1.jpg);">
+							style="background-image: url(${imageItem});">
 							<div
 								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-link"></span>
 							</div>
 						</a>
+					</c:forEach>
 						<div class="text p-3">
 							<div class="d-flex">
 								<div class="one">
 									<h3>
-										<a href="#">茂源旅馆</a>
+										<a href="#">${hotelItem.title }</a>
 									</h3>
 									<p class="rate">
-										<i class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star-o"></i> <span>4 分</span>
+									<fmt:parseNumber var="rating2" type="number" value="${hotelItem.rating}" />
+										<c:forEach begin="1" end="${rating2 }">
+											<i class="icon-star"></i> 
+										</c:forEach>
+										<c:if test="${hotelItem.rating%1 > 0}">
+											<i class="icon-star-half"></i> 
+										</c:if>
+										 <span>${hotelItem.rating }/5 分</span>
 									</p>
 								</div>
 								<div class="two">
-									<span class="price per-price">￥39<br> <small>/晚</small></span>
+									<span class="price per-price">￥${hotelItem.minPrice }<br> <small>/晚</small></span>
 								</div>
 							</div>
-							<p>该店客房整洁，宽敞明亮，环境卫生，配套设施齐全，服务周到，方便入住。</p>
+							<p class="hotel-des">${hotelItem.description }</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> 景德镇</span> <span
+								<span><i class="icon-map-o"></i> ${hotelItem.city }，${hotelItem.district }</span> <span
 									class="ml-auto"><a href="#">预定</a></span>
 							</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="destination d-md-flex flex-column-reverse">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(images/hotel-2.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-link"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<div class="d-flex">
-								<div class="one">
-									<h3>
-										<a href="#">New Orleans, Hotel</a>
-									</h3>
-									<p class="rate">
-										<i class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star-o"></i> <span>8 Rating</span>
-									</p>
-								</div>
-								<div class="two">
-									<span class="price per-price">$40<br> <small>/night</small></span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="destination">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(images/hotel-3.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-link"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<div class="d-flex">
-								<div class="one">
-									<h3>
-										<a href="#">New Orleans, Hotel</a>
-									</h3>
-									<p class="rate">
-										<i class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star-o"></i> <span>8 Rating</span>
-									</p>
-								</div>
-								<div class="two">
-									<span class="price per-price">$40<br> <small>/night</small></span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="destination d-md-flex flex-column-reverse">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(images/hotel-4.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-link"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<div class="d-flex">
-								<div class="one">
-									<h3>
-										<a href="#">New Orleans, Hotel</a>
-									</h3>
-									<p class="rate">
-										<i class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star-o"></i> <span>8 Rating</span>
-									</p>
-								</div>
-								<div class="two">
-									<span class="price per-price">$40<br> <small>/night</small></span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="destination">
-						<a href="#"
-							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(images/hotel-5.jpg);">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-link"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<div class="d-flex">
-								<div class="one">
-									<h3>
-										<a href="#">New Orleans, Hotel</a>
-									</h3>
-									<p class="rate">
-										<i class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star"></i> <i class="icon-star"></i> <i
-											class="icon-star-o"></i> <span>8 Rating</span>
-									</p>
-								</div>
-								<div class="two">
-									<span class="price per-price">$40<br> <small>/night</small></span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the
-								countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-									class="ml-auto"><a href="#">Book Now</a></span>
-							</p>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
+			</c:forEach>
 		</div>
 	</section>
 
@@ -672,24 +555,6 @@
 										blind texts.</p>
 									<p class="name">Mark Web</p>
 									<span class="position">Web Developer</span>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-5"
-									style="background-image: url(images/person_1.jpg)">
-									<span
-										class="quote d-flex align-items-center justify-content-center">
-										<i class="icon-quote-left"></i>
-									</span>
-								</div>
-								<div class="text">
-									<p class="mb-5">Far far away, behind the word mountains,
-										far from the countries Vokalia and Consonantia, there live the
-										blind texts.</p>
-									<p class="name">Mark Web</p>
-									<span class="position">System Analyst</span>
 								</div>
 							</div>
 						</div>
@@ -956,7 +821,6 @@
 	<script src="js/aos.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 
 	<script src="js/google-map.js"></script>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.places.dao.PlacesDao">
+	<insert id="addplaces" parameterType="java.util.List">
+		INSERT IGNORE INTO places
+		(`id`,`location`,`rating`,`rank`,`url`,`country`,title,subtitle,city,imageUrls,tipInfo,
+		openingHours,description,price,commentCount,recommend,keyValues,geoPointID)
+		values
+		<foreach collection="list" item="placesDes" separator=",">
+			(
+			#{placesDes.id},
+			#{placesDes.location},
+			#{placesDes.rating},
+			#{placesDes.rank},
+			#{placesDes.url},
+			#{placesDes.country},
+			#{placesDes.title},
+			#{placesDes.subtitle},
+			#{placesDes.city},
+			#{placesDes.imageUrls},
+			#{placesDes.tipInfo},
+			#{placesDes.openingHours},
+			#{placesDes.description},
+			#{placesDes.price},
+			#{placesDes.commentCount},
+			#{placesDes.recommend},
+			#{placesDes.keyValues},
+			(SELECT `id` as `geoPointID` from geopoint where
+			`lon` = ${placesDes.geoPoint.lon} AND `lat` = ${placesDes.geoPoint.lat}))
+		</foreach>
+	</insert>
+</mapper>

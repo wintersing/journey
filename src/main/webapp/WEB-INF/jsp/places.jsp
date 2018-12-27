@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -33,6 +36,11 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+	.entry{
+		pointer-events: none;
+	}
+</style>
 </head>
 
 <body>
@@ -53,7 +61,7 @@
 						<span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span>
 					</p>
 					<h1 class="mb-3 bread"
-						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Destinations</h1>
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">景点</h1>
 				</div>
 			</div>
 		</div>
@@ -65,48 +73,31 @@
 				<div class="col-lg-3 sidebar order-md-last ftco-animate">
 					<div class="sidebar-wrap ftco-animate">
 						<h3 class="heading mb-4">寻找景点</h3>
-						<form action="#">
+						<form action="${pageContext.request.contextPath}/searchPlaces">
 							<div class="fields">
 								<div class="form-group">
-									<input name="city" type="text" class="form-control"
+									<input name="cityName" type="text" class="form-control"
 										placeholder="请输入您要所搜的城市">
 								</div>
+								<input name="pageToken" type="hidden" value="${resObj.pageToken }">
+								<c:if test="${resObj.hasNext == '1' }">
+									<input name="hasNext" type="hidden" value="1">
+								</c:if>
+								<c:if test="${resObj.hasNext == '0' }">
+									<input name="hasNext" type="hidden" value="0">
+								</c:if>
 								<div class="form-group">
 									<div class="select-wrap one-third">
 										<div class="icon">
 											<span class="ion-ios-arrow-down"></span>
 										</div>
-										<select name="level" id="" class="form-control"
+										<select name="sort" id="" class="form-control"
 											placeholder="Keyword search">
-											<option value="">请选择酒店星级</option>
-											<option value="五星级/豪华">五星级/豪华</option>
-											<option value="四星级/高档">四星级/高档</option>
-											<option value="三星级/舒适">三星级/舒适</option>
-											<option value="二星级/经济">二星级/经济</option>
-											<option value="客栈/旅馆">客栈/旅馆</option>
-											<option value="其他">其他</option>
+											<option value="1">人气最高</option>
+											<option value="2">距离最近</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<input name="brandName" type="text" id="checkin_date"
-										class="form-control" placeholder="请输入您要搜索的酒店品牌">
-								</div>
-								<div class="form-group">
-									<input name="businessDistrict" type="text" id="checkin_date"
-										class="form-control" placeholder="请输入您要搜索的酒店商圈">
-								</div>
-								<!-- <div class="form-group">
-											<div class="range-slider">
-												<span>
-													<input type="number" value="25000" min="0" max="120000"/>	-
-													<input type="number" value="50000" min="0" max="120000"/>
-												</span>
-												<input value="1000" min="0" max="120000" step="500" type="range"/>
-												<input value="50000" min="0" max="120000" step="500" type="range"/>
-												</svg>
-											</div>
-										</div> -->
 								<div class="form-group">
 									<input type="submit" value="Search"
 										class="btn btn-primary py-3 px-5">
@@ -157,11 +148,12 @@
 				<!-- END-->
 				<div class="col-lg-9">
 					<div class="row">
+					<c:forEach var="placesItem" begin="0" end="${fn:length(resObj.dataList)}" items="${resObj.dataList }">
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
 								<a href="#"
 									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/destination-3.jpg);">
+									style="background-image: url(${placesItem.imageUrls[0] });">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
@@ -171,239 +163,68 @@
 									<div class="d-flex">
 										<div class="one">
 											<h3>
-												<a href="#">Paris, Italy</a>
+												<a href="#">${placesItem.title }</a>
 											</h3>
 											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
+											<fmt:parseNumber var="rating" type="number" value="${placesItem.rating}" />
+											<c:forEach begin="1" end="${rating }">
+												<i class="icon-star"></i> 
+											</c:forEach>
+											<c:if test="${placesItem.rating%1 > 0}">
+												<i class="icon-star-half"></i> 
+											</c:if>
+													<span>${placesItem.rating}/5.0分</span>
 											</p>
 										</div>
 										<div class="two">
-											<span class="price">$200</span>
+											<span class="price"> 
+												<c:choose>
+													<c:when test="${placesItem.price > '0' }">
+														
+														￥${placesItem.price }
+														
+													</c:when>
+													<c:otherwise>
+														<p style="font-size: 15px">免费开放</p>
+													</c:otherwise>
+												</c:choose>
+											</span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<p class="days">
-										<span>2 days 3 nights</span>
-									</p>
+									<p${placesItem.subtitle }</p>
+									<p class="days openinghours">开放时间：${placesItem.openingHours }</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-											class="ml-auto"><a href="#">Discover</a></span>
+										<span><i class="icon-map-o"></i>${placesItem.city }</span> <span
+											class="ml-auto"><a href="#">发现</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/destination-4.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">Paris, Italy</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price">$200</span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<p class="days">
-										<span>2 days 3 nights</span>
-									</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-											class="ml-auto"><a href="#">Discover</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/destination-1.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">Paris, Italy</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price">$200</span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<p class="days">
-										<span>2 days 3 nights</span>
-									</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-											class="ml-auto"><a href="#">Discover</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/destination-2.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">Paris, Italy</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price">$200</span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<p class="days">
-										<span>2 days 3 nights</span>
-									</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-											class="ml-auto"><a href="#">Discover</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/destination-5.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">Paris, Italy</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price">$200</span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<p class="days">
-										<span>2 days 3 nights</span>
-									</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-											class="ml-auto"><a href="#">Discover</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/destination-6.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">Paris, Italy</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price">$200</span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<p class="days">
-										<span>2 days 3 nights</span>
-									</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> San Franciso, CA</span> <span
-											class="ml-auto"><a href="#">Discover</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
+							<c:choose>
+								<c:when test="${resObj.pageToken-5 <= 0}">
+									<c:set var="begin_" value="1" scope="page"/>
+								</c:when>
+								<c:otherwise>
+									<c:set var="begin_" value="${resObj.pageToken-5}" scope="page"/>
+								</c:otherwise>
+							</c:choose>
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+									<li id="toLeft"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${resObj.pageToken-2 }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&lt;</a></li>
+									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken-1 }">
+										<li id="li-${j }"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${j }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${j }</a></li>
+									</c:forEach>
+									<c:if test="${resObj.hasNext == '1' }">
+										<li id="li-${resObj.pageToken }"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${resObj.pageToken }</a></li>
+									</c:if>
+									<li id="toRight"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&gt;</a></li>
 								</ul>
+									<!-- <li id="toleft" class="active entry"><a href="#">1</a></li> -->
 							</div>
 						</div>
 					</div>
@@ -466,12 +287,23 @@
 	<script src="js/aos.js"></script>
 	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
-
+	<script type="text/javascript">
+		$(document).ready(function(){ 
+		   $("#li-${resObj.pageToken-1 }").prop("class","active");
+			if ("${resObj.pageToken-1 }" == "1") {
+				$("#li-1 > a").prop("class","entry");
+				$("#toLeft > a").prop("class","entry");
+			}
+			if ("${resObj.hasNext }" == "0") {
+				$("#toRight > a").prop("class","entry");
+				$("#li-${resObj.pageToken-1 } > a").prop("class","entry");
+			}
+		}); 
+		
+	</script>
 </body>
-
 </html>

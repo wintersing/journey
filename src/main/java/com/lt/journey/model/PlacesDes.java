@@ -3,7 +3,7 @@ package com.lt.journey.model;
 import lombok.Data;
 
 @Data
-public class JourneyDes {
+public class PlacesDes {
 	private String location;
 	private Double rating;
 	private String rank;			//综合排名
