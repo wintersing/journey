@@ -12,7 +12,7 @@
 		level, minPrice,telephones,
 		url,district,brandName,
 		address,hasWifi,title,
-		imageUrls,geoPointID
+		imageUrls,recommend,geoPointID
 		)
 		values
 		<foreach collection="list" item="hotelDes" separator=",">
@@ -41,6 +41,7 @@
 			#{hotelDes.hasWifi},
 			#{hotelDes.title},
 			#{hotelDes.imageUrls},
+			#{hotelDes.recommend},
 			(SELECT `id` as
 			`geoPointID` from geopoint where
 			`lon` = ${hotelDes.geoPoint.lon}

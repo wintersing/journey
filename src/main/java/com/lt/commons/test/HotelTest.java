@@ -23,7 +23,8 @@ public class HotelTest {
 	@Test
 	public void name() {
 		HotelParam hotelParam = new HotelParam();
-		hotelParam.setCity("深圳");
+		hotelParam.setCity("北京");
+		hotelParam.setLevel("五星级/豪华");
 		List<HotelDes> hotelList = HotelInfo.getHotelInfo(hotelParam);
 		hotelService.addHotel(hotelList);
 	}

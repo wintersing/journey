@@ -34,8 +34,8 @@ public class PlacesServiceImpl implements PlacesService {
 	}
 
 	@Override
-	public List<Places> findPlacesRecommend() {
-		return placesDao.findPlacesRecommend();
+	public List<Places> findPlacesRecommend(String recommend) {
+		return placesDao.findPlacesRecommend(recommend);
 	}
 
 }

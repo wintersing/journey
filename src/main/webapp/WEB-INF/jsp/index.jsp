@@ -276,7 +276,7 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h2 class="mb-4">热门景点</h2>
+					<h2 class="mb-4"><a href="${pageContext.request.contextPath}/placesView">热门景点</a></h2>
 				</div>
 			</div>
 		</div>

@@ -25,12 +25,12 @@ public class PlacesController {
 	
 	
 	@RequestMapping("/placesView")
-	public String placesView(Model model) {
-		List<Places> placesList = placesService.findPlacesRecommend();
+	public String placesView(Model model, String cityid, String cityName, String sort, String pageToken) {
+		List<Places> placesList = placesService.findPlacesRecommend("2");
 		ResObj resObj =  new ResObj();
 		resObj.setDataList(placesList);
-		resObj.setHasNext("1");
-		resObj.setPageToken("1");
+		resObj.setHasNext("0");
+		resObj.setPageToken("2");
 		resObj.setSort("1");
 		model.addAttribute(resObj);
 		return "places";

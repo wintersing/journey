@@ -29,6 +29,7 @@ public class HotelDes {
 	private Integer hasWifi;
 	private String title;
 	private String[] imageUrls;
+	private String recommend = "0";
 //	private String catPathKey;
 //	private Integer favoriteCount;
 //	private String openDate;			//开业时间
