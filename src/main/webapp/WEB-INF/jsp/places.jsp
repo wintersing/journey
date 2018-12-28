@@ -79,7 +79,14 @@
 									<input name="cityName" type="text" class="form-control"
 										placeholder="请输入您要所搜的城市">
 								</div>
-								<input name="pageToken" type="hidden" value="${resObj.pageToken }">
+								<c:choose>
+									<c:when test="${not empty resObj.cityid}">
+										<input name="pageToken" type="hidden" value="${resObj.pageToken }">
+									</c:when>
+									<c:otherwise>
+										<input name="pageToken" type="hidden" value="1">
+									</c:otherwise>
+								</c:choose>
 								<c:if test="${resObj.hasNext == '1' }">
 									<input name="hasNext" type="hidden" value="1">
 								</c:if>
@@ -215,14 +222,14 @@
 								</c:otherwise>
 							</c:choose>
 								<ul>
-									<li id="toLeft"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${resObj.pageToken-2 }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&lt;</a></li>
+									<li id="toLeft"><a href="${resObj.reqURI }?cityid=${resObj.cityid}&pageToken=${resObj.pageToken-2 }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&lt;</a></li>
 									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken-1 }">
-										<li id="li-${j }"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${j }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${j }</a></li>
+										<li id="li-${j }"><a href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${j }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${j }</a></li>
 									</c:forEach>
 									<c:if test="${resObj.hasNext == '1' }">
-										<li id="li-${resObj.pageToken }"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${resObj.pageToken }</a></li>
+										<li id="li-${resObj.pageToken }"><a href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${resObj.pageToken }</a></li>
 									</c:if>
-									<li id="toRight"><a href="${pageContext.request.contextPath}/searchPlaces?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&gt;</a></li>
+									<li id="toRight"><a href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&gt;</a></li>
 								</ul>
 									<!-- <li id="toleft" class="active entry"><a href="#">1</a></li> -->
 							</div>

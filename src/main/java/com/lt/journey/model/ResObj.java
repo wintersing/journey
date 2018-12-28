@@ -19,4 +19,5 @@ public class ResObj {
 	private String sort;
 	private String cityName;
 	private String cityid;
+	private String reqURI;
 }

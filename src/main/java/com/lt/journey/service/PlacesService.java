@@ -11,6 +11,8 @@ public interface PlacesService {
 
 	String findCityidByCityName(String cityName);
 
-	public List<Places> findPlacesRecommend(String recommend);
+	public List<Places> findPlacesRecommend(String recommend, int offset, int pageSize);
+
+	public int findCount(String recommend);
 
 }

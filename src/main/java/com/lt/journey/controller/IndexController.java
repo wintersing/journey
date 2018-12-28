@@ -20,10 +20,12 @@ public class IndexController {
 	
 	@Autowired
 	private HotelService hotelService;
+
+	private final int pageSize = 8;
 	
 	@RequestMapping("/")
 	public String indexView(Model model) {
-		List<Places> placesList = placesService.findPlacesRecommend("1");//(1-主页推荐，2-目的地推荐)
+		List<Places> placesList = placesService.findPlacesRecommend("1",0,pageSize);//(1-主页推荐，2-目的地推荐)
 		List<Hotel> hotelList = hotelService.findHotelRecommend();
 		model.addAttribute(placesList);
 		model.addAttribute(hotelList);

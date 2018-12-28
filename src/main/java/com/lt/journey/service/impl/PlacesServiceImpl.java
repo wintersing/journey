@@ -2,6 +2,7 @@ package com.lt.journey.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,14 @@ public class PlacesServiceImpl implements PlacesService {
 	}
 
 	@Override
-	public List<Places> findPlacesRecommend(String recommend) {
-		return placesDao.findPlacesRecommend(recommend);
+	public List<Places> findPlacesRecommend(String recommend, int offset, int pageSize) {
+		return placesDao.findPlacesRecommend(recommend, offset, pageSize);
+	}
+
+	@Override
+	public int findCount(String recommend) {
+		// TODO Auto-generated method stub
+		return placesDao.findCount(recommend);
 	}
 
 }
