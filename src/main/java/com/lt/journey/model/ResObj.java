@@ -20,4 +20,5 @@ public class ResObj {
 	private String cityName;
 	private String cityid;
 	private String reqURI;
+	private TrainParam trainParam;
 }

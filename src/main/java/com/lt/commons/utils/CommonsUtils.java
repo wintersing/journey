@@ -13,6 +13,8 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -37,6 +39,11 @@ import org.junit.Test;
  * without necessarily knowing what Java class name will be used ahead of time
  */
 public class CommonsUtils {
+	
+	public static String format(String format, String data){
+		SimpleDateFormat formatter2 = new SimpleDateFormat(format);
+		return formatter2.format(new Date(data));
+	}
 
 	// Bean --> Map 1: 利用Introspector和PropertyDescriptor 将Bean --> Map
 	public static Map<String, Object> beantoMap(Object obj) {

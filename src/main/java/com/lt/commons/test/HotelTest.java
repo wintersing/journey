@@ -25,6 +25,7 @@ public class HotelTest {
 		HotelParam hotelParam = new HotelParam();
 		hotelParam.setCity("北京");
 		hotelParam.setLevel("五星级/豪华");
+		hotelParam.setPageToken("1");
 		List<HotelDes> hotelList = HotelInfo.getHotelInfo(hotelParam);
 		hotelService.addHotel(hotelList);
 	}
