@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.lt.journey.model.HotelDes;
+import com.lt.journey.model.Hotel;
 import com.lt.journey.model.PlacesDes;
 
 @Repository

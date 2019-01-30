@@ -45,4 +45,10 @@ public class PlacesServiceImpl implements PlacesService {
 		return placesDao.findCount(recommend);
 	}
 
+	@Override
+	public String findCityidByCityName_hotel(String cityName) {
+		// TODO Auto-generated method stub
+		return placesDao.findCityidByCityName_hotel(cityName);
+	}
+
 }

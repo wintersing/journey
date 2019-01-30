@@ -36,11 +36,6 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
-<style type="text/css">
-	.entry{
-		pointer-events: none;
-	}
-</style>
 </head>
 
 <body>
@@ -231,7 +226,6 @@
 									</c:if>
 									<li id="toRight"><a href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&gt;</a></li>
 								</ul>
-									<!-- <li id="toleft" class="active entry"><a href="#">1</a></li> -->
 							</div>
 						</div>
 					</div>

@@ -9483,3 +9483,6 @@ textarea.form-control {
 	height: 17px;
 	line-height: 51px;
 }
+.entry{
+	pointer-events: none;
+}

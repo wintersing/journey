@@ -15,4 +15,6 @@ public interface PlacesService {
 
 	public int findCount(String recommend);
 
+	public String findCityidByCityName_hotel(String string);
+
 }

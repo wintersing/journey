@@ -21,4 +21,7 @@ public interface PlacesDao {
 
 	@Select("select count(*) from places where recommend = #{recommend}")
 	public int findCount(@Param("recommend")String recommend);
+
+	@Select("select cityid from hotel_city where cityName = #{cityName}")
+	public String findCityidByCityName_hotel(@Param("cityName")String cityName);
 }

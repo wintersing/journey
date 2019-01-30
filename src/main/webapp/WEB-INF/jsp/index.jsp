@@ -69,9 +69,10 @@
 						id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill"
 							href="#v-pills-1" role="tab" aria-controls="v-pills-1"
-							aria-selected="true">火车</a> <a class="nav-link"
+							aria-selected="true" onclick="search_('train')">火车</a> <a class="nav-link"
 							id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-							role="tab" aria-controls="v-pills-2" aria-selected="false">酒店</a>
+							role="tab" aria-controls="v-pills-2" aria-selected="false" 
+							onclick="search_('hotel')">酒店</a>
 
 						<a class="nav-link" id="v-pills-3-tab" data-toggle="pill"
 							href="#v-pills-3" role="tab" aria-controls="v-pills-3"
@@ -84,8 +85,10 @@
 
 						<div class="tab-pane fade show active" id="v-pills-1"
 							role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-							<form action="#" class="search-destination">
+							<form name="search_form" action="${pageContext.request.contextPath}/searchTrain" class="search-destination">
 								<div class="row">
+								<input type="hidden" name="page" value="1"> 
+								<input type="hidden" name="limit" value="0">
 									<div class="col-md align-items-end">
 										<div class="form-group">
 											<label for="#">出发地</label>
@@ -93,7 +96,7 @@
 												<div class="icon">
 													<span class="icon-my_location"></span>
 												</div>
-												<input type="text" class="form-control" placeholder="出发地">
+												<input name="departureCityName" type="text" class="form-control" placeholder="出发地">
 											</div>
 										</div>
 									</div>
@@ -104,7 +107,7 @@
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input type="text" class="form-control" placeholder="目的地">
+												<input name="arrivalCityName" type="text" class="form-control" placeholder="目的地">
 											</div>
 										</div>
 									</div>
@@ -115,37 +118,11 @@
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input type="text" class="form-control checkin_date"
+												<input name="departureDate" type="text" class="form-control checkin_date"
 													placeholder="出发日期">
 											</div>
 										</div>
 									</div>
-									<!-- <div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">结束日期</label>
-											<div class="form-field">
-												<div class="icon"><span class="icon-map-marker"></span></div>
-												<input type="text" class="form-control checkout_date" placeholder="结束日期">
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">人数</label>
-											<div class="form-field">
-												<div class="select-wrap">
-													<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-													<select name="" id="" class="form-control">
-														<option value="">1</option>
-														<option value="">2</option>
-														<option value="">3</option>
-														<option value="">4</option>
-														<option value="">5</option>
-													</select>
-												</div>
-											</div>
-										</div>
-									</div> -->
 									<div class="col-md align-self-end">
 										<div class="form-group">
 											<div class="form-field">
@@ -160,8 +137,9 @@
 
 						<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
 							aria-labelledby="v-pills-performance-tab">
-							<form action="#" class="search-destination">
+							<form action="${pageContext.request.contextPath}/hotelView" class="search-destination">
 								<div class="row">
+								<input name="pageToken" type="hidden" value="1">
 									<div class="col-md align-items-end">
 										<div class="form-group">
 											<label for="#">目的地</label>
@@ -169,38 +147,31 @@
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input type="text" class="form-control" placeholder="目的地">
+												<input name="cityName" type="text" class="form-control" placeholder="请输入您要所搜的城市">
 											</div>
 										</div>
 									</div>
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">到达日期</label>
+											<label for="#">入住日期</label>
 											<div class="form-field">
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
 												<input type="text" class="form-control checkin_date"
-													placeholder="到达日期">
+													 name="checkInDate" placeholder="到达日期">
 											</div>
 										</div>
 									</div>
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">人数</label>
+											<label for="#">退房日期</label>
 											<div class="form-field">
-												<div class="select-wrap">
-													<div class="icon">
-														<span class="ion-ios-arrow-down"></span>
-													</div>
-													<select name="" id="" class="form-control">
-														<option value="">1</option>
-														<option value="">2</option>
-														<option value="">3</option>
-														<option value="">4</option>
-														<option value="">5</option>
-													</select>
+												<div class="icon">
+													<span class="icon-map-marker"></span>
 												</div>
+												<input type="text" class="form-control checkin_date"
+													name="checkOutDate" placeholder="到达日期">
 											</div>
 										</div>
 									</div>
@@ -348,7 +319,7 @@
 							</div>
 						</div>
 					</c:forEach>
-					
+				</div>
 			</c:forEach>
 			
 		</div>
@@ -425,17 +396,14 @@
 							<div class="destination">
 						</c:otherwise>
 					</c:choose>
-					<c:forEach var="imageItem" begin="1" end="1"
-						items="${hotelItem.imageUrls }">
 						<a href="#"
 							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(${imageItem});">
+							style="background-image: url(${hotelItem.flatOptions[0].imageUrls[0] });">
 							<div
 								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-link"></span>
 							</div>
 						</a>
-					</c:forEach>
 						<div class="text p-3">
 							<div class="d-flex">
 								<div class="one">
@@ -454,13 +422,13 @@
 									</p>
 								</div>
 								<div class="two">
-									<span class="price per-price">￥${hotelItem.minPrice }<br> <small>/晚</small></span>
+									<span class="price per-price">￥${hotelItem.price }<br> <small>/晚</small></span>
 								</div>
 							</div>
 							<p class="hotel-des">${hotelItem.description }</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> ${hotelItem.city }，${hotelItem.district }</span> <span
+								<span><i class="icon-map-o"></i> ${hotelItem.city }</span> <span
 									class="ml-auto"><a href="#">预定</a></span>
 							</p>
 						</div>
@@ -825,7 +793,6 @@
 
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
-
 </body>
 
 </html>

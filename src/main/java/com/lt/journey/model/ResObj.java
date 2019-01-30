@@ -21,4 +21,5 @@ public class ResObj {
 	private String cityid;
 	private String reqURI;
 	private TrainParam trainParam;
+	private HotelParam hotelParam;
 }
