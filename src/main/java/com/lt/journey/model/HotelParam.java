@@ -15,5 +15,5 @@ public class HotelParam {
 	private String address;				//地址
 	private String businessDistrict;	//商圈
 	private String sortByField;			//relevant|rating|price|ratingCount 不填为relevant
-	private String appCode;
+//	private String appCode;
 }

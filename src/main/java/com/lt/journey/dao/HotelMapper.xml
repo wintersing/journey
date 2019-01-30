@@ -4,22 +4,30 @@
 <mapper namespace="com.lt.journey.dao.HotelDao">
 	<insert id="addHotel" parameterType="java.util.List">
 		INSERT IGNORE INTO hotel
-		(`id`,`businessDistrict`,`brandId`,
-		`openingHours`,`commentCount`,`rating`,
-		tags,facilities,infrastructures,
-		goodTagDist,assistServices,
-		city,description, price, 
-		level, minPrice,telephones,
-		url,district,brandName,
+		(id,brandId,brandName,
+		businessDistrict,geoPointID,openingHours,
+		commentCount,rating,tags,
+		facilities,infrastructures,goodTagDist,
+		assistServices,city,description,
+		price,level,minPrice,
+		telephones,url,district,
 		address,hasWifi,title,
-		imageUrls,recommend,geoPointID
+		imageUrls,recommend
 		)
 		values
 		<foreach collection="list" item="hotelDes" separator=",">
 			(
 			#{hotelDes.id},
-			#{hotelDes.businessDistrict},
 			#{hotelDes.brandId},
+			#{hotelDes.brandName},
+			#{hotelDes.businessDistrict},
+			(SELECT
+				id
+			FROM
+				geopoint
+			WHERE
+				lon = ${hotelDes.geoPoint.lon}
+			AND lat = ${hotelDes.geoPoint.lat}),
 			#{hotelDes.openingHours},
 			#{hotelDes.commentCount},
 			#{hotelDes.rating},
@@ -36,16 +44,38 @@
 			#{hotelDes.telephones},
 			#{hotelDes.url},
 			#{hotelDes.district},
-			#{hotelDes.brandName},
 			#{hotelDes.address},
 			#{hotelDes.hasWifi},
 			#{hotelDes.title},
 			#{hotelDes.imageUrls},
-			#{hotelDes.recommend},
-			(SELECT `id` as
-			`geoPointID` from geopoint where
-			`lon` = ${hotelDes.geoPoint.lon}
-			AND `lat` = ${hotelDes.geoPoint.lat}))
+			#{hotelDes.recommend})
 		</foreach>
 	</insert>
+	
+	
+	<select id="findHotelDes" parameterType="java.lang.String" resultType="Hotel" >
+		select 
+			id,
+			imageUrls,
+			title,
+			rating,
+			facilities,
+			infrastructures,
+			goodTagDist,
+			assistServices,
+			price,
+			minPrice,
+			description,
+			city,
+			district
+		from 
+			hotel 
+		where 
+			id = #{id}
+	</select>
 </mapper>
+
+
+
+
+

@@ -15,6 +15,7 @@ public class Hotel {
 	private String minPrice;
 	private String description;
 	private String city;
+	private String id;
 	private String district;			//地区
-	private String recommend = "0";
+//	private String recommend = "0";
 }

@@ -1,11 +1,9 @@
 package com.lt.journey.util;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -14,8 +12,6 @@ import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.Places;
 import com.lt.journey.model.PlacesParam;
 import com.lt.journey.model.ResObj;
-
-import lombok.experimental.Accessors;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "classpath*:spring-mybatis.xml" })
@@ -36,8 +32,9 @@ public class PlacesInfo {
 			}
 		}
 		String ret = HttpRequest.sendGet(url, param.toString());
-		String dataStr = CommonsUtils.unicodeToString(ret);
-		JSONObject dataObj = JSON.parseObject(dataStr);
+//		String dataStr = CommonsUtils.unicodeToString(ret);
+		JSONObject dataObj = JSON.parseObject(ret);
+		System.out.println(dataObj);
 		String placesListStr = dataObj.getJSONArray("data") + "";
 		List<Places> placesList = JSONObject.parseArray(placesListStr, Places.class);
 		ResObj resObj = new ResObj();
@@ -58,7 +55,7 @@ public class PlacesInfo {
 		PlacesParam placesParam = new PlacesParam();
 		placesParam.setCityid("405");
 		placesParam.setSort("1");
-//		List<Places> placesList = getPlacesInfo(placesParam);
+		getPlacesInfo(placesParam);
 //		System.out.println(placesList);
 //		placesService.addJourney(placesInfo);
 	}

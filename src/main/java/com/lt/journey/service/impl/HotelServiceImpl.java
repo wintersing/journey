@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.lt.journey.dao.GeoPointDao;
 import com.lt.journey.dao.HotelDao;
-import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
+import com.lt.journey.model.Hotel;
 import com.lt.journey.service.HotelService;
 
 @Service
@@ -30,9 +30,21 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
-	public List<Hotel> findHotelRecommend() {
+	public List<Hotel> findHotelRecommend(String recommend, int offset, int pageSize) {
 		// TODO Auto-generated method stub
-		return hotelDao.findHotelRecommend();
+		return hotelDao.findHotelRecommend(recommend, offset, pageSize);
+	}
+
+	@Override
+	public int findHotelCount() {
+		// TODO Auto-generated method stub
+		return hotelDao.findHotelCount();
+	}
+
+	@Override
+	public String findCityidByCityName(String cityName) {
+		// TODO Auto-generated method stub
+		return hotelDao.findCityidByCityName(cityName);
 	}
 
 }

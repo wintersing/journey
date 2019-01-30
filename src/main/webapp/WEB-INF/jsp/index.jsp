@@ -153,25 +153,29 @@
 									</div>
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">入住日期</label>
+											<label for="#">品牌</label>
 											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
-												</div>
-												<input type="text" class="form-control checkin_date"
-													 name="checkInDate" placeholder="到达日期">
+												<div class="icon"><span class="icon-map-marker"></span></div>
+												<input name="brandName" type="text" class="form-control checkin_date" placeholder="请输入您要所搜的品牌">
 											</div>
 										</div>
 									</div>
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">退房日期</label>
+											<label for="#">酒店星级</label>
 											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
+												<div class="select-wrap">
+													<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+													<select name="" id="" class="form-control">
+														<option value>请选择酒店星级</option>
+														<option value="五星级/豪华">五星级/豪华</option>
+														<option value="四星级/高档">四星级/高档</option>
+														<option value="三星级/舒适">三星级/舒适</option>
+														<option value="二星级/经济">二星级/经济</option>
+														<option value="客栈/公寓">客栈/公寓</option>
+														<option value="其他">其他</option>
+													</select>
 												</div>
-												<input type="text" class="form-control checkin_date"
-													name="checkOutDate" placeholder="到达日期">
 											</div>
 										</div>
 									</div>
@@ -385,7 +389,7 @@
 		<div class="container-fluid">
 			<c:forEach var="i" begin="1" end="2">
 			<div class="row">
-				<c:forEach var="hotelItem" begin="${i*4-4 }" end="${i*4-1 }" varStatus="status"
+				<c:forEach var="hotelItem" begin="${i*4-4 }" end="${i*4-1 }" varStatus="status" 
 					items="${hotelList }">
 				<div class="col-sm col-md-6 col-lg ftco-animate">
 					<c:choose>
@@ -398,7 +402,7 @@
 					</c:choose>
 						<a href="#"
 							class="img img-2 d-flex justify-content-center align-items-center"
-							style="background-image: url(${hotelItem.flatOptions[0].imageUrls[0] });">
+							style="background-image: url(${hotelItem.imageUrls[0] });">
 							<div
 								class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-link"></span>
@@ -428,7 +432,7 @@
 							<p class="hotel-des">${hotelItem.description }</p>
 							<hr>
 							<p class="bottom-area d-flex">
-								<span><i class="icon-map-o"></i> ${hotelItem.city }</span> <span
+								<span><i class="icon-map-o"></i> ${hotelItem.city },${hotelItem.district }</span> <span
 									class="ml-auto"><a href="#">预定</a></span>
 							</p>
 						</div>

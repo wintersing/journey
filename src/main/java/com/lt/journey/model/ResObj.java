@@ -16,10 +16,12 @@ public class ResObj {
 	private String hasNext;
 	private String pageToken;
 	private String retcode;
+	private String msg;
 	private String sort;
 	private String cityName;
 	private String cityid;
 	private String reqURI;
+	private String param;
 	private TrainParam trainParam;
 	private HotelParam hotelParam;
 }

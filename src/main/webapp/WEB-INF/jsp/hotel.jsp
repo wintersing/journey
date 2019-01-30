@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -33,6 +35,16 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+<style type="text/css">
+.hotel-des {
+    width: 230px;
+    height: 108px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+</style>
 </head>
 
 <body>
@@ -62,48 +74,32 @@
 				<div class="col-lg-3 sidebar order-md-last ftco-animate">
 					<div class="sidebar-wrap ftco-animate">
 						<h3 class="heading mb-4">寻找酒店</h3>
-						<form action="#">
+						<form action="${pageContext.request.contextPath }/searchHotel">
 							<div class="fields">
 								<div class="form-group">
 									<input name="city" type="text" class="form-control"
 										placeholder="请输入您要所搜的城市">
 								</div>
 								<div class="form-group">
+									<input name="brandName" type="text" class="form-control"
+										placeholder="请输入您要所搜的品牌">
+								</div>
+								<div class="form-group">
 									<div class="select-wrap one-third">
 										<div class="icon">
 											<span class="ion-ios-arrow-down"></span>
 										</div>
-										<select name="level" id="" class="form-control"
-											placeholder="Keyword search">
-											<option value="">请选择酒店星级</option>
+										<select name="level" class="form-control">
+											<option value>请选择酒店星级</option>
 											<option value="五星级/豪华">五星级/豪华</option>
 											<option value="四星级/高档">四星级/高档</option>
 											<option value="三星级/舒适">三星级/舒适</option>
 											<option value="二星级/经济">二星级/经济</option>
-											<option value="客栈/旅馆">客栈/旅馆</option>
+											<option value="客栈/公寓">客栈/公寓</option>
 											<option value="其他">其他</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<input name="brandName" type="text" id="checkin_date"
-										class="form-control" placeholder="请输入您要搜索的酒店品牌">
-								</div>
-								<div class="form-group">
-									<input name="businessDistrict" type="text" id="checkin_date"
-										class="form-control" placeholder="请输入您要搜索的酒店商圈">
-								</div>
-								<!-- <div class="form-group">
-											<div class="range-slider">
-												<span>
-													<input type="number" value="25000" min="0" max="120000"/>	-
-													<input type="number" value="50000" min="0" max="120000"/>
-												</span>
-												<input value="1000" min="0" max="120000" step="500" type="range"/>
-												<input value="50000" min="0" max="120000" step="500" type="range"/>
-												</svg>
-											</div>
-										</div> -->
 								<div class="form-group">
 									<input type="submit" value="Search"
 										class="btn btn-primary py-3 px-5">
@@ -163,11 +159,12 @@
 				<!-- END-->
 				<div class="col-lg-9">
 					<div class="row">
+					<c:forEach var="hotelItem" items="${resObj.dataList }">
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
 								<a href="#"
 									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/hotel-1.jpg);">
+									style="background-image: url(${hotelItem.imageUrls[0] });">
 									<div
 										class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-link"></span>
@@ -177,229 +174,80 @@
 									<div class="d-flex">
 										<div class="one">
 											<h3>
-												<a href="#">New Orleans, LA</a>
+												<a href="#">${hotelItem.title }</a>
 											</h3>
 											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
+											<fmt:parseNumber var="rating2" type="number" value="${hotelItem.rating}" />
+												<c:forEach begin="1" end="${rating2 }">
+													<i class="icon-star"></i> 
+												</c:forEach>
+												<c:if test="${hotelItem.rating%1 > 0}">
+													<i class="icon-star-half"></i> 
+												</c:if>
+												 <span>${hotelItem.rating }/5 分</span>
 											</p>
 										</div>
 										<div class="two">
-											<span class="price per-price">$40<br>
-											<small>/night</small></span>
+											<span class="price per-price">￥${hotelItem.price }<br>
+											<small>/晚</small></span>
 										</div>
 									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
+									<p class="hotel-des">${hotelItem.description }</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-											class="ml-auto"><a href="#">Book Now</a></span>
+										<span><i class="icon-map-o"></i>${hotelItem.city },${hotelItem.district }</span> <span
+											class="ml-auto"><a href="#">预定</a></span>
 									</p>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/hotel-2.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">New Orleans, LA</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price per-price">$40<br>
-											<small>/night</small></span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-											class="ml-auto"><a href="#">Book Now</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/hotel-3.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">New Orleans, LA</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price per-price">$40<br>
-											<small>/night</small></span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-											class="ml-auto"><a href="#">Book Now</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/hotel-4.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">New Orleans, LA</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price per-price">$40<br>
-											<small>/night</small></span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-											class="ml-auto"><a href="#">Book Now</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/hotel-5.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">New Orleans, LA</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price per-price">$40<br>
-											<small>/night</small></span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-											class="ml-auto"><a href="#">Book Now</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(images/hotel-5.jpg);">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<div class="d-flex">
-										<div class="one">
-											<h3>
-												<a href="#">New Orleans, LA</a>
-											</h3>
-											<p class="rate">
-												<i class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star"></i> <i class="icon-star"></i> <i
-													class="icon-star-o"></i> <span>8 Rating</span>
-											</p>
-										</div>
-										<div class="two">
-											<span class="price per-price">$40<br>
-											<small>/night</small></span>
-										</div>
-									</div>
-									<p>Far far away, behind the word mountains, far from the
-										countries</p>
-									<hr>
-									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i> Miami, Fl</span> <span
-											class="ml-auto"><a href="#">Book Now</a></span>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
+						
+					</c:forEach>	
 
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
+				</div>
+				<div class="row mt-5">
+					<div class="col text-center">
+						<div class="block-27">
+						<c:choose>
+							<c:when test="${resObj.pageToken-5 <= 0}">
+								<c:set var="begin_" value="1" scope="page"/>
+							</c:when>
+							<c:otherwise>
+								<c:set var="begin_" value="${resObj.pageToken-5}" scope="page"/>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${resObj.reqURI == '/journey/hotelView'}">
 								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+									<li id="toLeft"><a href="${resObj.reqURI }?pageToken=${resObj.hotelParam.pageToken - 1 }">&lt;</a></li>
+									
+									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken }">
+										<li id="li-${j }"><a href="${resObj.reqURI}?pageToken=${j }">${j }</a></li>
+									</c:forEach>
+									
+									<c:if test="${resObj.hasNext == '1' }">
+										<li id="li-${resObj.pageToken + 1 }"><a href="${resObj.reqURI}?pageToken=${resObj.pageToken+1 }">${resObj.pageToken+1 }</a></li>
+									</c:if>
+									
+									<li id="toRight"><a href="${resObj.reqURI}?pageToken=${resObj.pageToken + 1 }">&gt;</a></li>
 								</ul>
-							</div>
+							</c:when>
+							<c:otherwise>
+								<ul>
+									<!--<li id="toLeft"><a href="${resObj.reqURI }?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken-2 }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">&lt;</a></li>
+									
+									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken-1 }">
+										<li id="li-${j }"><a href="${resObj.reqURI}?city=${resObj.hotelParam.city}&pageToken=${j }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">${j }</a></li>
+									</c:forEach>
+									
+									<c:if test="${resObj.hasNext == '1' }">
+										<li id="li-${resObj.pageToken }"><a href="${resObj.reqURI}?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">${resObj.pageToken }</a></li>
+									</c:if>-->
+									
+									<li id="toRight"><a href="${resObj.reqURI}?${resObj.param }">&gt;</a></li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 						</div>
 					</div>
 				</div>
@@ -467,7 +315,20 @@
 
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
-
+	<script type="text/javascript">
+		$(document).ready(function(){ 
+		   $("#li-${resObj.pageToken }").prop("class","active");
+			if ("${resObj.pageToken }" == "1") {
+				$("#li-1 > a").prop("class","entry");
+				$("#toLeft > a").prop("class","entry");
+			}
+			if ("${resObj.hasNext }" == "0") {
+				$("#toRight > a").prop("class","entry");
+				$("#li-${resObj.pageToken } > a").prop("class","entry");
+			}
+		}); 
+		
+	</script>
 </body>
 
 </html>

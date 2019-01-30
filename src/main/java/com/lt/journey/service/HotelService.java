@@ -9,6 +9,11 @@ public interface HotelService {
 
 	public void addHotel(List<HotelDes> hotelList);
 
-	public List<Hotel> findHotelRecommend();
+	public List<Hotel> findHotelRecommend(String recommend, int offset, int pageSize);
+
+	public int findHotelCount();
+
+	public String findCityidByCityName(String cityName);
+
 
 }
