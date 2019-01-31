@@ -47,4 +47,10 @@ public class HotelServiceImpl implements HotelService {
 		return hotelDao.findCityidByCityName(cityName);
 	}
 
+	@Override
+	public HotelDes findHotel(String id) {
+		// TODO Auto-generated method stub
+		return hotelDao.findHotel(id);
+	}
+
 }

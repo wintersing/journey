@@ -24,4 +24,7 @@ public interface PlacesDao {
 
 	@Select("select cityid from hotel_city where cityName = #{cityName}")
 	public String findCityidByCityName_hotel(@Param("cityName")String cityName);
+
+	@Select("select * from places where id = #{id}")
+	public PlacesDes findPlaces(@Param("id")String id);
 }

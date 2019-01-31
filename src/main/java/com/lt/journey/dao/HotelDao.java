@@ -25,4 +25,7 @@ public interface HotelDao {
 	@Select("select cityid from hotel_city where cityName = #{cityName }")
 	public String findCityidByCityName(@Param("cityName")String cityName);
 
+	@Select("select * from hotel where id = #{id }")
+	public HotelDes findHotel(@Param("id")String id);
+
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lt.journey.model.Hotel;
+import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
 import com.lt.journey.model.ResObj;
 import com.lt.journey.service.HotelService;
@@ -68,7 +69,16 @@ public class HotelController {
 	}
 
 	@RequestMapping("/hotel/{id}")
-	public String hotelSingle(@PathVariable("id") Integer id) {
+	public String hotelSingle(@PathVariable("id") String id, String recommend, Model model) {
+		if (recommend == "1" || recommend == "2") {
+			HotelDes hotelDes = hotelService.findHotel(id);
+			model.addAttribute(hotelDes);
+		} else {
+			HotelParam hotelParam = new HotelParam();
+			hotelParam.setId(id);
+			ResObj resObj = HotelInfo.getHotelInfo(hotelParam);
+			model.addAttribute(resObj);
+		}
 		return "hotel-single";
 	}
 }

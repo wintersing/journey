@@ -1,5 +1,7 @@
 package com.lt.journey.model;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -15,8 +17,8 @@ public class HotelDes {
 	private String[] tags;
 	private String[] facilities;		//屋内设施
 	private String[] infrastructures;	//酒店设施
-	private String[] goodTagDist;		//正面标签分布
 	private String[] assistServices;	//服务
+	private List<Services> services;
 	private String city;
 	private String description;
 	private String price;

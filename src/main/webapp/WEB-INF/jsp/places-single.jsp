@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -35,7 +36,7 @@
 
 <body>
 
-	<%@ include file="./part/header.jsp" %>
+	<%@ include file="./part/header.jsp"%>
 
 	<div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_1.jpg');">
 		<div class="overlay"></div>
@@ -54,32 +55,26 @@
 			<div class="row">
 				<div class="col-lg-3 sidebar">
 					<div class="sidebar-wrap ftco-animate">
-						<h3 class="heading mb-4">寻找酒店</h3>
+						<h3 class="heading mb-4">寻找景点</h3>
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
-									<input name="city" type="text" class="form-control" placeholder="请输入您要所搜的城市">
+									<input name="cityName" type="text" class="form-control" placeholder="请输入您要所搜的城市">
 								</div>
 								<div class="form-group">
 									<div class="select-wrap one-third">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="level" id="" class="form-control" placeholder="Keyword search">
-											<option value="">请选择酒店星级</option>
-											<option value="五星级/豪华">五星级/豪华</option>
-											<option value="四星级/高档">四星级/高档</option>
-											<option value="三星级/舒适">三星级/舒适</option>
-											<option value="二星级/经济">二星级/经济</option>
-											<option value="客栈/旅馆">客栈/旅馆</option>
-											<option value="其他">其他</option>
+										<div class="icon">
+											<span class="ion-ios-arrow-down"></span>
+										</div>
+										<select name="sort" id="" class="form-control" placeholder="Keyword search">
+											<option value="1">人气最高</option>
+											<option value="2">距离最近</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<input name="brandName" type="text" id="checkin_date" class="form-control" placeholder="请输入您要搜索的酒店品牌">
-								</div>
 								<!-- <div class="form-group">
-						              	<div class="range-slider">
-						              		<span>
+									<div class="range-slider">
+										<span>
 										    <input type="number" value="25000" min="0" max="120000"/>	-
 										    <input type="number" value="50000" min="0" max="120000"/>
 										  </span>
@@ -87,23 +82,66 @@
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
 										  </svg>
 										</div>
-		              			</div> -->
+		             				</div> -->
 								<div class="form-group">
 									<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
 								</div>
 							</div>
 						</form>
 					</div>
+					<!-- <div class="sidebar-wrap ftco-animate">
+        			<h3 class="heading mb-4">Star Rating</h3>
+        			<form method="post" class="star-rating">
+							  <div class="form-check">
+									<input type="checkbox" class="form-check-input" id="exampleCheck1">
+									<label class="form-check-label" for="exampleCheck1">
+										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
+									</label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						     </label>
+							  </div>
+							  <div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+							    </label>
+							  </div>
+							</form>
+        		</div> -->
 				</div>
 				
 				<c:if test="${not empty resObj }">
-					<c:set var="hotelDes" value="${resObj.dataList[0] }"></c:set>
+					<c:set var="placesDes" value="${resObj.dataList[0] }"></c:set>
 				</c:if>
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
-								<c:forEach var="imageUrl" items="${hotelDes.imageUrls }">
+								<c:choose>
+									<c:when test="${fn:length(placesDes.imageUrls) > 15 }">
+										<c:set var="end" value="15"></c:set>
+									</c:when>
+									<c:otherwise>
+										<c:set var="end" value="${fn:length(placesDes.imageUrls) }"></c:set>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach begin="1" end="${end }" var="imageUrl" items="${placesDes.imageUrls }">
 									<div class="item">
 										<div class="hotel-img" style="background-image: url(${imageUrl });"></div>
 									</div>
@@ -111,69 +149,51 @@
 							</div>
 						</div>
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-							<h2>${hotelDes.title }</h2>
-							<span>${hotelDes.openingHours }</span>
-							<p class="rate mb-5">
-								<span class="loc"><a href="#"><i class="icon-map"></i>${hotelDes.address }</a></span>
-								<span class="star">
-									<fmt:parseNumber var="rating2" type="number" value="${hotelDes.rating }" />
+							<p>
+								<h2>${placesDes.title }</h2>
+								<h5>${placesDes.subtitle }</h5>
+								评分：<span class="star">
+									<fmt:parseNumber var="rating2" type="number" value="${placesDes.rating }" />
 									<c:forEach begin="1" end="${rating2 }">
 										<i class="icon-star"></i> 
 									</c:forEach>
-									<c:if test="${hotelDes.rating%1 > 0}">
+									<c:if test="${placesDes.rating%1 > 0}">
 										<i class="icon-star-half"></i> 
 									</c:if>
-									${hotelDes.rating } 分</span>
+									${placesDes.rating } 分</span>
+								</span>
+								<div class="two">
+									门票：<span class="price">
+										<c:choose>
+											<c:when test="${placesDes.price > '0' }">
+												
+												￥${placesDes.price }
+												
+											</c:when>
+											<c:otherwise>
+												<span style="font-size: 15px">免费开放</span>
+											</c:otherwise>
+										</c:choose>
+									</span>
+								</div>
 							</p>
-							<p>${hotelDes.description }</p>
-							<div class="d-md-flex mt-5 mb-5">
-								<ul class="ml-md-5">
-									<h4>标签</h4>
-									<c:if test="${not empty hotelDes.tags }">
-										<c:forEach var="tag" items="${hotelDes.tags }">
-											<li>${tag }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-								<ul class="ml-md-5">
-									<h4>基本服务</h4>
-									<c:if test="${not empty hotelDes.services }">
-										<c:forEach var="service" items="${hotelDes.services }">
-											<li>${service.name }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-								<ul class="ml-md-5">
-									<h4>其他服务</h4>
-									<c:if test="${not empty hotelDes.assistServices }">
-										<c:forEach var="assistService" items="${hotelDes.assistServices }">
-											<li>${assistService }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-								<ul class="ml-md-5">
-									<h4>酒店设施</h4>
-									<c:if test="${not empty hotelDes.facilities }">
-										<c:forEach var="facilities" items="${hotelDes.facilities }">
-											<li>${facilities }</li>
-										</c:forEach>
-									</c:if>
-									<c:if test="${not empty hotelDes.infrastructures }">
-										<c:forEach var="infrastructure" items="${hotelDes.infrastructures }">
-											<li>${infrastructure }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-							</div>
-							<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her
-								hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.
-								Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+							<span>开放时间: ${placesDes.openingHours }</span>
+							<p class="rate mb-5">
+								<span class="loc"><a href="#"><i class="icon-map"></i>${placesDes.city }</a></span>
+								<span class="loc"><a href="#"><i class="icon-map-marker"></i>${placesDes.location }</a></span>
+							</p>
+							<h4>景区描述</h4>
+							<p>${placesDes.description }</p>
+							<h4>小提示</h4>
+							<span>
+								${placesDes.tipInfo }
+							</span>
 						</div>
 						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
 							<h4 class="mb-4">Take A Tour</h4>
 							<div class="block-16">
 								<figure>
-									<img src="images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">
+									<img src="/images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">
 									<a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
 								</figure>
 							</div>
@@ -183,7 +203,7 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-4.jpg);"></a>
+										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/room-4.jpg);"></a>
 										<div class="text p-3">
 											<div class="d-flex">
 												<div class="one">
@@ -212,7 +232,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-5.jpg);"></a>
+										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/room-5.jpg);"></a>
 										<div class="text p-3">
 											<div class="d-flex">
 												<div class="one">
@@ -241,7 +261,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(images/room-6.jpg);"></a>
+										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/room-6.jpg);"></a>
 										<div class="text p-3">
 											<div class="d-flex">
 												<div class="one">
@@ -379,7 +399,7 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-1.jpg);"></a>
+										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/hotel-1.jpg);"></a>
 										<div class="text p-3">
 											<div class="d-flex">
 												<div class="one">
@@ -408,7 +428,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-2.jpg);"></a>
+										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/hotel-2.jpg);"></a>
 										<div class="text p-3">
 											<div class="d-flex">
 												<div class="one">
@@ -437,7 +457,7 @@
 								</div>
 								<div class="col-md-4">
 									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(images/hotel-3.jpg);"></a>
+										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/hotel-3.jpg);"></a>
 										<div class="text p-3">
 											<div class="d-flex">
 												<div class="one">
@@ -497,9 +517,7 @@
 		</div>
 	</section>
 
- <%@ include file="./part/footer.jsp" %>
-
-
+	<%@ include file="./part/footer.jsp"%>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -519,7 +537,6 @@
 	<script src="/js/aos.js"></script>
 	<script src="/js/jquery.animateNumber.min.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
-	<script src="/js/jquery.timepicker.min.js"></script>
 	<script src="/js/scrollax.min.js"></script>
 
 	<script src="/js/google-map.js"></script>

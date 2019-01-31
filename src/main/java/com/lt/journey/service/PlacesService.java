@@ -17,4 +17,6 @@ public interface PlacesService {
 
 	public String findCityidByCityName_hotel(String string);
 
+	public PlacesDes findPlaces(String id);
+
 }

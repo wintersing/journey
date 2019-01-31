@@ -17,13 +17,13 @@ public class PlacesDes {
 	private String tipInfo;			//提示信息
 	private String openingHours;
 	private String description;
-	private Double price;
+	private String price;
 	private Integer commentCount;
 	private GeoPoint geoPoint;
 	private String[] keyValues;		
 	private String recommend = "0";		//是否推荐(1-推荐，0-不推荐)
+//	private String telephones;
 //	private String district;
 //	private String level;
 //	private String tags;
-//	private String telephones;
 }

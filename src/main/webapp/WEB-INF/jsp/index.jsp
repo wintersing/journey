@@ -139,7 +139,6 @@
 							aria-labelledby="v-pills-performance-tab">
 							<form action="/hotel/search" class="search-destination">
 								<div class="row">
-								<input name="pageToken" type="hidden" value="1">
 									<div class="col-md align-items-end">
 										<div class="form-group">
 											<label for="#">目的地</label>
@@ -147,7 +146,7 @@
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input name="cityName" type="text" class="form-control" placeholder="请输入您要所搜的城市">
+												<input name="city" type="text" class="form-control" placeholder="请输入您要所搜的城市">
 											</div>
 										</div>
 									</div>
@@ -166,7 +165,7 @@
 											<div class="form-field">
 												<div class="select-wrap">
 													<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-													<select name="" id="" class="form-control">
+													<select name="level" class="form-control">
 														<option value>请选择酒店星级</option>
 														<option value="五星级/豪华">五星级/豪华</option>
 														<option value="四星级/高档">四星级/高档</option>
@@ -251,7 +250,7 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h2 class="mb-4"><a href="${pageContext.request.contextPath}/placesView">热门景点</a></h2>
+					<h2 class="mb-4"><a href="/places">热门景点</a></h2>
 				</div>
 			</div>
 		</div>
@@ -271,7 +270,7 @@
 						</c:choose>
 								<c:forEach var="imageItem" begin="0" end="0"
 									items="${placesItem.imageUrls }">
-									<a href="#"
+									<a href="/places/${placesItem.id }?recommend=1"
 										class="img img-2 d-flex justify-content-center align-items-center"
 										style="background-image: url(${imageItem });">
 										<div
@@ -382,7 +381,7 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<h2 class="mb-4">热门酒店</h2>
+					<h2 class="mb-4"><a href="/hotel">热门酒店</a></h2>
 				</div>
 			</div>
 		</div>
@@ -400,7 +399,7 @@
 							<div class="destination">
 						</c:otherwise>
 					</c:choose>
-						<a href="#"
+						<a href="/hotel/${hotelItem.id }?recommend=1"
 							class="img img-2 d-flex justify-content-center align-items-center"
 							style="background-image: url(${hotelItem.imageUrls[0] });">
 							<div

@@ -153,14 +153,29 @@
 					<c:forEach var="placesItem" begin="0" end="${fn:length(resObj.dataList)}" items="${resObj.dataList }">
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="#"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(${placesItem.imageUrls[0] });">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
+							<c:choose>
+								<c:when test="${resObj.reqURI == '/places' }">
+									<a href="/places/${placesItem.id }?recommend=2"
+										class="img img-2 d-flex justify-content-center align-items-center"
+										style="background-image: url(${placesItem.imageUrls[0] });">
+										<div
+											class="icon d-flex justify-content-center align-items-center">
+											<span class="icon-link"></span>
+										</div>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="/places/${placesItem.id }"
+										class="img img-2 d-flex justify-content-center align-items-center"
+										style="background-image: url(${placesItem.imageUrls[0] });">
+										<div
+											class="icon d-flex justify-content-center align-items-center">
+											<span class="icon-link"></span>
+										</div>
+									</a>
+								</c:otherwise>
+							</c:choose>
+								
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">
@@ -264,7 +279,6 @@
 	</section>
 
 	<%@ include file="./part/footer.jsp"%>
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

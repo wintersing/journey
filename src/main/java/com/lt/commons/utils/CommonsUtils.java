@@ -13,6 +13,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,8 +27,6 @@ import java.util.regex.Pattern;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-
-import org.junit.Test;
 
 /**
  * 当把Person类作为BeanUtilTest的内部类时，程序出错<br>
@@ -163,10 +164,28 @@ public class CommonsUtils {
 		return str;
 	}
 
-	@Test
-	public void name() {
-		String asd = "";
-
-		System.out.println(unicodeToString(asd));
+	/**
+	 * 通过URL获取图片的文件大小
+	 * @param imgUrl
+	 * @return
+	 * @throws IOException
+	 */
+	public static int getImgUrlSize(String imgUrl) {
+		int size = 0;
+		URL url;
+		try {
+			url = new URL(imgUrl);
+			HttpURLConnection urlcon = (HttpURLConnection) url.openConnection();
+			// 根据响应获取文件大小
+			size = urlcon.getContentLength();
+			urlcon.disconnect();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return size;
 	}
 }

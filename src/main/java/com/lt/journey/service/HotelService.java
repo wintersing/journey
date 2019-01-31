@@ -15,5 +15,7 @@ public interface HotelService {
 
 	public String findCityidByCityName(String cityName);
 
+	public HotelDes findHotel(String id);
+
 
 }

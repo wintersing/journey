@@ -162,14 +162,29 @@
 					<c:forEach var="hotelItem" items="${resObj.dataList }">
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
-								<a href="/searchHotel"
-									class="img img-2 d-flex justify-content-center align-items-center"
-									style="background-image: url(${hotelItem.imageUrls[0] });">
-									<div
-										class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-link"></span>
-									</div>
-								</a>
+							<c:choose>
+								<c:when test="${resObj.reqURI == '/hotel'}">
+									<a href="/hotel/${hotelItem.id }?recommend=2"
+										class="img img-2 d-flex justify-content-center align-items-center"
+										style="background-image: url(${hotelItem.imageUrls[0] });">
+										<div
+											class="icon d-flex justify-content-center align-items-center">
+											<span class="icon-link"></span>
+										</div>
+									</a>
+								</c:when>
+								<c:otherwise>
+									<a href="/hotel/${hotelItem.id }"
+										class="img img-2 d-flex justify-content-center align-items-center"
+										style="background-image: url(${hotelItem.imageUrls[0] });">
+										<div
+											class="icon d-flex justify-content-center align-items-center">
+											<span class="icon-link"></span>
+										</div>
+									</a>
+								</c:otherwise>
+							</c:choose>
+								
 								<div class="text p-3">
 									<div class="d-flex">
 										<div class="one">

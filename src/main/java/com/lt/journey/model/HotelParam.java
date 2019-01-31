@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class HotelParam {
+	private String id;
 	private String lon;
 	private String lat;
 	private String distance;			//
