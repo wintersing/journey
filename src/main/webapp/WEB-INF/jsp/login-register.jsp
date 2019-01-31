@@ -32,10 +32,10 @@
 <!-- Animate.css -->
 <!-- <link rel="stylesheet" href="css/animate.css"> -->
 <!-- Bootstrap  -->
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
 
 <!-- Theme style  -->
-<link rel="stylesheet" href="css/style.login.css">
+<link rel="stylesheet" href="/css/style.login.css">
 <style type="text/css">
 .sendMessages {
 	display: inline-block;
@@ -69,19 +69,19 @@
 					<div class="row">
 						<div class="col-sm-4 col-xs-12 title">
 							<div id="gtco-logo">
-								<a href="${pageContext.request.contextPath}/">人在旅途 <em>.</em></a>
+								<a href="/">人在旅途 <em>.</em></a>
 							</div>
 						</div>
 						<div class="col-xs-8 text-right menu-1 nav">
 							<ul>
-								<li><a href="${pageContext.request.contextPath}">主页</a></li>
-								<li><a href="${pageContext.request.contextPath}/placesView">目的地</a></li>
-								<li><a href="${pageContext.request.contextPath}/hotelView">酒店</a></li>
+								<li><a href="">主页</a></li>
+								<li><a href="/placesView">目的地</a></li>
+								<li><a href="/hotelView">酒店</a></li>
 								<li><a
-									href="${pageContext.request.contextPath}/tavelNotesView">游记</a></li>
-								<li><a href="${pageContext.request.contextPath}/placesView">火车票</a></li>
+									href="/tavelNotesView">游记</a></li>
+								<li><a href="/placesView">火车票</a></li>
 								<li><a
-									href="${pageContext.request.contextPath}/contactView">联系</a></li>
+									href="/contactView">联系</a></li>
 							</ul>
 						</div>
 					</div>
@@ -188,13 +188,13 @@
 		</div>
 
 		<!-- jQuery -->
-		<script src="js/jquery.min.login.js"></script>
+		<script src="/js/jquery.min.login.js"></script>
 		<!-- Waypoints -->
-		<script src="js/jquery.waypoints.min.login.js"></script>
+		<script src="/js/jquery.waypoints.min.login.js"></script>
 		<!-- Carousel -->
-		<script src="js/owl.carousel.min.js"></script>
+		<script src="/js/owl.carousel.min.js"></script>
 		<!-- Main -->
-		<script src="js/main.login.js"></script>
+		<script src="/js/main.login.js"></script>
 
 		<script>
 			var InterValObj; //timer变量，控制时间 

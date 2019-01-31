@@ -2,16 +2,15 @@ package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lt.commons.utils.CommonsUtils;
 import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelParam;
 import com.lt.journey.model.ResObj;
@@ -27,7 +26,7 @@ public class HotelController {
 	@Autowired
 	private HotelService hotelService;
 
-	@RequestMapping("/hotelView")
+	@RequestMapping("/hotel")
 	public String hotelView(Model model, String pageToken,HttpServletRequest req) {
 		ResObj resObj =  new ResObj();
 		int page = 1;
@@ -48,7 +47,7 @@ public class HotelController {
 		return "hotel";
 	}
 	
-	@RequestMapping("/searchHotel")
+	@RequestMapping("/hotel/search")
 	public String searchHotel(Model model, HotelParam hotelParam) throws UnsupportedEncodingException {
 		String city = hotelParam.getCity();
 		if (city != null && city != "") {
@@ -68,8 +67,8 @@ public class HotelController {
 		return "hotel";
 	}
 
-	@RequestMapping("/hotelSingleView")
-	public String hotelSingleView() {
+	@RequestMapping("/hotel/{id}")
+	public String hotelSingle(@PathVariable("id") Integer id) {
 		return "hotel-single";
 	}
 }

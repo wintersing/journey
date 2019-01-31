@@ -34,7 +34,7 @@ public class PlacesInfo {
 		String ret = HttpRequest.sendGet(url, param.toString());
 //		String dataStr = CommonsUtils.unicodeToString(ret);
 		JSONObject dataObj = JSON.parseObject(ret);
-		System.out.println(dataObj);
+//		System.out.println(dataObj);
 		String placesListStr = dataObj.getJSONArray("data") + "";
 		List<Places> placesList = JSONObject.parseArray(placesListStr, Places.class);
 		ResObj resObj = new ResObj();

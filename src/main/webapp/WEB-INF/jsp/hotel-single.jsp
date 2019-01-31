@@ -75,12 +75,9 @@
 								<div class="form-group">
 									<input name="brandName" type="text" id="checkin_date" class="form-control" placeholder="请输入您要搜索的酒店品牌">
 								</div>
-								<div class="form-group">
-									<input name="businessDistrict" type="text" id="checkin_date" class="form-control" placeholder="请输入您要搜索的酒店商圈">
-								</div>
 								<!-- <div class="form-group">
-		              	<div class="range-slider">
-		              		<span>
+						              	<div class="range-slider">
+						              		<span>
 										    <input type="number" value="25000" min="0" max="120000"/>	-
 										    <input type="number" value="50000" min="0" max="120000"/>
 										  </span>
@@ -88,49 +85,15 @@
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
 										  </svg>
 										</div>
-		              </div> -->
+		              			</div> -->
 								<div class="form-group">
 									<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
 								</div>
 							</div>
 						</form>
 					</div>
-					<!-- <div class="sidebar-wrap ftco-animate">
-        			<h3 class="heading mb-4">Star Rating</h3>
-        			<form method="post" class="star-rating">
-							  <div class="form-check">
-									<input type="checkbox" class="form-check-input" id="exampleCheck1">
-									<label class="form-check-label" for="exampleCheck1">
-										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-									</label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
-						      </label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-						     </label>
-							  </div>
-							  <div class="form-check">
-							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-						      </label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-							    </label>
-							  </div>
-							</form>
-        		</div> -->
 				</div>
+				
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
@@ -146,6 +109,9 @@
 								</div>
 								<div class="item">
 									<div class="hotel-img" style="background-image: url(http://p1.meituan.net/0.0/hotel/455d838409c0e4279a00bf89619825ee429690.jpg);"></div>
+								</div>
+								<div class="item">
+									<div class="hotel-img" style="background-image: url(http://p0.meituan.net/0.0/hotel/703a3247fde8d0e2a3633994486d5e70351813.jpg);"></div>
 								</div>
 								<div class="item">
 									<div class="hotel-img" style="background-image: url(http://p0.meituan.net/0.0/hotel/703a3247fde8d0e2a3633994486d5e70351813.jpg);"></div>

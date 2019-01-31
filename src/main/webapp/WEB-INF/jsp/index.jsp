@@ -85,7 +85,7 @@
 
 						<div class="tab-pane fade show active" id="v-pills-1"
 							role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-							<form name="search_form" action="${pageContext.request.contextPath}/searchTrain" class="search-destination">
+							<form name="search_form" action="/train/search" class="search-destination">
 								<div class="row">
 								<input type="hidden" name="page" value="1"> 
 								<input type="hidden" name="limit" value="0">
@@ -137,7 +137,7 @@
 
 						<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
 							aria-labelledby="v-pills-performance-tab">
-							<form action="${pageContext.request.contextPath}/hotelView" class="search-destination">
+							<form action="/hotel/search" class="search-destination">
 								<div class="row">
 								<input name="pageToken" type="hidden" value="1">
 									<div class="col-md align-items-end">

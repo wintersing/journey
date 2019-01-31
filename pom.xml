@@ -207,7 +207,7 @@
 				<version>2.2</version>
 				<configuration>
 					<port>8080</port>
-					<path>/journey</path>
+					<path>/</path>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -17,24 +17,24 @@
 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.css">
 
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/magnific-popup.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
-<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="/css/ionicons.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="/css/flaticon.css">
+<link rel="stylesheet" href="/css/icomoon.css">
+<link rel="stylesheet" href="/css/style.css">
 <style type="text/css">
 .list, .tab-header {
 	width: 14%;
@@ -79,7 +79,7 @@ h3, .space {
 	<%@ include file="./part/header.jsp"%>
 
 	<div class="hero-wrap js-fullheight"
-		style="background-image: url('images/bg_1.jpg');">
+		style="background-image: url('/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -101,7 +101,7 @@ h3, .space {
 				<div class="col-lg-3 sidebar order-md-last ftco-animate">
 					<div class="sidebar-wrap ftco-animate">
 						<h3 class="heading mb-4">查询火车余票</h3>
-						<form action="${pageContext.request.contextPath}/searchTrain">
+						<form action="/train/search">
 							<div class="fields">
 								<div class="form-group">
 									<div class="form-field">
@@ -352,20 +352,20 @@ h3, .space {
 											</c:otherwise>
 										</c:choose>
 										<ul>
-											<li id="toLeft"><a href="${pageContext.request.contextPath}/searchTrain?
+											<li id="toLeft"><a href="/searchTrain?
 													departureCityName=${resObj.trainParam.departureCityName }&arrivalCityName=${resObj.trainParam.arrivalCityName }
 													&departureCityCode=${resObj.trainParam.departureCityCode }&arrivalCityCode=${resObj.trainParam.arrivalCityCode }
 													&page=${page-1 }&limit=${resObj.trainParam.limit }&maxPage=${maxPage }
 													&departureDate=${resObj.trainParam.departureDate }">&lt;</a></li>
 											<c:forEach var="i" begin="${begin_ }" end="${end_ }">
 												<li id="li-${i }"><a
-													href="${pageContext.request.contextPath}/searchTrain?
+													href="/searchTrain?
 													departureCityName=${resObj.trainParam.departureCityName }&arrivalCityName=${resObj.trainParam.arrivalCityName }
 													&departureCityCode=${resObj.trainParam.departureCityCode }&arrivalCityCode=${resObj.trainParam.arrivalCityCode }
 													&page=${i }&limit=${resObj.trainParam.limit }&maxPage=${maxPage }
 													&departureDate=${resObj.trainParam.departureDate }">${i }</a></li>
 											</c:forEach>
-											<li id="toRight"><a href="${pageContext.request.contextPath}/searchTrain?
+											<li id="toRight"><a href="/searchTrain?
 													departureCityName=${resObj.trainParam.departureCityName }&arrivalCityName=${resObj.trainParam.arrivalCityName }
 													&departureCityCode=${resObj.trainParam.departureCityCode }&arrivalCityCode=${resObj.trainParam.arrivalCityCode }
 													&page=${page+1 }&limit=${resObj.trainParam.limit }&maxPage=${maxPage }
@@ -569,23 +569,23 @@ h3, .space {
 	</div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/aos.js"></script>
+	<script src="/js/jquery.animateNumber.min.js"></script>
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script src="/js/jquery.timepicker.min.js"></script>
+	<script src="/js/scrollax.min.js"></script>
 
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+	<script src="/js/google-map.js"></script>
+	<script src="/js/main.js"></script>
 	<c:if test="${not empty resObj }">
 	<script type="text/javascript">
 		$(document).ready(function(){ 

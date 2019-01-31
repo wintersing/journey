@@ -1,9 +1,7 @@
 package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lt.journey.model.Places;
-import com.lt.journey.model.PlacesDes;
 import com.lt.journey.model.PlacesParam;
 import com.lt.journey.model.ResObj;
 import com.lt.journey.service.PlacesService;
@@ -27,7 +24,7 @@ public class PlacesController {
 	
 	private final int pageSize = 8;
 	
-	@RequestMapping("/placesView")
+	@RequestMapping("/places")
 	public String placesView(Model model, String pageToken,HttpServletRequest req) {
 		ResObj resObj =  new ResObj();
 		int page = 1;
@@ -48,7 +45,7 @@ public class PlacesController {
 		return "places";
 	}
 
-	@RequestMapping("/searchPlaces")
+	@RequestMapping("/places/search")
 	public String searchPlaces(Model model, String cityid, String cityName, String sort, String pageToken,HttpServletRequest req)
 			throws UnsupportedEncodingException {
 		if (cityid == null) {
