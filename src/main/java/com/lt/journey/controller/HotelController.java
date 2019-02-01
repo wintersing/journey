@@ -70,14 +70,14 @@ public class HotelController {
 
 	@RequestMapping("/hotel/{id}")
 	public String hotelSingle(@PathVariable("id") String id, String recommend, Model model) {
-		if (recommend == "1" || recommend == "2") {
-			HotelDes hotelDes = hotelService.findHotel(id);
-			model.addAttribute(hotelDes);
-		} else {
+		if (recommend == null) {
 			HotelParam hotelParam = new HotelParam();
 			hotelParam.setId(id);
 			ResObj resObj = HotelInfo.getHotelInfo(hotelParam);
 			model.addAttribute(resObj);
+		} else {
+			HotelDes hotelDes = hotelService.findHotel(id);
+			model.addAttribute(hotelDes);
 		}
 		return "hotel-single";
 	}

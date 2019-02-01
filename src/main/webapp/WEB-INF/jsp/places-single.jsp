@@ -44,7 +44,7 @@
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
 				<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 					<!-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">主页</a></span> <span>酒店</span></p> -->
-					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">酒店</h1>
+					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">景点</h1>
 				</div>
 			</div>
 		</div>
@@ -59,18 +59,7 @@
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
-									<input name="cityName" type="text" class="form-control" placeholder="请输入您要所搜的城市">
-								</div>
-								<div class="form-group">
-									<div class="select-wrap one-third">
-										<div class="icon">
-											<span class="ion-ios-arrow-down"></span>
-										</div>
-										<select name="sort" id="" class="form-control" placeholder="Keyword search">
-											<option value="1">人气最高</option>
-											<option value="2">距离最近</option>
-										</select>
-									</div>
+									<input name="cityName" type="text" class="form-control" value="${resObj.placesParam.cityName }" placeholder="请输入您要所搜的城市">
 								</div>
 								<!-- <div class="form-group">
 									<div class="range-slider">
@@ -127,7 +116,7 @@
 				</div>
 				
 				<c:if test="${not empty resObj }">
-					<c:set var="placesDes" value="${resObj.dataList[0] }"></c:set>
+					<c:set var="placesDes" value="${resObj.data }"></c:set>
 				</c:if>
 				<div class="col-lg-9">
 					<div class="row">
@@ -179,8 +168,8 @@
 							</p>
 							<span>开放时间: ${placesDes.openingHours }</span>
 							<p class="rate mb-5">
-								<span class="loc"><a href="#"><i class="icon-map"></i>${placesDes.city }</a></span>
-								<span class="loc"><a href="#"><i class="icon-map-marker"></i>${placesDes.location }</a></span>
+								<span class="loc"><i class="icon-map"></i>${placesDes.city }</span>
+								<span class="loc"><i class="icon-map-marker"></i>${placesDes.location }</span>
 							</p>
 							<h4>景区描述</h4>
 							<p>${placesDes.description }</p>
@@ -493,29 +482,6 @@
 		</div>
 	</section> <!-- .section -->
 
-	<section class="ftco-section-parallax">
-		<div class="parallax-img d-flex align-items-center">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-						<h2>Subcribe to our Newsletter</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-							texts. Separated they live in</p>
-						<div class="row d-flex justify-content-center mt-5">
-							<div class="col-md-8">
-								<form action="#" class="subscribe-form">
-									<div class="form-group d-flex">
-										<input type="text" class="form-control" placeholder="Enter email address">
-										<input type="submit" value="Subscribe" class="submit px-3">
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<%@ include file="./part/footer.jsp"%>
 

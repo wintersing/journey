@@ -50,15 +50,31 @@ public class PlacesController {
 	@RequestMapping("/places/search")
 	public String searchPlaces(Model model, String cityid, String cityName, String sort, String pageToken,
 			HttpServletRequest req) throws UnsupportedEncodingException {
+		ResObj resObj = null;
+		PlacesParam placesParam = new PlacesParam();
 		if (cityid == null) {
 			cityName = new String(cityName.getBytes("ISO-8859-1"), "utf-8");
 			cityid = placesService.findCityidByCityName(cityName);
+			
+			if (cityid == null) {
+				resObj = new ResObj();
+				resObj.setRetcode("100");
+				model.addAttribute(resObj);
+				return "places";
+			}
 		}
-		PlacesParam placesParam = new PlacesParam();
 		placesParam.setCityid(cityid);
+		placesParam.setCityName(cityName);
 		placesParam.setSort(sort);
 		placesParam.setPageToken(pageToken);
-		ResObj resObj = PlacesInfo.getPlacesInfo(placesParam);
+		resObj = PlacesInfo.getPlacesInfo(placesParam);
+		if (resObj.getRetcode() != null) {
+			if (resObj.getRetcode().equals("100")) {
+				model.addAttribute(resObj);
+				return "places";
+			}
+		}
+		
 		resObj.setSort(sort);
 		resObj.setCityid(cityid);
 		resObj.setReqURI(req.getRequestURI());
@@ -67,15 +83,14 @@ public class PlacesController {
 	}
 
 	@RequestMapping("/places/{id}")
-	public String placesSingle(@PathVariable("id") String id, Integer recommend, Model model) {
-		if (recommend == 1 || recommend == 2) {
+	public String placesSingle(@PathVariable("id") String id,PlacesParam placesParam, Integer recommend, Model model) {
+		if (recommend == null) {
+			placesParam.setId(id);
+			ResObj resObj = PlacesInfo.getPlacesSingleInfo(placesParam);
+			model.addAttribute(resObj);
+		} else {
 			PlacesDes placesDes = placesService.findPlaces(id);
 			model.addAttribute(placesDes);
-		} else {
-			PlacesParam placesParam = new PlacesParam();
-			placesParam.setId(id);
-			ResObj resObj = PlacesInfo.getPlacesInfo(placesParam);
-			model.addAttribute(resObj);
 		}
 		return "places-single";
 	}

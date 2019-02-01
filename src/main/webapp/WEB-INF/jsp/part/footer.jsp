@@ -8,6 +8,19 @@
 </head>
 <body>
 
+	<section class="ftco-section-parallax">
+		<div class="parallax-img d-flex align-items-center">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+						<h2>人在旅途</h2>
+						<p>人生就像一场旅行，不必在乎目的地，重要的是沿途的风景以及看风景的心情</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
 			<div class="row mb-5">

@@ -13,9 +13,10 @@ import lombok.ToString;
 @ToString
 public class ResObj {
 	private List dataList;
+	private Object data;
 	private String hasNext;
 	private String pageToken;
-	private String retcode;
+	private String retcode;//100-无结果，404-404，500-服务器错误
 	private String msg;
 	private String sort;
 	private String cityName;
@@ -24,4 +25,5 @@ public class ResObj {
 	private String param;
 	private TrainParam trainParam;
 	private HotelParam hotelParam;
+	private PlacesParam placesParam;
 }

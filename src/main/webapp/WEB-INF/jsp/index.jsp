@@ -69,14 +69,14 @@
 						id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill"
 							href="#v-pills-1" role="tab" aria-controls="v-pills-1"
-							aria-selected="true" onclick="search_('train')">火车</a> <a class="nav-link"
+							aria-selected="true" onclick="search_('train')">目的地</a> <a class="nav-link"
 							id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
 							role="tab" aria-controls="v-pills-2" aria-selected="false" 
-							onclick="search_('hotel')">酒店</a>
+							onclick="search_('hotel')">火车</a>
 
 						<a class="nav-link" id="v-pills-3-tab" data-toggle="pill"
 							href="#v-pills-3" role="tab" aria-controls="v-pills-3"
-							aria-selected="false">Car Rent</a>
+							aria-selected="false">酒店</a>
 					</div>
 				</div>
 				<div class="col-md-12 tab-wrap">
@@ -85,7 +85,38 @@
 
 						<div class="tab-pane fade show active" id="v-pills-1"
 							role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-							<form name="search_form" action="/train/search" class="search-destination">
+							<form name="search_form" action="/places/search" class="search-destination">
+								<div class="row">
+									<div class="col-md align-items-end">
+									</div>
+									<div class="col-md align-items-end">
+										<div class="form-group">
+											<label for="#">目的地</label>
+											<div class="form-field">
+												<div class="icon">
+													<span class="icon-map-marker"></span>
+												</div>
+												<input name="cityName" type="text" class="form-control" placeholder="目的地">
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-md align-self-end">
+										<div class="form-group">
+											<div class="form-field">
+												<input type="submit" value="Search"
+													class="form-control btn btn-primary">
+											</div>
+										</div>
+									</div>
+									<div class="col-md align-items-end">
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
+							aria-labelledby="v-pills-performance-tab"><form name="search_form" action="/train/search" class="search-destination">
 								<div class="row">
 								<input type="hidden" name="page" value="1"> 
 								<input type="hidden" name="limit" value="0">
@@ -135,8 +166,8 @@
 							</form>
 						</div>
 
-						<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
-							aria-labelledby="v-pills-performance-tab">
+						<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
+							aria-labelledby="v-pills-effect-tab">
 							<form action="/hotel/search" class="search-destination">
 								<div class="row">
 									<div class="col-md align-items-end">
@@ -175,57 +206,6 @@
 														<option value="其他">其他</option>
 													</select>
 												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-self-end">
-										<div class="form-group">
-											<div class="form-field">
-												<input type="submit" value="Search"
-													class="form-control btn btn-primary">
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-
-						<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
-							aria-labelledby="v-pills-effect-tab">
-							<form action="#" class="search-destination">
-								<div class="row">
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">Where</label>
-											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
-												</div>
-												<input type="text" class="form-control" placeholder="Where">
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">Check In</label>
-											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
-												</div>
-												<input type="text" class="form-control checkin_date"
-													placeholder="Check In">
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">Check Out</label>
-											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
-												</div>
-												<input type="text" class="form-control checkout_date"
-													placeholder="From">
 											</div>
 										</div>
 									</div>

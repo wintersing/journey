@@ -28,36 +28,36 @@ public class HotelInfo {
 			}
 		}
 		String dataStr = HttpRequest.sendGet(url, param);
-//		System.out.println(dataStr);
 		JSONObject dataObj = JSON.parseObject(dataStr);
+//		System.out.println(dataObj);
 		String hotelListStr = dataObj.getJSONArray("data") + "";
 
 		List<HotelDes> hotelList = JSONObject.parseArray(hotelListStr, HotelDes.class);
-		// 将图片大于100kb的全部删除
-		List<Integer> remvoeIndex = new ArrayList<Integer>();
-		String[] imageUrls = null;
-		for (HotelDes hotelDes : hotelList) {
-			imageUrls = hotelDes.getImageUrls();
-			for (int i = 0; i < imageUrls.length; i++) {
-				long startTime=System.currentTimeMillis(); 
-				int imgUrlSize = CommonsUtils.getImgUrlSize(imageUrls[i]);
-				long endTime=System.currentTimeMillis();
-				System.out.println("程序运行时间： "+(endTime-startTime)+"ms"); 
-				if (imgUrlSize > 1024 * 100) {
-					remvoeIndex.add(i);
-				}
-			}
-			if (remvoeIndex.size() > 0) {
-				List<String> imgList = new ArrayList<String>();
-				for (int i = 0; i < imageUrls.length; i++) {
-					if (!remvoeIndex.contains(i)) {
-						imgList.add(imageUrls[i]);
-					}
-				}
-				String[] imgArr = imgList.toArray(imageUrls);
-				hotelDes.setImageUrls(imgArr);
-			} 
-		}
+//		// 将图片大于100kb的全部删除
+//		List<Integer> remvoeIndex = new ArrayList<Integer>();
+//		String[] imageUrls = null;
+//		for (HotelDes hotelDes : hotelList) {
+//			imageUrls = hotelDes.getImageUrls();
+//			for (int i = 0; i < imageUrls.length; i++) {
+//				long startTime=System.currentTimeMillis(); 
+//				int imgUrlSize = CommonsUtils.getImgUrlSize(imageUrls[i]);
+//				long endTime=System.currentTimeMillis();
+//				System.out.println("程序运行时间： "+(endTime-startTime)+"ms"); 
+//				if (imgUrlSize > 1024 * 100) {
+//					remvoeIndex.add(i);
+//				}
+//			}
+//			if (remvoeIndex.size() > 0) {
+//				List<String> imgList = new ArrayList<String>();
+//				for (int i = 0; i < imageUrls.length; i++) {
+//					if (!remvoeIndex.contains(i)) {
+//						imgList.add(imageUrls[i]);
+//					}
+//				}
+//				String[] imgArr = imgList.toArray(imageUrls);
+//				hotelDes.setImageUrls(imgArr);
+//			} 
+//		}
 
 		Boolean hasNext = dataObj.getBoolean("hasNext");
 		String pageToken = dataObj.getString("pageToken");
@@ -84,17 +84,13 @@ public class HotelInfo {
 	
 
 	@Test
-	public void name() {
+	public void name() {//23.40800373，113.39481756
 		HotelParam hotelParam = new HotelParam();
-		hotelParam.setCity("景德镇");
+		hotelParam.setLat("23.40800373");
+		hotelParam.setLon("113.39481756");
+		hotelParam.setDistance("5km");
 		getHotelInfo(hotelParam);
 //		System.out.println(hotelList);
 	}
 
-	@Test
-	public void name1() {
-		String[] qwe = new String[5];
-		qwe[0]="1";
-		System.out.println(qwe[3]);
-	}
 }
