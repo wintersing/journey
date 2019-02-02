@@ -32,6 +32,11 @@
 	<link rel="stylesheet" href="/css/flaticon.css">
 	<link rel="stylesheet" href="/css/icomoon.css">
 	<link rel="stylesheet" href="/css/style.css">
+	<style type="text/css">
+		.text{
+			margin-right: 15px
+		}
+	</style>
 </head>
 
 <body>
@@ -78,6 +83,55 @@
 							</div>
 						</form>
 					</div>
+					<div class="sidebar-wrap ftco-animate">
+						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<p>
+							<a target="_blank" class="news"
+								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+								另一老兵众筹"买梯子"</a>
+						</p>
+
+						<div>
+							<label class="form-check-label" for="exampleCheck1">
+								<p>
+									<a target="_blank" class="news"
+										href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
+										另一老兵众筹"买梯子"</a>
+								</p>
+							</label>
+						</div>
+					</div>
+				
 					<!-- <div class="sidebar-wrap ftco-animate">
         			<h3 class="heading mb-4">Star Rating</h3>
         			<form method="post" class="star-rating">
@@ -170,6 +224,7 @@
 							<p class="rate mb-5">
 								<span class="loc"><i class="icon-map"></i>${placesDes.city }</span>
 								<span class="loc"><i class="icon-map-marker"></i>${placesDes.location }</span>
+								<span><a href="/hotel/search?lon=${placesDes.geoPoint.lon }&lat=${placesDes.geoPoint.lat }&distance=3km" class="reply">>>附近酒店</a></span>
 							</p>
 							<h4>景区描述</h4>
 							<p>${placesDes.description }</p>
@@ -178,313 +233,47 @@
 								${placesDes.tipInfo }
 							</span>
 						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">Take A Tour</h4>
-							<div class="block-16">
-								<figure>
-									<img src="/images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">
-									<a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
-								</figure>
-							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">Our Rooms</h4>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/room-4.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-													<p class="rate">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-o"></i>
-														<span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">$40<br><small>/night</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> Miami, Fl</span>
-												<span class="ml-auto"><a href="#">Book Now</a></span>
-											</p>
-										</div>
+<div class="pt-5 mt-5">
+							<div class="comment-form-wrap pt-5">
+								<h3 class="mb-5">发表评论</h3>
+								<form action="#" class="p-5 bg-light">
+									<div class="form-group">
+										<textarea name="comment" id="message" cols="30" rows="4" class="form-control"></textarea>
 									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/room-5.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-													<p class="rate">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-o"></i>
-														<span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">$40<br><small>/night</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> Miami, Fl</span>
-												<span class="ml-auto"><a href="#">Book Now</a></span>
-											</p>
-										</div>
+									<div class="form-group">
+										<input type="submit" value="发表" class="btn py-3 px-4 btn-primary">
 									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/room-6.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-													<p class="rate">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-o"></i>
-														<span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">$40<br><small>/night</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> Miami, Fl</span>
-												<span class="ml-auto"><a href="#">Book Now</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-5">Check Availability &amp; Booking</h4>
-							<div class="fields">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Name">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Email">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control checkin_date" placeholder="Date from">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control checkout_date" placeholder="Date to">
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="select-wrap one-third">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control" placeholder="Guest">
-													<option value="0">Guest</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<div class="select-wrap one-third">
-												<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-												<select name="" id="" class="form-control" placeholder="Children">
-													<option value="0">Children</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="submit" value="Check Availability" class="btn btn-primary py-3">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-							<h4 class="mb-4">Review &amp; Ratings</h4>
-							<div class="row">
-								<div class="col-md-6">
-									<form method="post" class="star-rating">
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1">
-												<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i
-														 class="icon-star"></i> 100 Ratings</span></p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1">
-												<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i
-														 class="icon-star-o"></i> 30 Ratings</span></p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1">
-												<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i
-														 class="icon-star-o"></i> 5 Ratings</span></p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1">
-												<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i
-														 class="icon-star-o"></i> 0 Ratings</span></p>
-											</label>
-										</div>
-										<div class="form-check">
-											<input type="checkbox" class="form-check-input" id="exampleCheck1">
-											<label class="form-check-label" for="exampleCheck1">
-												<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i
-														 class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-											</label>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-							<h4 class="mb-4">Related Hotels</h4>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/hotel-1.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-													<p class="rate">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-o"></i>
-														<span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">$40<br><small>/night</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> Miami, Fl</span>
-												<span class="ml-auto"><a href="#">Book Now</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/hotel-2.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-													<p class="rate">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-o"></i>
-														<span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">$40<br><small>/night</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> Miami, Fl</span>
-												<span class="ml-auto"><a href="#">Book Now</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="destination">
-										<a href="hotel-single.html" class="img img-2" style="background-image: url(/images/hotel-3.jpg);"></a>
-										<div class="text p-3">
-											<div class="d-flex">
-												<div class="one">
-													<h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-													<p class="rate">
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star"></i>
-														<i class="icon-star-o"></i>
-														<span>8 Rating</span>
-													</p>
-												</div>
-												<div class="two">
-													<span class="price per-price">$40<br><small>/night</small></span>
-												</div>
-											</div>
-											<p>Far far away, behind the word mountains, far from the countries</p>
-											<hr>
-											<p class="bottom-area d-flex">
-												<span><i class="icon-map-o"></i> Miami, Fl</span>
-												<span class="ml-auto"><a href="#">Book Now</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 
-					</div>
-				</div> <!-- .col-md-8 -->
-			</div>
-		</div>
-	</section> <!-- .section -->
+								</form>
+							</div>
+
+							<div style="padding-top: 100px;">
+								<h3 class="mb-5">精彩评论</h3>
+								<ul class="comment-list">
+
+									<li class="comment">
+										<div class="vcard bio">
+											<img src="https://images4.c-ctrip.com/target/Z8020b0000005nydv0C7A_C_180_180.jpg" alt="Image placeholder">
+										</div>
+										<div class="comment-body">
+											<h3>晴天守望</h3>
+											<div style="padding-bottom: 10px;">
+												<span class="text">景色5</span>
+												<span class="text">趣味5</span>
+												<span class="text">性价比5</span>
+											</div>
+											<p>北京最美就是蓝天白云时，这时候你如果一早来到北京颐和园，那蓝天映照着湖水，金黄闪烁的佛香阁，倒影婆娑的西堤古柳，总不沉没的石舫，铜牛守望的十七孔桥……颐和园处处都是美景，足让你神情陶醉，心旷神怡……&#x0A;颐和园一个中国清朝时期皇家园林，曾经的清漪园，坐落在北京西郊，距城区十五公里，占地约二百九十公顷，与圆明园毗邻。它是以昆明湖、万寿山为基址，以杭州西湖为蓝本，汲取江南园林的设计手法而建成的一座大型山水园林，也是保存最完整的一座皇家行宫御苑，被誉为“皇家园林博物馆”真的当之无愧。&#x0A;如果你再乘一条小船，荡漾在硕大的昆明湖中，你一定会沉醉在蓝天碧水、绿柳白桥、远山近楼，这如梦境般的美画中。那移步异景，一孔一画，颐和园定会让你流连忘返，不论你来过多少次，你依旧会喜欢，而且，你总会想再来，再来……</p>
+											<div class="meta">2017-07-03T11:50:27</div>
+										</div>
+
+									</li>
 
 
-	<%@ include file="./part/footer.jsp"%>
+								</ul>
+							</div>
+							<!-- END comment-list -->
 
+						</div>
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
 			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />

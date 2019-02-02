@@ -75,7 +75,7 @@
 										value="${resObj.placesParam.cityName }" placeholder="请输入您要所搜的城市">
 								</div>
 								<c:choose>
-									<c:when test="${not empty resObj.cityid}">
+									<c:when test="${not empty resObj.placesParam.cityid}">
 										<input name="pageToken" type="hidden"
 											value="${resObj.pageToken }">
 									</c:when>
@@ -232,18 +232,18 @@
 										</c:choose>
 										<ul>
 											<li id="toLeft"><a
-												href="${resObj.reqURI }?cityid=${resObj.cityid}&pageToken=${resObj.pageToken-2 }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&lt;</a></li>
+												href="${resObj.reqURI }?cityid=${resObj.placesParam.cityid}&pageToken=${resObj.pageToken-2 }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">&lt;</a></li>
 											<c:forEach var="j" begin="${begin_ }"
 												end="${resObj.pageToken-1 }">
 												<li id="li-${j }"><a
-													href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${j }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${j }</a></li>
+													href="${resObj.reqURI}?cityid=${resObj.placesParam.cityid}&pageToken=${j }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">${j }</a></li>
 											</c:forEach>
 											<c:if test="${resObj.hasNext == '1' }">
 												<li id="li-${resObj.pageToken }"><a
-													href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">${resObj.pageToken }</a></li>
+													href="${resObj.reqURI}?cityid=${resObj.placesParam.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">${resObj.pageToken }</a></li>
 											</c:if>
 											<li id="toRight"><a
-												href="${resObj.reqURI}?cityid=${resObj.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.sort}">&gt;</a></li>
+												href="${resObj.reqURI}?cityid=${resObj.placesParam.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">&gt;</a></li>
 										</ul>
 									</div>
 								</div>
