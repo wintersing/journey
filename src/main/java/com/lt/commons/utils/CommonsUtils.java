@@ -165,7 +165,7 @@ public class CommonsUtils {
 	}
 
 	/**
-	 * 通过URL获取图片的文件大小
+	 * 获取URL图片的文件大小
 	 * @param imgUrl
 	 * @return
 	 * @throws IOException

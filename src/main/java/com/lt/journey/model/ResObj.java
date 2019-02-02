@@ -16,11 +16,8 @@ public class ResObj {
 	private Object data;
 	private String hasNext;
 	private String pageToken;
-	private String retcode;//100-无结果，404-404，500-服务器错误
+	private String retcode;//100-无结果，200-200，404-404，500-服务器错误
 	private String msg;
-	private String sort;
-	private String cityName;
-	private String cityid;
 	private String reqURI;
 	private String param;
 	private TrainParam trainParam;

@@ -75,8 +75,6 @@ public class PlacesController {
 			}
 		}
 		
-		resObj.setSort(sort);
-		resObj.setCityid(cityid);
 		resObj.setReqURI(req.getRequestURI());
 		model.addAttribute(resObj);
 		return "places";
