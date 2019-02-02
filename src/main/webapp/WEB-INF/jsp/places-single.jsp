@@ -36,6 +36,9 @@
 		.text{
 			margin-right: 15px
 		}
+		.comment-pad{
+			padding-top: 100px;
+		}
 	</style>
 </head>
 
@@ -237,6 +240,7 @@
 							<div class="comment-form-wrap pt-5">
 								<h3 class="mb-5">发表评论</h3>
 								<form action="#" class="p-5 bg-light">
+									<input id="commentPage" type="hidden" value="1">
 									<div class="form-group">
 										<textarea name="comment" id="message" cols="30" rows="4" class="form-control"></textarea>
 									</div>
@@ -247,27 +251,9 @@
 								</form>
 							</div>
 
-							<div style="padding-top: 100px;">
+							<div class="comment-pad">
 								<h3 class="mb-5">精彩评论</h3>
 								<ul class="comment-list">
-
-									<li class="comment">
-										<div class="vcard bio">
-											<img src="https://images4.c-ctrip.com/target/Z8020b0000005nydv0C7A_C_180_180.jpg" alt="Image placeholder">
-										</div>
-										<div class="comment-body">
-											<h3>晴天守望</h3>
-											<div style="padding-bottom: 10px;">
-												<span class="text">景色5</span>
-												<span class="text">趣味5</span>
-												<span class="text">性价比5</span>
-											</div>
-											<p>北京最美就是蓝天白云时，这时候你如果一早来到北京颐和园，那蓝天映照着湖水，金黄闪烁的佛香阁，倒影婆娑的西堤古柳，总不沉没的石舫，铜牛守望的十七孔桥……颐和园处处都是美景，足让你神情陶醉，心旷神怡……&#x0A;颐和园一个中国清朝时期皇家园林，曾经的清漪园，坐落在北京西郊，距城区十五公里，占地约二百九十公顷，与圆明园毗邻。它是以昆明湖、万寿山为基址，以杭州西湖为蓝本，汲取江南园林的设计手法而建成的一座大型山水园林，也是保存最完整的一座皇家行宫御苑，被誉为“皇家园林博物馆”真的当之无愧。&#x0A;如果你再乘一条小船，荡漾在硕大的昆明湖中，你一定会沉醉在蓝天碧水、绿柳白桥、远山近楼，这如梦境般的美画中。那移步异景，一孔一画，颐和园定会让你流连忘返，不论你来过多少次，你依旧会喜欢，而且，你总会想再来，再来……</p>
-											<div class="meta">2017-07-03T11:50:27</div>
-										</div>
-
-									</li>
-
 
 								</ul>
 							</div>
@@ -298,5 +284,80 @@
 	<script src="/js/main.js"></script>
 
 </body>
-
+<script type="text/javascript">
+	$(document).ready(function() { 
+		getComment();
+	}); 
+	$(window).scroll(function() {
+		var scrollTop = $(this).scrollTop();
+		var scrollHeight = $(document).height();
+		var windowHeight = $(this).height();
+		if (scrollTop + windowHeight == scrollHeight) {
+			// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+			var commentPage = $("#commentPage").val();
+			if (commentPage != "0") {
+				getComment();
+			}else{
+				return;
+			}
+		}
+	});
+	function getComment() {
+		var commentPage = $("#commentPage").val();
+		$.ajax({
+			url: '/comment/sight/${placesDes.id }?pageToken='+commentPage,  
+		    method: 'get',  
+		    ContentType: "application/x-www-form-urlencoded;charset=utf-8",
+		    dataType: 'json',  
+		    success: function (ret) {
+				var dataList = "";
+				if (ret.retcode == "100002" && commentPage == "1") {
+					var str ="<li class=\"comment\">"
+						+"<div class=\"comment-body\">"
+							+"<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
+						+"</div>"
+					+"</li>"
+					$('.comment-list').append(str);
+					return;
+				}
+				
+				$.each(ret.data, function (i, comment){
+					var str ="<li class=\"comment\">"
+						+"<div class=\"vcard bio\">"
+							+"<img src=\""+comment.avatarUrl+"\" alt=\"Image placeholder\">"
+						+"</div>"
+						+"<div class=\"comment-body\">"
+							+"<h3>"+comment.commenterScreenName+"</h3>"
+							+"<div style=\"padding-bottom: 10px;\">"
+								+"<span class=\"text\">"+comment.ratingDist[0].key +"&nbsp;"+ comment.ratingDist[0].value+"</span>"
+								+"<span class=\"text\">"+comment.ratingDist[1].key +"&nbsp;"+ comment.ratingDist[1].value+"</span>"
+								+"<span class=\"text\">"+comment.ratingDist[2].key +"&nbsp;"+ comment.ratingDist[2].value+"</span>"
+							+"</div>"
+							+"<p>"+comment.content+"</p>"
+							+"<div class=\"meta\">"+comment.publishDateStr+"</div>"
+						+"</div>"
+					+"</li>"
+					dataList = dataList +str
+				});
+				if (ret.hasNext == true) {
+					$("#commentPage").attr("value",parseInt(commentPage)+1);
+				}else{
+					$("#commentPage").attr("value","0");
+				}
+				$('.comment-list').append(dataList);
+			}
+		});
+	}
+	
+</script>
 </html>
+
+
+
+
+
+
+
+
+
+
