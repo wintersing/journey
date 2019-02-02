@@ -17,7 +17,7 @@ public class CommentController {
 	private final String url = CommonsUtils.getProperties(path, "comment_url");
 	private final String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
-	@RequestMapping(value = "/comment/{parent}/{id}")
+	@RequestMapping(value = "/comment/{parent}/{id}", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String getComment(@PathVariable("parent") String parent, @PathVariable("id") String id, String pageToken) {
 
