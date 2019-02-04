@@ -137,14 +137,6 @@
 				</div>
 				<!-- END-->
 				<div class="col-lg-9">
-					<c:choose>
-						<c:when test="${resObj.retcode eq 100 }">
-							<div
-								class="icon d-flex justify-content-center align-items-center">
-								<img src="/images/no-result.png">
-							</div>
-						</c:when>
-						<c:otherwise>
 							<div class="row">
 								<c:forEach var="placesItem" begin="0"
 									end="${fn:length(resObj.dataList)}" items="${resObj.dataList }">
@@ -248,8 +240,6 @@
 									</div>
 								</div>
 							</div>
-						</c:otherwise>
-					</c:choose>
 				</div>
 				<!-- .col-md-8 -->
 			</div>

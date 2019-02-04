@@ -60,7 +60,7 @@ public class PlacesController {
 				resObj = new ResObj();
 				resObj.setRetcode("100");
 				model.addAttribute(resObj);
-				return "places";
+				return "msg";
 			}
 		}
 		placesParam.setCityid(cityid);
@@ -71,7 +71,7 @@ public class PlacesController {
 		if (resObj.getRetcode() != null) {
 			if (resObj.getRetcode().equals("100")) {
 				model.addAttribute(resObj);
-				return "places";
+				return "msg";
 			}
 		}
 		

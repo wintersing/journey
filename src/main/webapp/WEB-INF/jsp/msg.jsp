@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -10,7 +11,7 @@
     <style>
         .position {
             padding-top: 60px;
-            padding-left: 280px;
+            padding-left: 200px;
         }
     </style>
 </head>
@@ -18,7 +19,14 @@
 <body>
 
     <div>
+    <c:if test="${resObj.retcode eq 100 }"></c:if>
+        <img class="position" src="/images/no-result.png">
+    </div>
+    <c:if test="${resObj.retcode eq 404 }"></c:if>
         <img class="position" src="/images/404.png">
+    </div>
+    <c:if test="${resObj.retcode eq 500 }"></c:if>
+        <img class="position" src="/images/error.png">
     </div>
 
 </body>

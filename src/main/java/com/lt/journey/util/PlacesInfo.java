@@ -59,6 +59,7 @@ public class PlacesInfo {
 	}
 	
 	public static ResObj getPlacesSingleInfo(PlacesParam placesParam) {
+		ResObj resObj = new ResObj();
 		StringBuffer param = new StringBuffer();
 		param.append("apikey=" + apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(placesParam);
@@ -69,9 +70,13 @@ public class PlacesInfo {
 		}
 		String ret = HttpRequest.sendGet(url, param.toString());
 		JSONObject dataObj = JSON.parseObject(ret);
+		String retcode = dataObj.getString("retcode");
+		if (retcode.equals("100002")) {
+			resObj.setRetcode("100");
+			return resObj;
+		}
 		JSONArray placesList = dataObj.getJSONArray("data");
 
-		ResObj resObj = new ResObj();
 		for (Object obj_ : placesList) {
 			if (obj_ instanceof JSONObject) {
 				JSONObject obj = (JSONObject) obj_;

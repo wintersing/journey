@@ -67,7 +67,7 @@ public class HotelInfo {
 				urlParam += "&" + key + "=" + map.get(key);
 			}
 		}
-		urlParam += "&pageToken" + pageToken;
+		urlParam += "&pageToken=" + pageToken;
 
 		ResObj resObj = new ResObj();
 		resObj.setDataList(hotelList);

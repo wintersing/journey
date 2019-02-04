@@ -248,8 +248,8 @@
 								</ul>
 							</c:when>
 							<c:otherwise>
-								<ul>
-									<!--<li id="toLeft"><a href="${resObj.reqURI }?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken-2 }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">&lt;</a></li>
+								<!--<ul>
+									<li id="toLeft"><a href="${resObj.reqURI }?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken-2 }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">&lt;</a></li>
 									
 									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken-1 }">
 										<li id="li-${j }"><a href="${resObj.reqURI}?city=${resObj.hotelParam.city}&pageToken=${j }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">${j }</a></li>
@@ -257,10 +257,14 @@
 									
 									<c:if test="${resObj.hasNext == '1' }">
 										<li id="li-${resObj.pageToken }"><a href="${resObj.reqURI}?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">${resObj.pageToken }</a></li>
-									</c:if>-->
+									</c:if>
 									
 									<li id="toRight"><a href="${resObj.reqURI}?${resObj.param }">&gt;</a></li>
-								</ul>
+								</ul>-->
+								<div class="form-group"><a href="${resObj.reqURI}?${resObj.param }">
+									<input type="submit" value="下一页"
+										class="btn btn-primary py-3 px-5"></a>
+								</div>
 							</c:otherwise>
 						</c:choose>
 						</div>
