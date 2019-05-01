@@ -1,7 +1,7 @@
 package com.lt.journey.util;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Properties;
 
 import org.junit.Test;
 import org.springframework.ui.Model;
@@ -18,9 +18,10 @@ import com.lt.journey.model.BlogParam;
 
 public class BlogInfo {
 
-	private static String path = "src/main/resources/apikey.properties";
-	private static String url = CommonsUtils.getProperties(path, "Blog_Url");
-	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
+	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+	
+	private static final String url = propertiesAll.getProperty("Blog_Url");
+	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
 
 	public static <T> List<T> getBlogInfo(BlogParam blogParam, Model model, Class<T> clazz) throws MessageException {
 		//拼接参数

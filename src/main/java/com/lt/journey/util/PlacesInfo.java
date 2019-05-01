@@ -2,6 +2,7 @@ package com.lt.journey.util;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.junit.Test;
 import org.springframework.ui.Model;
@@ -20,9 +21,10 @@ import com.lt.journey.model.PlacesParam;
 //@ContextConfiguration(locations = { "classpath*:spring-mybatis.xml" })
 public class PlacesInfo {
 
-	private static String path = "src/main/resources/apikey.properties";
-	private static String url = CommonsUtils.getProperties(path, "Journey_Url");
-	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
+	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+
+	private static final String url = propertiesAll.getProperty("Journey_Url");
+	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
 
 	
 	public static List<Places> getPlacesInfo(PlacesParam placesParam, Model model) throws MessageException {

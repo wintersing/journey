@@ -78,6 +78,7 @@ public class CommonsUtils {
 	}
 
 	/**
+	 *获取 properties中一个属性
 	 * 使用java.util.Properties类的load()方法加载properties文件
 	 */
 	public static String getProperties(String path, String attr) {
@@ -92,6 +93,33 @@ public class CommonsUtils {
 			prop.load(new InputStreamReader(inputStream, "UTF-8")); // 加载格式化后的流
 
 			return prop.getProperty(attr);
+
+		} catch (FileNotFoundException e) {
+			System.out.println("properties文件路径有误！");
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	/**
+	 *获取 properties中所有属性
+	 * 使用java.util.Properties类的load()方法加载properties文件
+	 */
+	public static Properties getPropertiesAll(String path) {
+		try {
+			// 获取文件流（方法1或2均可）
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(new File(path))); // 方法1
+			// InputStream inputStream =
+			// Thread.currentThread().getContextClassLoader().getResourceAsStream("jdbc.properties");
+			// //方法2
+			Properties prop = new Properties();
+
+			prop.load(new InputStreamReader(inputStream, "UTF-8")); // 加载格式化后的流
+
+			return prop;
 
 		} catch (FileNotFoundException e) {
 			System.out.println("properties文件路径有误！");

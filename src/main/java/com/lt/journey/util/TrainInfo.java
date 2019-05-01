@@ -1,6 +1,7 @@
 package com.lt.journey.util;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Test;
 import org.springframework.ui.Model;
@@ -15,8 +16,8 @@ import com.lt.journey.model.TrainParam;
 
 public class TrainInfo {
 
-	private static String path = "src/main/resources/apikey.properties";
-	private static String url = CommonsUtils.getProperties(path, "Train_Url");
+	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+	private static final String url = propertiesAll.getProperty("Train_Url");
 
 	/**
 	 * @param trainParam

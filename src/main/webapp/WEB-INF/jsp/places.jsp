@@ -173,7 +173,7 @@
 												<p class="days openinghours">开放时间：${placesItem.openingHours }</p>
 												<hr>
 												<p class="bottom-area d-flex">
-													<span><i class="icon-map-o"></i>${placesItem.city }</span>
+													<span><i class="icon-map-o"></i><span style="padding-left: 6px;">${placesItem.city }</span></span>
 													<span class="ml-auto"><a href="#">发现</a></span>
 												</p>
 											</div>

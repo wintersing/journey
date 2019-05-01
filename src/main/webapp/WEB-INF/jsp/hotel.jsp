@@ -212,8 +212,8 @@
 									<p class="hotel-des">${hotelItem.description }</p>
 									<hr>
 									<p class="bottom-area d-flex">
-										<span><i class="icon-map-o"></i>${hotelItem.city },${hotelItem.district }</span> <span
-											class="ml-auto"><a href="#">预定</a></span>
+										<span><i class="icon-map-o"></i><span style="padding-left: 5px;">${hotelItem.city },${hotelItem.district }</span></span> 
+										<span class="ml-auto"><a href="#">预定</a></span>
 									</p>
 								</div>
 							</div>

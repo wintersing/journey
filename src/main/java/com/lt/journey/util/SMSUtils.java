@@ -3,6 +3,7 @@ package com.lt.journey.util;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,12 +25,13 @@ import com.lt.commons.utils.CommonsUtils;
  */
 public class SMSUtils {
 
-	private static String path = "src/main/resources/apikey.properties";
-	private static final String NONCE = CommonsUtils.getProperties(path, "SMS_NONCE");
-	private static final String APP_SECRET = CommonsUtils.getProperties(path, "SMS_APP_SECRET");
-	private static final String APP_KEY = CommonsUtils.getProperties(path, "SMS_APP_KEY");
-	private static final String templateId = CommonsUtils.getProperties(path, "SMS_templateId");
-	private static final String url = CommonsUtils.getProperties(path, "SMS_Url");
+	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+
+	private static final String NONCE = propertiesAll.getProperty("SMS_NONCE");
+	private static final String APP_SECRET = propertiesAll.getProperty("SMS_APP_SECRET");
+	private static final String APP_KEY = propertiesAll.getProperty("SMS_APP_KEY");
+	private static final String templateId = propertiesAll.getProperty("SMS_templateId");
+	private static final String url = propertiesAll.getProperty("SMS_Url");
 
 	/** 
 	 * @param mobile 手机号码

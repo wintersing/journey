@@ -1,6 +1,7 @@
 package com.lt.journey.util;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.Test;
 
@@ -10,11 +11,11 @@ import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.News;
 
 public class NewsInfo {
-
-	private static String path = "src/main/resources/apikey.properties";
-	private static String url = CommonsUtils.getProperties(path, "News_Url");
-	private static String key = CommonsUtils.getProperties(path, "News_key");
-	private static String type = CommonsUtils.getProperties(path, "News_type");
+	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+	
+	private static final String url = propertiesAll.getProperty("News_Url");
+	private static final String key = propertiesAll.getProperty("News_key");
+	private static final String type = propertiesAll.getProperty("News_type");
 //	top(头条),
 //	shehui(社会),
 //	guonei(国内),
