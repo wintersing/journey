@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
+import com.lt.journey.model.News;
 import com.lt.journey.service.HotelService;
+import com.lt.journey.service.NewsService;
 import com.lt.journey.util.HotelInfo;
 
 @Controller
@@ -25,17 +27,27 @@ public class HotelController {
 
 	@Autowired
 	private HotelService hotelService;
- 
+	
+	@Autowired
+	private NewsService newsService;
+	
 	@RequestMapping("/hotel")
 	public String hotelView(Model model, String pageToken,HttpServletRequest req) {
 
 		if (pageToken == null || pageToken == "") {
 			pageToken = "1";
 		} 
+		
+		//酒店
 		List<Hotel> hotelList = hotelService.findHotelRecommend("2", (Integer.parseInt(pageToken)-1)*pageSize, pageSize);
+		model.addAttribute(hotelList);
+
+		//旅游新闻资讯
+		List<News> newsList = newsService.findNewsRecommend("1", (Integer.parseInt(pageToken)-1)*pageSize, pageSize);
+		model.addAttribute(newsList);
+
 		int count = hotelService.findHotelCount();
 		
-		model.addAttribute(hotelList);
 		model.addAttribute("pageToken", pageToken);
 		if (count > pageSize * Integer.parseInt(pageToken)) {
 			model.addAttribute("hasNext", "1");
@@ -44,6 +56,7 @@ public class HotelController {
 		}
 
 		model.addAttribute("reqURI", req.getRequestURI());
+		
 		
 		return "hotel";
 	}

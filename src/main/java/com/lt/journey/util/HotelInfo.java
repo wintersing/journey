@@ -37,7 +37,7 @@ public class HotelInfo {
 		String dataStr = HttpRequest.sendGet(url, param.toString());
 //		System.out.println(dataStr);
 		JSONObject dataObj = JSON.parseObject(dataStr);
-		String hotelListStr = dataObj.getJSONArray("data") + "";
+		String hotelListStr = dataObj.getJSONArray("data").toString();
 
 		List<T> hotelList = JSONObject.parseArray(hotelListStr, clazz);
 

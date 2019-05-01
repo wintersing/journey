@@ -4,13 +4,9 @@ import lombok.Data;
 
 @Data
 public class News {
-	private String uniquekey;
+	private String id;
 	private String title;
-	private String date;
-	private String category;
-	private String author_name;
 	private String url;
-	private String thumbnail_pic_s;
-	private String thumbnail_pic_s02;
-	private String thumbnail_pic_s03;
+	private String catLabel2;
+	private String recommend;
 }

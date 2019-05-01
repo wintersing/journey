@@ -3,7 +3,6 @@ package com.lt.journey.util;
 import java.util.List;
 import java.util.Properties;
 
-import org.junit.Test;
 import org.springframework.ui.Model;
 
 import com.alibaba.fastjson.JSON;
@@ -73,8 +72,4 @@ public class TrainInfo {
 		return trainList;
 	}
 
-	@Test
-	public void name() {
-		System.out.println(Math.ceil(4.0));
-	}
 }

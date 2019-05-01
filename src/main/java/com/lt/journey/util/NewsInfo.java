@@ -3,43 +3,35 @@ package com.lt.journey.util;
 import java.util.List;
 import java.util.Properties;
 
-import org.junit.Test;
-
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.News;
+import com.lt.journey.model.NewsParam;
 
 public class NewsInfo {
 	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
 	
 	private static final String url = propertiesAll.getProperty("News_Url");
-	private static final String key = propertiesAll.getProperty("News_key");
-	private static final String type = propertiesAll.getProperty("News_type");
-//	top(头条),
-//	shehui(社会),
-//	guonei(国内),
-//	guoji(国际),
-//	yule(娱乐),
-//	tiyu(体育)
-//	junshi(军事),
-//	keji(科技),
-//	caijing(财经),
-//	shishang(时尚)
+	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
 
-	public static List<News> getNewsInfo() {
-		String param = "key=" + key + "&type=" + type;
-		String dataStr = HttpRequest.sendGet(url, param);
-		JSONObject dataObj = JSONObject.parseObject(dataStr);
-		String newsListStr = dataObj.getJSONObject("result").getJSONArray("data") + "";
+	public static List<News> getNewsInfo(NewsParam newsParam) {
+		StringBuffer param = new StringBuffer();
+		param.append("apikey=").append(apikey).append("&size=").append(newsParam.getSize())
+		.append("&catLabel2=").append(newsParam.getCatLabel2()).append("&publishDateRange=")
+		.append(newsParam.getPublishDateRange()).append("&createDateRange=").append(newsParam.getCreateDateRange());
+		if (newsParam.getPageToken_news() != null) {
+			param.append("&pageToken=").append(newsParam.getPageToken_news());
+		}
+		//发送get请求
+		String ret = HttpRequest.sendGet(url, param.toString());
+		//处理返回数据
+		JSONObject dataObj = JSON.parseObject(ret);
+		String newsListStr = dataObj.getJSONArray("data").toString();
 		List<News> newsList = JSONObject.parseArray(newsListStr, News.class);
+//		System.out.println(newsList);
 		return newsList;
-	}
-
-	@Test
-	public void name() {
-		List<News> newsInfo = getNewsInfo();
-		System.out.println(newsInfo);
 	}
 
 }

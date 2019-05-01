@@ -41,13 +41,15 @@ public class PlacesController {
 		if (pageToken != null && pageToken != "") {
 			page = Integer.parseInt(pageToken);
 		}
+		//景点
 		List<Places> placesList = placesService.findPlacesRecommend("2", (page - 1) * pageSize, pageSize);
-		int count = placesService.findCount("2");
-		List<Blog> blogList = blogService.findBlog("2", (page - 1) * pageSize_blog, pageSize_blog);
-		
 		model.addAttribute(placesList);
+		//游记
+		List<Blog> blogList = blogService.findBlog("2", (page - 1) * pageSize_blog, pageSize_blog);
 		model.addAttribute(blogList);
+		
 		model.addAttribute("pageToken", page + 1 + "");
+		int count = placesService.findCount("2");
 		if (count > pageSize * page) {
 			model.addAttribute("hasNext", "1");
 		} else {
