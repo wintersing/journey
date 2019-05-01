@@ -3,13 +3,13 @@ package com.lt.journey.util;
 import java.util.List;
 
 import org.junit.Test;
+import org.springframework.ui.Model;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
-import com.lt.journey.model.ResObj;
 import com.lt.journey.model.Train;
 import com.lt.journey.model.TrainParam;
 
@@ -23,30 +23,29 @@ public class TrainInfo {
 	 * @param isCount
 	 * @return
 	 */
-	public static ResObj getTrainInfo(TrainParam trainParam) {
-		String param = "r=train/trainTicket/getTickets";
-		param += "&primary[departureDate]=" + trainParam.getDepartureDate();
-		param += "&primary[departureCityCode]=" + trainParam.getDepartureCityCode();
-		param += "&primary[departureCityName]=" + trainParam.getDepartureCityName();
-		param += "&primary[arrivalCityCode]=" + trainParam.getArrivalCityCode();
-		param += "&primary[arrivalCityName]=" + trainParam.getArrivalCityName();
-		param += "&start=" + trainParam.getStart();
-		param += "&limit=" + trainParam.getLimit();
-		String dataStr = HttpRequest.sendGet(url, param);
+	public static List<Train> getTrainInfo(TrainParam trainParam, Model model) {
+		StringBuffer param = new StringBuffer();
+		param.append("r=train/trainTicket/getTickets");
+		param.append("&primary[departureDate]=").append(trainParam.getDepartureDate());
+		param.append("&primary[departureCityCode]=").append(trainParam.getDepartureCityCode());
+		param.append("&primary[departureCityName]=").append(trainParam.getDepartureCityName());
+		param.append("&primary[arrivalCityCode]=").append(trainParam.getArrivalCityCode());
+		param.append("&primary[arrivalCityName]=").append(trainParam.getArrivalCityName());
+		param.append("&start=").append(trainParam.getStart());
+		param.append("&limit=").append(trainParam.getLimit());
+		String dataStr = HttpRequest.sendGet(url, param.toString());
 		
 		JSONObject dataObj = JSON.parseObject(dataStr);
 		
 		JSONObject trainObj = dataObj.getJSONObject("data");
 		
-		ResObj resObj = new ResObj();
-		
 		if (trainParam.getLimit() == 0) {
 			Integer count = trainObj.getInteger("count");
 			Integer maxPage = (int) Math.ceil(count/10.0);
 			trainParam.setMaxPage(maxPage);
-			resObj.setTrainParam(trainParam);
+//			model.addAttribute(trainParam);
 			if (count == 0) {
-				return resObj;
+				return null;
 			}
 		}
 		JSONArray trainObjList = trainObj.getJSONArray("list");
@@ -66,9 +65,11 @@ public class TrainInfo {
 		} else {
 			trainList = JSONObject.parseArray(trainObjList+"", Train.class);
 		}
-		resObj.setDataList(trainList);
-		resObj.setTrainParam(trainParam);
-		return resObj;
+		model.addAttribute("trainList", trainList);
+		model.addAttribute("trainParam", trainParam);
+//		resObj.setDataList(trainList);
+//		resObj.setTrainParam(trainParam);
+		return trainList;
 	}
 
 	@Test

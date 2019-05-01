@@ -4,10 +4,10 @@
 <mapper namespace="com.lt.journey.dao.HotelDao">
 	<insert id="addHotel" parameterType="java.util.List">
 		INSERT IGNORE INTO hotel
-		(id,brandId,brandName,
+		(id,brandName,
 		businessDistrict,geoPointID,openingHours,
 		commentCount,rating,tags,
-		facilities,infrastructures,goodTagDist,
+		facilities,infrastructures,
 		assistServices,city,description,
 		price,level,minPrice,
 		telephones,url,district,
@@ -18,7 +18,6 @@
 		<foreach collection="list" item="hotelDes" separator=",">
 			(
 			#{hotelDes.id},
-			#{hotelDes.brandId},
 			#{hotelDes.brandName},
 			#{hotelDes.businessDistrict},
 			(SELECT
@@ -34,7 +33,6 @@
 			#{hotelDes.tags},
 			#{hotelDes.facilities},
 			#{hotelDes.infrastructures},
-			#{hotelDes.goodTagDist},
 			#{hotelDes.assistServices},
 			#{hotelDes.city},
 			#{hotelDes.description},

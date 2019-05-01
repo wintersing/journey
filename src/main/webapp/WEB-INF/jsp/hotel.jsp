@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -78,11 +79,11 @@
 							<div class="fields">
 								<div class="form-group">
 									<input name="city" type="text" class="form-control"
-										placeholder="请输入您要所搜的城市">
+										placeholder="请输入您要所搜的城市" value="${hotelParam.city }">
 								</div>
 								<div class="form-group">
 									<input name="brandName" type="text" class="form-control"
-										placeholder="请输入您要所搜的品牌">
+										placeholder="请输入您要所搜的品牌" value="${hotelParam.brandName }">
 								</div>
 								<div class="form-group">
 									<div class="select-wrap one-third">
@@ -91,12 +92,12 @@
 										</div>
 										<select name="level" class="form-control">
 											<option value>请选择酒店星级</option>
-											<option value="五星级/豪华">五星级/豪华</option>
-											<option value="四星级/高档">四星级/高档</option>
-											<option value="三星级/舒适">三星级/舒适</option>
-											<option value="二星级/经济">二星级/经济</option>
-											<option value="客栈/公寓">客栈/公寓</option>
-											<option value="其他">其他</option>
+											<option id="level-1" value="五星级/豪华">五星级/豪华</option>
+											<option id="level-2" value="四星级/高档">四星级/高档</option>
+											<option id="level-3" value="三星级/舒适">三星级/舒适</option>
+											<option id="level-4" value="二星级/经济">二星级/经济</option>
+											<option id="level-5" value="客栈/公寓">客栈/公寓</option>
+											<option id="level-6" value="其他">其他</option>
 										</select>
 									</div>
 								</div>
@@ -157,13 +158,14 @@
 					</div>
 				</div>
 				<!-- END-->
+
 				<div class="col-lg-9">
 					<div class="row">
-					<c:forEach var="hotelItem" items="${resObj.dataList }">
+					<c:forEach var="hotelItem" items="${hotelList }" begin="0" end="${fn:length(hotelList)}">
 						<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 							<div class="destination">
 							<c:choose>
-								<c:when test="${resObj.reqURI == '/hotel'}">
+								<c:when test="${reqURI == '/hotel'}">
 									<a href="/hotel/${hotelItem.id }?recommend=2"
 										class="img img-2 d-flex justify-content-center align-items-center"
 										style="background-image: url(${hotelItem.imageUrls[0] });">
@@ -224,47 +226,36 @@
 					<div class="col text-center">
 						<div class="block-27">
 						<c:choose>
-							<c:when test="${resObj.pageToken-5 <= 0}">
+							<c:when test="${pageToken-5 <= 0}">
 								<c:set var="begin_" value="1" scope="page"/>
 							</c:when>
 							<c:otherwise>
-								<c:set var="begin_" value="${resObj.pageToken-5}" scope="page"/>
+								<c:set var="begin_" value="${pageToken-5}" scope="page"/>
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${resObj.reqURI == '/hotel'}">
+							<c:when test="${reqURI == '/hotel'}">
 								<ul>
-									<li id="toLeft"><a href="${resObj.reqURI }?pageToken=${resObj.hotelParam.pageToken - 1 }">&lt;</a></li>
+									<li id="toLeft"><a href="${reqURI }?pageToken=${pageToken-1 }">&lt;</a></li>
 									
-									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken }">
-										<li id="li-${j }"><a href="${resObj.reqURI}?pageToken=${j }">${j }</a></li>
+									<c:forEach var="j" begin="${begin_ }" end="${pageToken }">
+										<li id="li-${j }"><a href="${reqURI}?pageToken=${j }">${j }</a></li>
 									</c:forEach>
 									
-									<c:if test="${resObj.hasNext == '1' }">
-										<li id="li-${resObj.pageToken + 1 }"><a href="${resObj.reqURI}?pageToken=${resObj.pageToken+1 }">${resObj.pageToken+1 }</a></li>
+									<c:if test="${hasNext == 1 }">
+										<li id="li-${pageToken + 1 }"><a href="${reqURI}?pageToken=${pageToken+1 }">${pageToken+1 }</a></li>
 									</c:if>
 									
-									<li id="toRight"><a href="${resObj.reqURI}?pageToken=${resObj.pageToken + 1 }">&gt;</a></li>
+									<li id="toRight"><a href="${reqURI }?pageToken=${pageToken + 1 }">&gt;</a></li>
 								</ul>
 							</c:when>
 							<c:otherwise>
-								<!--<ul>
-									<li id="toLeft"><a href="${resObj.reqURI }?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken-2 }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">&lt;</a></li>
-									
-									<c:forEach var="j" begin="${begin_ }" end="${resObj.pageToken-1 }">
-										<li id="li-${j }"><a href="${resObj.reqURI}?city=${resObj.hotelParam.city}&pageToken=${j }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">${j }</a></li>
-									</c:forEach>
-									
-									<c:if test="${resObj.hasNext == '1' }">
-										<li id="li-${resObj.pageToken }"><a href="${resObj.reqURI}?city=${resObj.hotelParam.city}&pageToken=${resObj.hotelParam.pageToken }&hasNext=${resObj.hasNext}&checkInDate=${resObj.hotelParam.checkInDate }&checkOutDate=${resObj.hotelParam.checkOutDate }">${resObj.pageToken }</a></li>
-									</c:if>
-									
-									<li id="toRight"><a href="${resObj.reqURI}?${resObj.param }">&gt;</a></li>
-								</ul>-->
-								<div class="form-group"><a href="${resObj.reqURI}?${resObj.param }">
+							<c:if test="${hasNext eq 1 }">
+								<div class="form-group"><a href="${reqURI }?${urlParam }">
 									<input type="submit" value="下一页"
 										class="btn btn-primary py-3 px-5"></a>
 								</div>
+							</c:if>
 							</c:otherwise>
 						</c:choose>
 						</div>
@@ -308,14 +299,28 @@
 	<script src="/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){ 
-		   $("#li-${resObj.pageToken }").prop("class","active");
-			if ("${resObj.pageToken }" == "1") {
+			$("#li-${pageToken }").prop("class","active");
+			if ("${pageToken }" == "1") {
 				$("#li-1 > a").prop("class","entry");
 				$("#toLeft > a").prop("class","entry");
 			}
-			if ("${resObj.hasNext }" == "0") {
+			if ("${hasNext }" == "0") {
 				$("#toRight > a").prop("class","entry");
-				$("#li-${resObj.pageToken } > a").prop("class","entry");
+				$("#li-${pageToken } > a").prop("class","entry");
+			}
+			
+			if ("${hotelParam.level }" == "五星级/豪华") {
+				$("#level-1").prop("selected","selected");
+			}else if ("${hotelParam.level }" == "四星级/高档") {
+				$("#level-2").prop("selected","selected");
+			}else if ("${hotelParam.level }" == "三星级/舒适") {
+				$("#level-3").prop("selected","selected");
+			}else if ("${hotelParam.level }" == "二星级/经济") {
+				$("#level-4").prop("selected","selected");
+			}else if ("${hotelParam.level }" == "客栈/公寓") {
+				$("#level-5").prop("selected","selected");
+			}else if ("${hotelParam.level }" == "其他") {
+				$("#level-6").prop("selected","selected");
 			}
 		}); 
 		

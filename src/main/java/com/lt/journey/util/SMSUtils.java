@@ -18,7 +18,6 @@ import org.junit.Test;
 
 import com.lt.commons.utils.CommonsUtils;
 
-import net.sf.json.JSONObject;
 
 /**
  * 短信相关的工具类
@@ -70,11 +69,12 @@ public class SMSUtils {
 			HttpResponse httpResponse = closeableHttpClient.execute(httpPost);
 			String ret = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
 
-			String code = JSONObject.fromObject(ret).getString("obj");
+//			String code = JSONObject.fromObject(ret).getString("obj");
 
 			System.out.println(ret);
 
-			return code;
+//			return code;
+			return null;
 
 		} catch (Exception e) {
 			// TODO: handle exception

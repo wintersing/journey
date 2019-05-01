@@ -53,7 +53,7 @@
 					data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="index.html">Home</a></span> <span>Places</span>
+						<span class="mr-2"><a href="">Home</a></span> <span>Places</span>
 					</p>
 					<h1 class="mb-3 bread"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">景点</h1>
@@ -72,23 +72,8 @@
 							<div class="fields">
 								<div class="form-group">
 									<input name="cityName" type="text" class="form-control"
-										value="${resObj.placesParam.cityName }" placeholder="请输入您要所搜的城市">
+										value="${placesParam.cityName }" placeholder="请输入您要所搜的城市">
 								</div>
-								<c:choose>
-									<c:when test="${not empty resObj.placesParam.cityid}">
-										<input name="pageToken" type="hidden"
-											value="${resObj.pageToken }">
-									</c:when>
-									<c:otherwise>
-										<input name="pageToken" type="hidden" value="1">
-									</c:otherwise>
-								</c:choose>
-								<c:if test="${resObj.hasNext == '1' }">
-									<input name="hasNext" type="hidden" value="1">
-								</c:if>
-								<c:if test="${resObj.hasNext == '0' }">
-									<input name="hasNext" type="hidden" value="0">
-								</c:if>
 								<div class="form-group">
 									<input type="submit" value="Search"
 										class="btn btn-primary py-3 px-5">
@@ -97,53 +82,39 @@
 						</form>
 					</div>
 					<div class="sidebar-wrap ftco-animate">
-						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
+						<h3 style="color: darkgoldenrod;" class="heading mb-4">旅游日记</h3>
+						<c:forEach var="blogItem" items="${blogList }">
+						<div class="block-21 mb-4 d-flex">
+							<a class="blog-img mr-4" style="background-image: url(${blogItem.avatarUrl });"></a>
 
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
+							<div class="text">
+							<c:choose>
+								<c:when test="${reqURI eq '/places' }">
+									<h3 class="heading"><a href="/blog/${blogItem.cityid }/${blogItem.id }/${pageToken-1 }?recommend=2">${blogItem.title }</a></h3>
+								</c:when>
+								<c:otherwise>
+									<h3 class="heading"><a href="/blog/${blogItem.cityid }/${blogItem.id }/${pageToken-1 }">${blogItem.title }</a></h3>
+								</c:otherwise>
+							</c:choose>
+								</h3>
+								<div class="meta">
+									<div><a href="#"><span class="icon-calendar"></span>${fn:substring(blogItem.publishDateStr,0,10) }</a></div>
+									<div><a href="#"><span class="icon-map-marker"></span> ${blogItem.city }</a></div>
+								</div>
+							</div>
+						</div>
+						</c:forEach>
 					</div>
-				</div>
+					</div>
 				<!-- END-->
 				<div class="col-lg-9">
 							<div class="row">
 								<c:forEach var="placesItem" begin="0"
-									end="${fn:length(resObj.dataList)}" items="${resObj.dataList }">
+									end="${fn:length(placesList)}" items="${placesList }">
 									<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 										<div class="destination">
 											<c:choose>
-												<c:when test="${resObj.reqURI == '/places' }">
+												<c:when test="${reqURI == '/places' }">
 													<a href="/places/${placesItem.id }?recommend=2"
 														class="img img-2 d-flex justify-content-center align-items-center"
 														style="background-image: url(${placesItem.imageUrls[0] });">
@@ -155,7 +126,7 @@
 												</c:when>
 												<c:otherwise>
 													<a
-														href="/places/${placesItem.id }?cityid=${resObj.placesParam.cityid }&sort=${resObj.placesParam.sort }"
+														href="/places/${placesItem.id }?cityid=${placesParam.cityid }&sort=${placesParam.sort }"
 														class="img img-2 d-flex justify-content-center align-items-center"
 														style="background-image: url(${placesItem.imageUrls[0] });">
 														<div
@@ -214,28 +185,27 @@
 								<div class="col text-center">
 									<div class="block-27">
 										<c:choose>
-											<c:when test="${resObj.pageToken-5 <= 0}">
+											<c:when test="${pageToken-5 <= 0}">
 												<c:set var="begin_" value="1" scope="page" />
 											</c:when>
 											<c:otherwise>
-												<c:set var="begin_" value="${resObj.pageToken-5}"
+												<c:set var="begin_" value="${pageToken-5}"
 													scope="page" />
 											</c:otherwise>
 										</c:choose>
 										<ul>
 											<li id="toLeft"><a
-												href="${resObj.reqURI }?cityid=${resObj.placesParam.cityid}&pageToken=${resObj.pageToken-2 }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">&lt;</a></li>
-											<c:forEach var="j" begin="${begin_ }"
-												end="${resObj.pageToken-1 }">
+												href="${reqURI }?cityid=${placesParam.cityid}&pageToken=${pageToken-2 }&hasNext=${hasNext}&sort=${placesParam.sort}">&lt;</a></li>
+											<c:forEach var="j" begin="${begin_ }" end="${pageToken-1 }">
 												<li id="li-${j }"><a
-													href="${resObj.reqURI}?cityid=${resObj.placesParam.cityid}&pageToken=${j }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">${j }</a></li>
+													href="${reqURI}?cityid=${placesParam.cityid}&pageToken=${j }&hasNext=${hasNext}&sort=${placesParam.sort}">${j }</a></li>
 											</c:forEach>
-											<c:if test="${resObj.hasNext == '1' }">
-												<li id="li-${resObj.pageToken }"><a
-													href="${resObj.reqURI}?cityid=${resObj.placesParam.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">${resObj.pageToken }</a></li>
+											<c:if test="${hasNext == '1' }">
+												<li id="li-${pageToken }"><a
+													href="${reqURI}?cityid=${placesParam.cityid}&pageToken=${pageToken }&hasNext=${hasNext}&sort=${placesParam.sort}">${pageToken }</a></li>
 											</c:if>
 											<li id="toRight"><a
-												href="${resObj.reqURI}?cityid=${resObj.placesParam.cityid}&pageToken=${resObj.pageToken }&hasNext=${resObj.hasNext}&sort=${resObj.placesParam.sort}">&gt;</a></li>
+												href="${reqURI}?cityid=${placesParam.cityid}&pageToken=${pageToken }&hasNext=${hasNext}&sort=${placesParam.sort}">&gt;</a></li>
 										</ul>
 									</div>
 								</div>
@@ -277,14 +247,14 @@
 	<script src="/js/main.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#li-${resObj.pageToken-1 }").prop("class", "active");
-			if ("${resObj.pageToken-1 }" == "1") {
+			$("#li-${pageToken-1 }").prop("class", "active");
+			if ("${pageToken-1 }" == "1") {
 				$("#li-1 > a").prop("class", "entry");
 				$("#toLeft > a").prop("class", "entry");
 			}
-			if ("${resObj.hasNext }" == "0") {
+			if ("${hasNext }" == "0") {
 				$("#toRight > a").prop("class", "entry");
-				$("#li-${resObj.pageToken-1 } > a").prop("class", "entry");
+				$("#li-${pageToken-1 } > a").prop("class", "entry");
 			}
 		});
 	</script>

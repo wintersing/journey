@@ -1,6 +1,7 @@
 package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lt.commons.utils.CommonsUtils;
-import com.lt.journey.model.ResObj;
+import com.lt.journey.model.Train;
 import com.lt.journey.model.TrainParam;
 import com.lt.journey.service.TrainService;
 import com.lt.journey.util.TrainInfo;
@@ -44,9 +45,10 @@ public class TrainController {
 		trainParam.setStart((page-1) * trainParam.getLimit());
 
 		// 得到火车余票信息
-		ResObj resObj = TrainInfo.getTrainInfo(trainParam);
+		List<Train> trainList = TrainInfo.getTrainInfo(trainParam, model);
 
-		model.addAttribute(resObj);
+		if (trainList == null) return "msg";
+		
 		return "train";
 	}
 

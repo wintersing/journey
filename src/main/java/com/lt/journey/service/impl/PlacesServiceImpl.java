@@ -54,7 +54,7 @@ public class PlacesServiceImpl implements PlacesService {
 	@Override
 	public PlacesDes findPlaces(String id) {
 		// TODO Auto-generated method stub
-		return placesDao.findPlaces(id);
+		return placesDao.findPlacesDes(id);
 	}
 
 }

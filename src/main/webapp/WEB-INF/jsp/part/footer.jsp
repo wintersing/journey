@@ -8,18 +8,6 @@
 </head>
 <body>
 
-	<section class="ftco-section-parallax">
-		<div class="parallax-img d-flex align-items-center">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-						<h2>人在旅途</h2>
-						<p>人生就像一场旅行，不必在乎目的地，重要的是沿途的风景以及看风景的心情</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	
 	<footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
@@ -27,8 +15,7 @@
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">人在旅途</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-							texts.</p>
+						<p>一个人行走，若是寂寞了，寻一座霓虹灯迷离闪烁，灯红酒绿的城市，登上楼顶，俯视万家灯火，在繁华中体会热闹;若是厌倦了喧嚣，寻一处宁静的幽谷，找寻隐藏在山间的纯净和那“鸟鸣山更幽”的飞鸟。</p>
 						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
 							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
 							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -68,9 +55,9 @@
 						<h2 class="ftco-heading-2">有问题吗？</h2>
 						<div class="block-23 mb-3">
 							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text"> 203假圣山景，旧金山，加利福尼亚州，美国</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+								<li><span class="icon icon-map-marker"></span><span class="text"> 江西省，景德镇市，浮梁县，景德镇陶瓷大学湘湖校区</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+86 15779819842</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">15779819842@163.com</span></a></li>
 							</ul>
 						</div>
 					</div>

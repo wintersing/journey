@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -52,97 +54,35 @@
   <section class="ftco-section bg-light">
     <div class="container">
       <div class="row d-flex">
+      
+      <c:forEach var="blogItem" items="${blogList }" begin="0" end="${fn:length(blogList)}">
         <div class="col-md-4 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-            </a>
+          
+          <c:choose>
+          	<c:when test="${fn:length(blogItem.imageUrls) eq '' }">
+          	 	<a href="blog-single.html" class="block-20" style="background-image: url(${blogItem.imageUrls[0] });">
+	            </a>
+          	</c:when>
+          	<c:otherwise>
+	            <a href="blog-single.html" class="block-20" style="background-image: url(${blogItem.avatarUrl });">
+	            </a>
+          	</c:otherwise>
+          </c:choose>
+            
+            
             <div class="text">
-              <span class="tag">Tips, Travel</span>
-              <h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>
+              <span class="tag">${blogItem.posterScreenName }</span>
+              <h3 class="heading mt-3"><a href="#">${blogItem.title }</a></h3>
               <div class="meta mb-3">
-                <div><a href="#">October 3, 2018</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                <div><a href="#">${blogItem.publishDateStr }</a></div>
+                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> ${blogItem.commentCount }</a></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
-            </a>
-            <div class="text">
-              <span class="tag">Culture</span>
-              <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              <div class="meta mb-3">
-                <div><a href="#">October 3, 2018</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
-            </a>
-            <div class="text">
-              <span class="tag">Tips, Travel</span>
-              <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              <div class="meta mb-3">
-                <div><a href="#">October 3, 2018</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
-            </a>
-            <div class="text">
-              <span class="tag">Tips, Travel</span>
-              <h3 class="heading mt-3"><a href="#">8 Best homestay in Philippines that you don't miss out</a></h3>
-              <div class="meta mb-3">
-                <div><a href="#">October 3, 2018</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_5.jpg');">
-            </a>
-            <div class="text">
-              <span class="tag">Culture</span>
-              <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              <div class="meta mb-3">
-                <div><a href="#">October 3, 2018</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 d-flex ftco-animate">
-          <div class="blog-entry align-self-stretch">
-            <a href="blog-single.html" class="block-20" style="background-image: url('images/image_6.jpg');">
-            </a>
-            <div class="text">
-              <span class="tag">Tips, Travel</span>
-              <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              <div class="meta mb-3">
-                <div><a href="#">October 3, 2018</a></div>
-                <div><a href="#">Admin</a></div>
-                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </c:forEach>
+      
       <div class="row mt-5">
         <div class="col text-center">
           <div class="block-27">

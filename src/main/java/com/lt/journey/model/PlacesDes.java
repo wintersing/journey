@@ -20,8 +20,8 @@ public class PlacesDes {
 	private String price;
 	private Integer commentCount;
 	private GeoPoint geoPoint;
-	private String[] keyValues;		
 	private String recommend = "0";		//是否推荐(1-推荐，0-不推荐)
+	private String[] keyValues;		
 //	private String telephones;
 //	private String district;
 //	private String level;

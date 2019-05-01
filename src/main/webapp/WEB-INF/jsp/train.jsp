@@ -106,13 +106,13 @@ h3, .space {
 								<div class="form-group">
 									<div class="form-field">
 										<input name="departureCityName" type="text"
-											class="form-control" placeholder="出发地">
+											class="form-control" placeholder="出发地" value="${trainParam.departureCityName }">
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="form-field">
 										<input name="arrivalCityName" type="text" class="form-control"
-											placeholder="目的地">
+											placeholder="目的地" value="${trainParam.arrivalCityName }">
 									</div>
 								</div>
 								<input type="hidden" name="page" value="1"> 
@@ -127,7 +127,7 @@ h3, .space {
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input name="departureDate" type="text"
+												<input name="departureDate" type="text" 
 													class="form-control checkin_date" placeholder="出发日期">
 											</div>
 										</div>
@@ -191,7 +191,7 @@ h3, .space {
 				</div>
 				<!-- END-->
 				<c:choose>
-					<c:when test="${not empty resObj }">
+					<c:when test="${not empty trainList }">
 						<div class="col-lg-9">
 							<div class="row list-head">
 								<div class="tab-header">
@@ -244,7 +244,7 @@ h3, .space {
 									</div>
 								</div>
 							</div>
-							<c:forEach var="trainItem" items="${resObj.dataList }">
+							<c:forEach var="trainItem" items="${trainList }">
 								<div class="row list-body">
 									<div class="list">
 										<div class="destination">
@@ -326,8 +326,8 @@ h3, .space {
 							<div class="row mt-5">
 								<div class="col text-center">
 									<div class="block-27">
-										<c:set var="page" value="${resObj.trainParam.page }" />
-										<c:set var="maxPage" value="${resObj.trainParam.maxPage }" />
+										<c:set var="page" value="${trainParam.page }" />
+										<c:set var="maxPage" value="${trainParam.maxPage }" />
 										<c:choose>
 											<c:when test="${maxPage <= 5 }">
 												<c:set var="begin_" value="1" />
@@ -336,40 +336,40 @@ h3, .space {
 											<c:otherwise>
 												<c:set var="allowPage" value="5" />
 												<c:choose>
-													<c:when test="${page - 2 <= 1 && page >= 1  }">
+													<c:when test="${page <= 3 && page >= 1  }">
 														<c:set var="begin_" value="1" />
 														<c:set var="end_" value="${begin_ + allowPage - 1 }" />
 													</c:when>
-													<c:when test="${page + 2 >= maxPage && page <= maxPage }">
+													<c:when test="${page >= maxPage - 2 && page <= maxPage }">
 														<c:set var="end_" value="${maxPage }" />
 														<c:set var="begin_" value="${end_ - (allowPage - 1) }" />
 													</c:when>
 													<c:otherwise>
-														<c:set var="end_" value="${page - 2 }" />
+														<c:set var="begin_" value="${page - 2 }" />
 														<c:set var="end_" value="${page + 2 }" />
 													</c:otherwise>
 												</c:choose>
 											</c:otherwise>
 										</c:choose>
 										<ul>
-											<li id="toLeft"><a href="/searchTrain?
-													departureCityName=${resObj.trainParam.departureCityName }&arrivalCityName=${resObj.trainParam.arrivalCityName }
-													&departureCityCode=${resObj.trainParam.departureCityCode }&arrivalCityCode=${resObj.trainParam.arrivalCityCode }
-													&page=${page-1 }&limit=${resObj.trainParam.limit }&maxPage=${maxPage }
-													&departureDate=${resObj.trainParam.departureDate }">&lt;</a></li>
+											<li id="toLeft"><a href="/train/search?
+													departureCityName=${trainParam.departureCityName }&arrivalCityName=${trainParam.arrivalCityName }
+													&departureCityCode=${trainParam.departureCityCode }&arrivalCityCode=${trainParam.arrivalCityCode }
+													&page=${page-1 }&limit=${trainParam.limit }&maxPage=${maxPage }
+													&departureDate=${trainParam.departureDate }">&lt;</a></li>
 											<c:forEach var="i" begin="${begin_ }" end="${end_ }">
 												<li id="li-${i }"><a
-													href="/searchTrain?
-													departureCityName=${resObj.trainParam.departureCityName }&arrivalCityName=${resObj.trainParam.arrivalCityName }
-													&departureCityCode=${resObj.trainParam.departureCityCode }&arrivalCityCode=${resObj.trainParam.arrivalCityCode }
-													&page=${i }&limit=${resObj.trainParam.limit }&maxPage=${maxPage }
-													&departureDate=${resObj.trainParam.departureDate }">${i }</a></li>
+													href="/train/search?
+													departureCityName=${trainParam.departureCityName }&arrivalCityName=${trainParam.arrivalCityName }
+													&departureCityCode=${trainParam.departureCityCode }&arrivalCityCode=${trainParam.arrivalCityCode }
+													&page=${i }&limit=${trainParam.limit }&maxPage=${maxPage }
+													&departureDate=${trainParam.departureDate }">${i }</a></li>
 											</c:forEach>
-											<li id="toRight"><a href="/searchTrain?
-													departureCityName=${resObj.trainParam.departureCityName }&arrivalCityName=${resObj.trainParam.arrivalCityName }
-													&departureCityCode=${resObj.trainParam.departureCityCode }&arrivalCityCode=${resObj.trainParam.arrivalCityCode }
-													&page=${page+1 }&limit=${resObj.trainParam.limit }&maxPage=${maxPage }
-													&departureDate=${resObj.trainParam.departureDate }">&gt;</a></li>
+											<li id="toRight"><a href="/train/search?
+													departureCityName=${trainParam.departureCityName }&arrivalCityName=${trainParam.arrivalCityName }
+													&departureCityCode=${trainParam.departureCityCode }&arrivalCityCode=${trainParam.arrivalCityCode }
+													&page=${page+1 }&limit=${trainParam.limit }&maxPage=${maxPage }
+													&departureDate=${trainParam.departureDate }">&gt;</a></li>
 										</ul>
 									</div>
 								</div>
@@ -557,7 +557,6 @@ h3, .space {
 
 	<script src="/js/google-map.js"></script>
 	<script src="/js/main.js"></script>
-	<c:if test="${not empty resObj }">
 	<script type="text/javascript">
 		$(document).ready(function(){ 
 		   $("#li-${page }").prop("class","active");
@@ -572,7 +571,6 @@ h3, .space {
 		}); 
 		
 	</script>
-	</c:if>
 </body>
 
 </html>

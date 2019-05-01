@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -11,31 +13,37 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="/css/animate.css">
 
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/css/magnific-popup.css">
 
-  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="/css/aos.css">
 
-  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="/css/ionicons.min.css">
 
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-  <link rel="stylesheet" href="css/flaticon.css">
-  <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/flaticon.css">
+  <link rel="stylesheet" href="/css/icomoon.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <style type="text/css">
+  	.icon{
+  	margin-left: 5px;
+  	}
+  </style>
 </head>
 
 <body>
 
 	<%@ include file="./part/header.jsp" %>
 
-  <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+  <div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_1.jpg');">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
@@ -43,209 +51,59 @@
         <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
           <!-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a
                 href="index.html">Home</a></span> <span>Blog</span></p> -->
-          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Tips &amp; Articles</h1>
+          <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">旅游日记 &amp; 文章</h1>
         </div>
       </div>
     </div>
   </div>
 
-  <section class="ftco-section ftco-degree-bg">
+    <section class="ftco-section ftco-degree-bg">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ftco-animate">
-          <h2 class="mb-3">10 Tips For The Traveler</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam
-            doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente
-            officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis,
-            iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
-          <p>
-            <img src="images/image_7.jpg" alt="" class="img-fluid">
-          </p>
-          <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt
-            doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam
-            incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit.
-            Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-          <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2>
-          <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in.
-            Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore
-            voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui
-            officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-          <p>
-            <img src="images/image_8.jpg" alt="" class="img-fluid">
-          </p>
-          <p>Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos
-            ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit
-            veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus,
-            quibusdam iste enim veniam, modi rem maiores.</p>
-          <p>Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum, quo velit commodi rerum eum quidem
-            pariatur! Quia fuga iste tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro explicabo soluta
-            commodi libero voluptatem similique id quidem? Blanditiis voluptates aperiam non magni. Reprehenderit nobis
-            odit inventore, quia laboriosam harum excepturi ea.</p>
-          <p>Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam ipsam quidem, dolor distinctio similique
-            asperiores voluptas enim, exercitationem ratione aut adipisci modi quod quibusdam iusto, voluptates beatae
-            iure nemo itaque laborum. Consequuntur et pariatur totam fuga eligendi vero dolorum provident.
-            Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus culpa, tenetur recusandae!</p>
-          <p>Voluptas dolores dignissimos dolorum temporibus, autem aliquam ducimus at officia adipisci quasi nemo a
-            perspiciatis provident magni laboriosam repudiandae iure iusto commodi debitis est blanditiis alias laborum
-            sint dolore. Dolores, iure, reprehenderit. Error provident, pariatur cupiditate soluta doloremque aut
-            ratione. Harum voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
-          <div class="tag-widget post-tag-container mb-5 mt-5">
-            <div class="tagcloud">
-              <a href="#" class="tag-cloud-link">Life</a>
-              <a href="#" class="tag-cloud-link">Sport</a>
-              <a href="#" class="tag-cloud-link">Tech</a>
-              <a href="#" class="tag-cloud-link">Travel</a>
-            </div>
-          </div>
-
+          
+          <h2 class="mb-3"><strong id="title"></strong></h2>
           <div class="about-author d-flex p-4 bg-light">
             <div class="bio mr-5">
-              <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+              <img id="avatarUrl" src="" alt="Image placeholder" class="img-fluid mb-4">
             </div>
             <div class="desc">
-              <h3>George Washington</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus
-                voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique,
-                inventore eos fugit cupiditate numquam!</p>
+              <div>
+                <div class="tagcloud">
+                    <h3><span class="icon-person"></span><span id="posterScreenName"></span></h3>
+                    <a class="tag-cloud-link"><span class="icon-favorite"></span><span id="likeCount" class="icon"></span></a>
+                    <a class="tag-cloud-link"><span class="icon-chat"></span><span id="commentCount" class="icon"></span></a>
+                    <a class="tag-cloud-link"><span class="icon-calendar"></span><span id="publishDateStr" class="icon"></span></a>
+                    <a class="tag-cloud-link"><span class="icon-view"></span> <b>阅读量</b>：<span id="viewCount"></span>人</a>
+                  </div>
+                <span></span>
+              </div>
             </div>
           </div>
-
+          
+          <div id="content" style="padding-top: 50px;">
+          </div>
 
           <div class="pt-5 mt-5">
-            <h3 class="mb-5">6 Comments</h3>
+            <h3 class="mb-5">精彩评论</h3>
             <ul class="comment-list">
-              <li class="comment">
-                <div class="vcard bio">
-                  <img src="images/person_1.jpg" alt="Image placeholder">
-                </div>
-                <div class="comment-body">
-                  <h3>John Doe</h3>
-                  <div class="meta">October 03, 2018 at 2:21pm</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                    ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                    impedit necessitatibus, nihil?</p>
-                  <p><a href="#" class="reply">Reply</a></p>
-                </div>
-              </li>
-
-              <li class="comment">
-                <div class="vcard bio">
-                  <img src="images/person_1.jpg" alt="Image placeholder">
-                </div>
-                <div class="comment-body">
-                  <h3>John Doe</h3>
-                  <div class="meta">October 03, 2018 at 2:21pm</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                    ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                    impedit necessitatibus, nihil?</p>
-                  <p><a href="#" class="reply">Reply</a></p>
-                </div>
-
-                <ul class="children">
-                  <li class="comment">
-                    <div class="vcard bio">
-                      <img src="images/person_1.jpg" alt="Image placeholder">
-                    </div>
-                    <div class="comment-body">
-                      <h3>John Doe</h3>
-                      <div class="meta">October 03, 2018 at 2:21pm</div>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                        necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure!
-                        Quam voluptas earum impedit necessitatibus, nihil?</p>
-                      <p><a href="#" class="reply">Reply</a></p>
-                    </div>
-
-
-                    <ul class="children">
-                      <li class="comment">
-                        <div class="vcard bio">
-                          <img src="images/person_1.jpg" alt="Image placeholder">
-                        </div>
-                        <div class="comment-body">
-                          <h3>John Doe</h3>
-                          <div class="meta">October 03, 2018 at 2:21pm</div>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                            necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste
-                            iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                          <p><a href="#" class="reply">Reply</a></p>
-                        </div>
-
-                        <ul class="children">
-                          <li class="comment">
-                            <div class="vcard bio">
-                              <img src="images/person_1.jpg" alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                              <h3>John Doe</h3>
-                              <div class="meta">October 03, 2018 at 2:21pm</div>
-                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste
-                                iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                              <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="comment">
-                <div class="vcard bio">
-                  <img src="images/person_1.jpg" alt="Image placeholder">
-                </div>
-                <div class="comment-body">
-                  <h3>John Doe</h3>
-                  <div class="meta">October 03, 2018 at 2:21pm</div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus,
-                    ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum
-                    impedit necessitatibus, nihil?</p>
-                  <p><a href="#" class="reply">Reply</a></p>
-                </div>
-              </li>
+            	
             </ul>
             <!-- END comment-list -->
 
-            <div class="comment-form-wrap pt-5">
-              <h3 class="mb-5">Leave a comment</h3>
-              <form action="#" class="p-5 bg-light">
-                <div class="form-group">
-                  <label for="name">Name *</label>
-                  <input type="text" class="form-control" id="name">
-                </div>
-                <div class="form-group">
-                  <label for="email">Email *</label>
-                  <input type="email" class="form-control" id="email">
-                </div>
-                <div class="form-group">
-                  <label for="website">Website</label>
-                  <input type="url" class="form-control" id="website">
-                </div>
-
-                <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                  <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                </div>
-
-              </form>
-            </div>
           </div>
 
         </div> <!-- .col-md-8 -->
         <div class="col-md-4 sidebar ftco-animate">
           <div class="sidebar-box">
-            <form action="#" class="search-form">
+            <form id="search-form" action="/places/search" class="search-form">
               <div class="form-group">
-                <span class="icon icon-search"></span>
-                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                <a href="javascript:void(0)" onclick="document.getElementById('search-form').submit();"><span class="icon icon-search"></span></a>
+                <input type="text" name="cityName" class="form-control" placeholder="搜索景点">
               </div>
             </form>
           </div>
-          <div class="sidebar-box ftco-animate">
+          <!-- <div class="sidebar-box ftco-animate">
             <div class="categories">
               <h3>Categories</h3>
               <li><a href="#">Tour <span>(12)</span></a></li>
@@ -255,46 +113,34 @@
               <li><a href="#">Foods <span>(14)</span></a></li>
               <li><a href="#">Travel <span>(140)</span></a></li>
             </div>
-          </div>
+          </div> -->
 
           <div class="sidebar-box ftco-animate">
-            <h3>Recent Blog</h3>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
+            <h3>--旅游日记--</h3>
+            <c:forEach var="blogItem" items="${blogList }">
+				<div class="block-21 mb-4 d-flex">
+					<a class="blog-img mr-4" style="background-image: url(${blogItem.avatarUrl });"></a>
+
+					<div class="text">
+					<c:choose>
+						<c:when test="${reqURI eq '/places' }">
+							<h3 class="heading"><a href="/blog/${blogItem.cityid }/${blogItem.id }/${pageToken-1 }?recommend=2">${blogItem.title }</a></h3>
+						</c:when>
+						<c:otherwise>
+							<h3 class="heading"><a href="/blog/${blogItem.cityid }/${blogItem.id }/${pageToken-1 }">${blogItem.title }</a></h3>
+						</c:otherwise>
+					</c:choose>
+						</h3>
+						<div class="meta">
+							<div><a href="#"><span class="icon-calendar"></span>${fn:substring(blogItem.publishDateStr,0,10) }</a></div>
+							<div><a href="#"><span class="icon-map-marker"></span> ${blogItem.city }</a></div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
           </div>
 
-          <div class="sidebar-box ftco-animate">
+          <!-- <div class="sidebar-box ftco-animate">
             <h3>Tag Cloud</h3>
             <div class="tagcloud">
               <a href="#" class="tag-cloud-link">dish</a>
@@ -306,13 +152,11 @@
               <a href="#" class="tag-cloud-link">desserts</a>
               <a href="#" class="tag-cloud-link">drinks</a>
             </div>
-          </div>
+          </div> -->
 
           <div class="sidebar-box ftco-animate">
-            <h3>Paragraph</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate
-              quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos
-              fugit cupiditate numquam!</p>
+            <h3>旅行记忆</h3>
+            <p>偶尔为街头独特的风景驻足，偶尔因高山流水的美丽停留，偶尔被惊鸿一瞥的美丽吸引;或者走进一条深沉深沉的巷道，期待遇上一位撑着油纸伞，结着忧愁丁香一样的姑娘;或者在春暖花开时，看看花儿冲破北疆漫漫寒冬，妖娆绽放;或者在河边放下一盏写着心愿的河灯，祝愿一切安好。</p>
           </div>
         </div>
 
@@ -320,34 +164,121 @@
     </div>
   </section> <!-- .section -->
 
- <%@ include file="./part/footer.jsp" %>
-
-
-
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.easing.1.3.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/aos.js"></script>
+  <script src="/js/jquery.animateNumber.min.js"></script>
+  <script src="/js/bootstrap-datepicker.js"></script>
+  <script src="/js/scrollax.min.js"></script>
 
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-
+  <script src="/js/main.js"></script>
+  <script>
+    $(document).ready(function () {
+    	$.ajax({
+			url: "/blog/${id }",
+		    method: 'get',  
+		    data:{"recommend":"${recommend }","cityid":"${cityid }","pageToken":"${pageToken}"},
+		    ContentType: "application/x-www-form-urlencoded;charset=utf-8",
+		    dataType: 'json',  
+		    success: function (blogDes) {
+		    	$("#title").html(blogDes.title);
+		    	$("#posterScreenName").html(blogDes.posterScreenName);
+		    	$("#likeCount").html(blogDes.likeCount);
+		    	$("#commentCount").html(blogDes.commentCount);
+		    	$("#publishDateStr").html(blogDes.publishDateStr.substring(0,10));
+		    	$("#viewCount").html(blogDes.viewCount);
+		    	$("#avatarUrl").attr("src",blogDes.avatarUrl);
+		        var str = blogDes.content;
+		        var strArr = str.split('');
+		        var imageUrls = eval("("+blogDes.imageUrls+")")  ;
+		        var contents = "";
+		        $.each(strArr, function (i, content) {
+		        	
+		          content = "<pre style=\"white-space: pre-wrap; word-wrap: break-word;\">" + content + "</pre>";
+		          contents = contents + content;
+		          if (imageUrls != null && i < imageUrls.length) {
+		          	contents = contents + "<img src=\""+imageUrls[i]+"\"></p>";
+				  }
+		        });
+		        $('#content').append(contents);
+			}
+		});
+    	//加载评论
+    	getBlogComment();
+	});
+	var commentPage = 1;
+    $(window).scroll(function() {
+		var scrollTop = $(this).scrollTop();
+		var scrollHeight = $(document).height();
+		var windowHeight = $(this).height();
+		if (scrollTop + windowHeight == scrollHeight) {
+			// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+			if (commentPage > 0) {
+				getBlogComment();
+			}else{
+				return;
+			}
+		}
+	});
+	function getBlogComment() {
+		//var commentPage = $("#commentPage").val();
+		$.ajax({
+			url: '/comment/post/${id }?pageToken='+commentPage,  
+		    method: 'get',  
+		    ContentType: "application/x-www-form-urlencoded;charset=utf-8",
+		    dataType: 'json',  
+		    success: function (ret) {
+				var dataList = "";
+				if (ret.retcode == "100002") {
+					var str ="<li class=\"comment\">"
+						+"<div class=\"comment-body\">"
+							+"<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
+						+"</div>"
+					+"</li>"
+					$('.comment-list').append(str);
+					return;
+				}
+				
+				$.each(ret.data, function (i, comment){
+					var str ="<li class=\"comment\">"
+						+"<div class=\"vcard bio\">"
+							+"<img src=\"\/images\/avatar.jpg\" alt=\"avatar\">"
+						+"</div>"
+						+"<div class=\"comment-body\">"
+						if (comment.commenterScreenName != "") {
+							var str = str +"<h3>"+comment.commenterScreenName+"</h3>"
+						}else{
+							var str = str +"<h3>用户名</h3>"
+						}
+						var str = str +"<p>"+comment.content+"</p>"
+							+"<div class=\"meta\">"+comment.publishDateStr.replace("T", " ")+"</div>"
+						+"</div>"
+					+"</li>"
+					dataList = dataList +str
+				});
+				if (ret.hasNext == true) {
+					commentPage+=1;
+				}else{
+					commentPage = 0;
+				}
+				$('.comment-list').append(dataList);
+			}
+		});
+	}
+  </script>
 </body>
 
 </html>

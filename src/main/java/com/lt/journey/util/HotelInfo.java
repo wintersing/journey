@@ -4,83 +4,99 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.springframework.ui.Model;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
+import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
-import com.lt.journey.model.ResObj;
 
 public class HotelInfo {
 	private static String path = "src/main/resources/apikey.properties";
 	private static String url = CommonsUtils.getProperties(path, "Hotel_Url");
 	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
-	public static ResObj getHotelInfo(HotelParam hotelParam) {
-		String param = "apikey=" + apikey;
+	public static <T> List<T> getHotelInfo(HotelParam hotelParam, Model model, Class<T> clazz) {
+		//拼接参数
+		StringBuffer param = new StringBuffer();
+		param.append("apikey=").append(apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(hotelParam);
 		for (String key : map.keySet()) {
 			if (map.get(key) != "" && map.get(key) != null) {
-				param += "&" + key + "=" + map.get(key);
+				param.append("&").append(key).append("=").append(map.get(key));
 			}
 		}
-		String dataStr = HttpRequest.sendGet(url, param);
+		
+		//处理返回结果
+		String dataStr = HttpRequest.sendGet(url, param.toString());
+//		System.out.println(dataStr);
 		JSONObject dataObj = JSON.parseObject(dataStr);
-//		System.out.println(dataObj);
 		String hotelListStr = dataObj.getJSONArray("data") + "";
 
-		List<HotelDes> hotelList = JSONObject.parseArray(hotelListStr, HotelDes.class);
-//		// 将图片大于100kb的全部删除
-//		List<Integer> remvoeIndex = new ArrayList<Integer>();
-//		String[] imageUrls = null;
-//		for (HotelDes hotelDes : hotelList) {
-//			imageUrls = hotelDes.getImageUrls();
-//			for (int i = 0; i < imageUrls.length; i++) {
-//				long startTime=System.currentTimeMillis(); 
-//				int imgUrlSize = CommonsUtils.getImgUrlSize(imageUrls[i]);
-//				long endTime=System.currentTimeMillis();
-//				System.out.println("程序运行时间： "+(endTime-startTime)+"ms"); 
-//				if (imgUrlSize > 1024 * 100) {
-//					remvoeIndex.add(i);
-//				}
-//			}
-//			if (remvoeIndex.size() > 0) {
-//				List<String> imgList = new ArrayList<String>();
-//				for (int i = 0; i < imageUrls.length; i++) {
-//					if (!remvoeIndex.contains(i)) {
-//						imgList.add(imageUrls[i]);
-//					}
-//				}
-//				String[] imgArr = imgList.toArray(imageUrls);
-//				hotelDes.setImageUrls(imgArr);
-//			} 
-//		}
+		List<T> hotelList = JSONObject.parseArray(hotelListStr, clazz);
 
-		Boolean hasNext = dataObj.getBoolean("hasNext");
 		String pageToken = dataObj.getString("pageToken");
 
-		String urlParam = "";
+		StringBuffer urlParam = new StringBuffer();
+		urlParam.append("pageToken=").append(pageToken);
 		for (String key : map.keySet()) {
-			if (map.get(key) != "" && map.get(key) != null && key != "pageToken") {
-				urlParam += "&" + key + "=" + map.get(key);
+			if (map.get(key) != "" && map.get(key) != null && !key.equals("pageToken")) {
+				urlParam.append("&").append(key).append("=").append(map.get(key));
 			}
 		}
-		urlParam += "&pageToken=" + pageToken;
 
-		ResObj resObj = new ResObj();
-		resObj.setDataList(hotelList);
-		resObj.setPageToken("1");
-		if (hasNext == true) {
-			resObj.setHasNext("1");
-		} else {
-			resObj.setHasNext("0");
+		//将数据放入model中
+		if (model != null) {
+			model.addAttribute("hotelList", hotelList);
+			model.addAttribute("hotelParam", hotelParam);
+			boolean hasNext = dataObj.getBoolean("hasNext"); 
+			if (hasNext == true) {
+				model.addAttribute("hasNext", "1");
+			} else {
+				model.addAttribute("hasNext", "0");
+			}
+			model.addAttribute("urlParam", urlParam);
 		}
-		resObj.setParam(urlParam);
-		return resObj;
+		
+		return hotelList;
 	}
 	
+	public static HotelDes getHotelDesInfo(HotelParam hotelParam) {
+		//拼接参数
+		StringBuffer param = new StringBuffer();
+		param.append("apikey=").append(apikey);
+		Map<String, Object> map = CommonsUtils.beantoMap(hotelParam);
+		for (String key : map.keySet()) {
+			if (map.get(key) != "" && map.get(key) != null) {
+				param.append("&").append(key).append("=").append(map.get(key));
+			}
+		}
+		
+		//处理返回结果
+		String dataStr = HttpRequest.sendGet(url, param.toString());
+		JSONObject dataObj = JSON.parseObject(dataStr);
+//		System.out.println(dataObj);
+		JSONArray hotelList = dataObj.getJSONArray("data");
+		
+		HotelDes hotelDes = null;
+		for (Object obj_ : hotelList) {
+			if (obj_ instanceof JSONObject) {
+				JSONObject obj = (JSONObject) obj_;
+				String id = obj.getString("id");
+				if (hotelParam.getId().equals(id)) {
+					hotelDes = JSONObject.parseObject(obj+"", HotelDes.class);
+//					model.addAttribute(hotelDes);
+					break;
+				}
+			}
+		}
+		
+		return hotelDes;
+	}
 
 	@Test
 	public void name() {//23.40800373，113.39481756
@@ -88,7 +104,7 @@ public class HotelInfo {
 		hotelParam.setLat("23.40800373");
 		hotelParam.setLon("113.39481756");
 		hotelParam.setDistance("5km");
-		getHotelInfo(hotelParam);
+		getHotelInfo(hotelParam, null, Hotel.class);
 //		System.out.println(hotelList);
 	}
 

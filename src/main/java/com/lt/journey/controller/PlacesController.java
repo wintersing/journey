@@ -11,11 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lt.journey.exception.MessageException;
+import com.lt.journey.model.Blog;
+import com.lt.journey.model.BlogParam;
 import com.lt.journey.model.Places;
 import com.lt.journey.model.PlacesDes;
 import com.lt.journey.model.PlacesParam;
-import com.lt.journey.model.ResObj;
+import com.lt.journey.service.BlogService;
 import com.lt.journey.service.PlacesService;
+import com.lt.journey.util.BlogInfo;
 import com.lt.journey.util.PlacesInfo;
 
 @Controller
@@ -24,68 +28,75 @@ public class PlacesController {
 	@Autowired
 	private PlacesService placesService;
 
-	private final int pageSize = 9;
+	@Autowired
+	private BlogService blogService;
+	
+	private static final int pageSize = 9;
+	
+	private static final int pageSize_blog = 9;
 
 	@RequestMapping("/places")
 	public String placesView(Model model, String pageToken, HttpServletRequest req) {
-		ResObj resObj = new ResObj();
 		int page = 1;
 		if (pageToken != null && pageToken != "") {
 			page = Integer.parseInt(pageToken);
 		}
 		List<Places> placesList = placesService.findPlacesRecommend("2", (page - 1) * pageSize, pageSize);
-		resObj.setDataList(placesList);
 		int count = placesService.findCount("2");
+		List<Blog> blogList = blogService.findBlog("2", (page - 1) * pageSize_blog, pageSize_blog);
+		
+		model.addAttribute(placesList);
+		model.addAttribute(blogList);
+		model.addAttribute("pageToken", page + 1 + "");
 		if (count > pageSize * page) {
-			resObj.setHasNext("1");
+			model.addAttribute("hasNext", "1");
 		} else {
-			resObj.setHasNext("0");
+			model.addAttribute("hasNext", "0");
 		}
-		resObj.setPageToken(page + 1 + "");
-		resObj.setReqURI(req.getRequestURI());
-		model.addAttribute(resObj);
+		model.addAttribute("reqURI", req.getRequestURI());
+
 		return "places";
 	}
 
 	@RequestMapping("/places/search")
 	public String searchPlaces(Model model, String cityid, String cityName, String sort, String pageToken,
-			HttpServletRequest req) throws UnsupportedEncodingException {
-		ResObj resObj = null;
+			HttpServletRequest req) throws UnsupportedEncodingException, MessageException {
+		//景点
 		PlacesParam placesParam = new PlacesParam();
 		if (cityid == null) {
 			cityName = new String(cityName.getBytes("ISO-8859-1"), "utf-8");
 			cityid = placesService.findCityidByCityName(cityName);
+			pageToken = "1";
 			
 			if (cityid == null) {
-				resObj = new ResObj();
-				resObj.setRetcode("100");
-				model.addAttribute(resObj);
-				return "msg";
+				// 搜索目标无结果
+				throw new MessageException("Search No Result");
 			}
 		}
 		placesParam.setCityid(cityid);
 		placesParam.setCityName(cityName);
 		placesParam.setSort(sort);
 		placesParam.setPageToken(pageToken);
-		resObj = PlacesInfo.getPlacesInfo(placesParam);
-		if (resObj.getRetcode() != null) {
-			if (resObj.getRetcode().equals("100")) {
-				model.addAttribute(resObj);
-				return "msg";
-			}
-		}
-		
-		resObj.setReqURI(req.getRequestURI());
-		model.addAttribute(resObj);
+		PlacesInfo.getPlacesInfo(placesParam, model);
+
+		//旅游日记
+		BlogParam blogParam = new BlogParam();
+		blogParam.setCityid(cityid);
+		blogParam.setSort("0");
+		blogParam.setPageToken(pageToken);
+		BlogInfo.getBlogInfo(blogParam, model, Blog.class);
+
+		model.addAttribute("reqURI", req.getRequestURI());
 		return "places";
 	}
 
 	@RequestMapping("/places/{id}")
-	public String placesSingle(@PathVariable("id") String id,PlacesParam placesParam, Integer recommend, Model model) {
+	public String placesSingle(@PathVariable("id") String id, PlacesParam placesParam, Integer recommend, Model model) {
 		if (recommend == null) {
 			placesParam.setId(id);
-			ResObj resObj = PlacesInfo.getPlacesSingleInfo(placesParam);
-			model.addAttribute(resObj);
+			PlacesDes placesDes = PlacesInfo.getPlacesSingleInfo(placesParam);
+			model.addAttribute(placesDes);
+			if (placesDes == null) return "msg";
 		} else {
 			PlacesDes placesDes = placesService.findPlaces(id);
 			model.addAttribute(placesDes);

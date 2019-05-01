@@ -67,7 +67,7 @@
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
-									<input name="cityName" type="text" class="form-control" value="${resObj.placesParam.cityName }" placeholder="请输入您要所搜的城市">
+									<input name="cityName" type="text" class="form-control" value="${placesParam.cityName }" placeholder="请输入您要所搜的城市">
 								</div>
 								<!-- <div class="form-group">
 									<div class="range-slider">
@@ -172,16 +172,13 @@
         		</div> -->
 				</div>
 				
-				<c:if test="${not empty resObj }">
-					<c:set var="placesDes" value="${resObj.data }"></c:set>
-				</c:if>
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
 								<c:choose>
-									<c:when test="${fn:length(placesDes.imageUrls) > 15 }">
-										<c:set var="end" value="15"></c:set>
+									<c:when test="${fn:length(placesDes.imageUrls) > 20 }">
+										<c:set var="end" value="20"></c:set>
 									</c:when>
 									<c:otherwise>
 										<c:set var="end" value="${fn:length(placesDes.imageUrls) }"></c:set>
@@ -240,7 +237,6 @@
 							<div class="comment-form-wrap pt-5">
 								<h3 class="mb-5">发表评论</h3>
 								<form action="#" class="p-5 bg-light">
-									<input id="commentPage" type="hidden" value="1">
 									<div class="form-group">
 										<textarea name="comment" id="message" cols="30" rows="4" class="form-control"></textarea>
 									</div>
@@ -286,24 +282,24 @@
 </body>
 <script type="text/javascript">
 	$(document).ready(function() { 
-		getComment();
+		getPalcesComment();
 	}); 
+	var commentPage = 1;
 	$(window).scroll(function() {
 		var scrollTop = $(this).scrollTop();
 		var scrollHeight = $(document).height();
 		var windowHeight = $(this).height();
 		if (scrollTop + windowHeight == scrollHeight) {
 			// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-			var commentPage = $("#commentPage").val();
-			if (commentPage != "0") {
-				getComment();
+			//var commentPage = $("#commentPage").val();
+			if (commentPage > 0) {
+				getPalcesComment();
 			}else{
 				return;
 			}
 		}
 	});
-	function getComment() {
-		var commentPage = $("#commentPage").val();
+	function getPalcesComment() {
 		$.ajax({
 			url: '/comment/sight/${placesDes.id }?pageToken='+commentPage,  
 		    method: 'get',  
@@ -311,7 +307,8 @@
 		    dataType: 'json',  
 		    success: function (ret) {
 				var dataList = "";
-				if (ret.retcode == "100002" && commentPage == "1") {
+				//判断第一次请求是否有结果
+				if (ret.retcode == "100002" && commentPage == 1) {
 					var str ="<li class=\"comment\">"
 						+"<div class=\"comment-body\">"
 							+"<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
@@ -329,20 +326,20 @@
 						+"<div class=\"comment-body\">"
 							+"<h3>"+comment.commenterScreenName+"</h3>"
 							+"<div style=\"padding-bottom: 10px;\">"
-								+"<span class=\"text\">"+comment.ratingDist[0].key +"&nbsp;"+ comment.ratingDist[0].value+"</span>"
-								+"<span class=\"text\">"+comment.ratingDist[1].key +"&nbsp;"+ comment.ratingDist[1].value+"</span>"
-								+"<span class=\"text\">"+comment.ratingDist[2].key +"&nbsp;"+ comment.ratingDist[2].value+"</span>"
+								+"<span class=\"text\">"+comment.ratingDist[0].key +"&nbsp;*&nbsp;"+ comment.ratingDist[0].value+"</span>"
+								+"<span class=\"text\">"+comment.ratingDist[1].key +"&nbsp;*&nbsp;"+ comment.ratingDist[1].value+"</span>"
+								+"<span class=\"text\">"+comment.ratingDist[2].key +"&nbsp;*&nbsp;"+ comment.ratingDist[2].value+"</span>"
 							+"</div>"
 							+"<p>"+comment.content+"</p>"
-							+"<div class=\"meta\">"+comment.publishDateStr+"</div>"
+							+"<div class=\"meta\">"+comment.publishDateStr.replace("T", " ")+"</div>"
 						+"</div>"
 					+"</li>"
 					dataList = dataList +str
 				});
 				if (ret.hasNext == true) {
-					$("#commentPage").attr("value",parseInt(commentPage)+1);
+					commentPage+=1;
 				}else{
-					$("#commentPage").attr("value","0");
+					commentPage = 0;
 				}
 				$('.comment-list').append(dataList);
 			}

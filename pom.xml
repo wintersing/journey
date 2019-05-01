@@ -143,38 +143,39 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.5.1</version>
 		</dependency>
+
+		<!-- jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.3</version>
+		</dependency>
 		<!-- 解析json -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.54</version>
 		</dependency>
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-			<classifier>jdk15</classifier>
-		</dependency>
-		<dependency>
-			<groupId>commons-beanutils</groupId>
-			<artifactId>commons-beanutils</artifactId>
-			<version>1.7.0</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.5</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.ezmorph</groupId>
-			<artifactId>ezmorph</artifactId>
-			<version>1.0.3</version>
-		</dependency>
+		<!-- <dependency> <groupId>net.sf.json-lib</groupId> <artifactId>json-lib</artifactId> 
+			<version>2.4</version> <classifier>jdk15</classifier> </dependency> <dependency> 
+			<groupId>commons-beanutils</groupId> <artifactId>commons-beanutils</artifactId> 
+			<version>1.7.0</version> </dependency> <dependency> <groupId>commons-collections</groupId> 
+			<artifactId>commons-collections</artifactId> <version>3.1</version> </dependency> 
+			<dependency> <groupId>commons-lang</groupId> <artifactId>commons-lang</artifactId> 
+			<version>2.5</version> </dependency> <dependency> <groupId>net.sf.ezmorph</groupId> 
+			<artifactId>ezmorph</artifactId> <version>1.0.3</version> </dependency> -->
 		<!-- 工具包 -->
 		<dependency>
 			<groupId>commons-tools</groupId>

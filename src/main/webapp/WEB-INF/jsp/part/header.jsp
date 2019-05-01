@@ -20,9 +20,8 @@
 					<li class="nav-item"><a href="/" class="nav-link">主页</a></li>
 					<li class="nav-item"><a href="/places" class="nav-link">目的地</a></li>
 					<li class="nav-item"><a href="/hotel" class="nav-link">酒店</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">游记</a></li>
+					<!-- <li class="nav-item"><a href="/blog" class="nav-link">游记</a></li> -->
 					<li class="nav-item"><a href="/train" class="nav-link">火车</a></li>
-					<li class="nav-item"><a href="/contact" class="nav-link">联系</a></li>
 				</ul>
 			</div>
 			

@@ -19,13 +19,13 @@
 <body>
 
     <div>
-    <c:if test="${resObj.retcode eq 100 }"></c:if>
+    <c:if test="${msg eq 'Search No Result' }"></c:if>
         <img class="position" src="/images/no-result.png">
     </div>
-    <c:if test="${resObj.retcode eq 404 }"></c:if>
+    <c:if test="${msg eq 'Page Not Found' }"></c:if>
         <img class="position" src="/images/404.png">
     </div>
-    <c:if test="${resObj.retcode eq 500 }"></c:if>
+    <c:if test="${msg eq 'Server Internal Error' }"></c:if>
         <img class="position" src="/images/error.png">
     </div>
 

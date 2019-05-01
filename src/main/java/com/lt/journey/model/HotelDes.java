@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class HotelDes {
 	private String id;					//酒店id
-	private String brandId;				//品牌id
 	private String brandName;			//品牌名称
 	private String businessDistrict;	//商圈
 	private GeoPoint geoPoint;

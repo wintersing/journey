@@ -17,7 +17,7 @@ public class HttpRequest {
 	 * @return URL 所代表远程资源的响应结果
 	 */
 	public static String sendGet(String url, String param) {
-		String result = "";
+		StringBuffer result = new StringBuffer();
 		BufferedReader in = null;
 		try {
 			String urlNameString = url + "?" + param;
@@ -37,14 +37,16 @@ public class HttpRequest {
 //				System.out.println(key + ":" + map.get(key));
 //			}
 			// 定义 BufferedReader输入流来读取URL的响应
-			in = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8")));
-			String line;
-			while ((line = in.readLine()) != null) {
-				result += line;
+			synchronized (HttpRequest.class) {
+				in = new BufferedReader(new InputStreamReader(connection.getInputStream(), Charset.forName("UTF-8")));
+				String line;
+				while ((line = in.readLine()) != null) {
+					result.append(line);
+				}
+				return result.toString();
 			}
-			return result;
 		} catch (Exception e) {
-			System.out.println("发送GET请求出现异常！" + e);
+			System.out.println("发送GET请求出现异常！\n" + e);
 			e.printStackTrace();
 			return null;
 		}

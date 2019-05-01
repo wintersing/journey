@@ -4,16 +4,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
+import org.springframework.ui.Model;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
+import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.Places;
 import com.lt.journey.model.PlacesDes;
 import com.lt.journey.model.PlacesParam;
-import com.lt.journey.model.ResObj;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "classpath*:spring-mybatis.xml" })
@@ -24,8 +25,7 @@ public class PlacesInfo {
 	private static String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
 
 	
-	public static ResObj getPlacesInfo(PlacesParam placesParam) {
-		ResObj resObj = new ResObj();
+	public static List<Places> getPlacesInfo(PlacesParam placesParam, Model model) throws MessageException {
 		StringBuffer param = new StringBuffer();
 		param.append("apikey=" + apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(placesParam);
@@ -40,65 +40,65 @@ public class PlacesInfo {
 //		System.out.println(dataObj);
 		String retcode = dataObj.getString("retcode");
 		if (retcode.equals("100002")) {
-			resObj.setRetcode("100");
-			return resObj;
+			throw new MessageException("Search No Result");
 		}
 		String placesListStr = dataObj.getJSONArray("data") + "";
 		List<Places> placesList = JSONObject.parseArray(placesListStr, Places.class);
 
-		resObj.setDataList(placesList);
-		resObj.setPageToken(dataObj.getString("pageToken"));
+		model.addAttribute(placesList);
+		model.addAttribute("pageToken", dataObj.getString("pageToken"));
 		if (dataObj.getBooleanValue("hasNext") == true) {
-			resObj.setHasNext("1");
+			model.addAttribute("hasNext", "1");
 		} else {
-			resObj.setHasNext("0");
+			model.addAttribute("hasNext", "0");
 		}
-		resObj.setPlacesParam(placesParam);
+		model.addAttribute(placesParam);
 		
-		return resObj;
+		return placesList;
 	}
 	
-	public static ResObj getPlacesSingleInfo(PlacesParam placesParam) {
-		ResObj resObj = new ResObj();
+	public static PlacesDes getPlacesSingleInfo(PlacesParam placesParam) {
+		//拼接参数
 		StringBuffer param = new StringBuffer();
-		param.append("apikey=" + apikey);
+		param.append("apikey=").append(apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(placesParam);
 		for (String key : map.keySet()) {
 			if (map.get(key) != "" && map.get(key) != null) {
-				param.append("&" + key + "=" + map.get(key));
+				param.append("&").append(key).append("=").append(map.get(key));
+//				param.append("&" + key + "=" + map.get(key));
 			}
 		}
+		//发送请求
 		String ret = HttpRequest.sendGet(url, param.toString());
 		JSONObject dataObj = JSON.parseObject(ret);
 		String retcode = dataObj.getString("retcode");
-		if (retcode.equals("100002")) {
-			resObj.setRetcode("100");
-			return resObj;
-		}
+		
+		if (retcode.equals("100002")) return null;
+		
 		JSONArray placesList = dataObj.getJSONArray("data");
 
+		PlacesDes placesDes = null;
 		for (Object obj_ : placesList) {
 			if (obj_ instanceof JSONObject) {
 				JSONObject obj = (JSONObject) obj_;
 				String id = obj.getString("id");
 				if (placesParam.getId().equals(id)) {
-					PlacesDes placesDes = JSONObject.parseObject(obj+"", PlacesDes.class);
-					resObj.setData(placesDes);
+					placesDes = JSONObject.parseObject(obj+"", PlacesDes.class);
 					break;
 				}
 			}
 		}
 		
-		resObj.setPageToken(dataObj.getString("pageToken"));
-		resObj.setRetcode(dataObj.getString("retcode"));
-		if (dataObj.getBooleanValue("hasNext") == true) {
-			resObj.setHasNext("1");
-		} else {
-			resObj.setHasNext("0");
-		}
-		resObj.setPlacesParam(placesParam);
+//		model.addAttribute("pageToken", dataObj.getString("pageToken"));
+//		model.addAttribute("retcode", dataObj.getString("retcode"));
+//		model.addAttribute(placesParam);
+//		if (dataObj.getBooleanValue("hasNext") == true) {
+//			model.addAttribute("hasNext", "1");
+//		} else {
+//			model.addAttribute("hasNext", "0");
+//		}
 		
-		return resObj;
+		return placesDes;
 	}
 	
 	@Test
@@ -106,29 +106,9 @@ public class PlacesInfo {
 		PlacesParam placesParam = new PlacesParam();
 		placesParam.setCityid("405");
 		placesParam.setSort("1");
-		getPlacesInfo(placesParam);
+//		getPlacesInfo(placesParam);
 //		System.out.println(placesList);
 //		placesService.addJourney(placesInfo);
 	}
 
-//	@Autowired
-//	private GeoPointDao geoPointDao;
-
-//	@Test
-//	public void name1() {
-//		GeoPoint geoPoint = new GeoPoint();
-//		geoPoint.setLat("12.4568413");
-//		geoPoint.setLon("112.4568654");
-////		geoPointDao.addGeoPoint(geoPoint);
-//	}
-	
-//	@Autowired
-//	private KeyValuesDao keyValuesDao;
-//	@Test
-//	public void name2() {
-//		KeyValues keyValues= new KeyValues();
-//		keyValues.setKey("ImageCount");
-//		keyValues.setValue("0");
-////		keyValuesDao.addKeyValues(keyValues);
-//	}
 }

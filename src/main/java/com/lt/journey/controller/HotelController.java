@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
-import com.lt.journey.model.ResObj;
 import com.lt.journey.service.HotelService;
 import com.lt.journey.util.HotelInfo;
 
@@ -26,30 +25,31 @@ public class HotelController {
 
 	@Autowired
 	private HotelService hotelService;
-
+ 
 	@RequestMapping("/hotel")
 	public String hotelView(Model model, String pageToken,HttpServletRequest req) {
-		ResObj resObj =  new ResObj();
-		int page = 1;
-		if (pageToken != null && pageToken != "") {
-			page = Integer.parseInt(pageToken);
+
+		if (pageToken == null || pageToken == "") {
+			pageToken = "1";
 		} 
-		List<Hotel> hotelList = hotelService.findHotelRecommend("2", (page-1)*pageSize, pageSize);
+		List<Hotel> hotelList = hotelService.findHotelRecommend("2", (Integer.parseInt(pageToken)-1)*pageSize, pageSize);
 		int count = hotelService.findHotelCount();
-		if (count > pageSize * page) {
-			resObj.setHasNext("1");
+		
+		model.addAttribute(hotelList);
+		model.addAttribute("pageToken", pageToken);
+		if (count > pageSize * Integer.parseInt(pageToken)) {
+			model.addAttribute("hasNext", "1");
 		} else {
-			resObj.setHasNext("0");
+			model.addAttribute("hasNext", "0");
 		}
-		resObj.setDataList(hotelList);
-		resObj.setPageToken(page + "");
-		resObj.setReqURI(req.getRequestURI());
-		model.addAttribute(resObj);
+
+		model.addAttribute("reqURI", req.getRequestURI());
+		
 		return "hotel";
 	}
 	
 	@RequestMapping("/hotel/search")
-	public String searchHotel(Model model, HotelParam hotelParam) throws UnsupportedEncodingException {
+	public String searchHotel(Model model, HotelParam hotelParam, HttpServletRequest req) throws UnsupportedEncodingException {
 		String city = hotelParam.getCity();
 		if (city != null && city != "") {
 			hotelParam.setCity(new String(city.getBytes("ISO-8859-1"), "utf-8"));		
@@ -63,8 +63,9 @@ public class HotelController {
 			hotelParam.setBrandName(new String(brandName.getBytes("ISO-8859-1"), "utf-8"));		
 		}
 		
-		ResObj resObj = HotelInfo.getHotelInfo(hotelParam);
-		model.addAttribute(resObj);
+		//请求“酒店信息API”，并将返回结果放入model
+		HotelInfo.getHotelInfo(hotelParam, model, Hotel.class); 
+		model.addAttribute("reqURI", req.getRequestURI());
 		return "hotel";
 	}
 
@@ -73,8 +74,8 @@ public class HotelController {
 		if (recommend == null) {
 			HotelParam hotelParam = new HotelParam();
 			hotelParam.setId(id);
-			ResObj resObj = HotelInfo.getHotelInfo(hotelParam);
-			model.addAttribute(resObj);
+			HotelDes hotelDes = HotelInfo.getHotelDesInfo(hotelParam);
+			model.addAttribute(hotelDes);
 		} else {
 			HotelDes hotelDes = hotelService.findHotel(id);
 			model.addAttribute(hotelDes);

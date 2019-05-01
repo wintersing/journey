@@ -1,49 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
-	<title>旅游攻略,自由行 - 人在旅途</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>旅游攻略,自由行 - 人在旅途</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.css">
 
-	<link rel="stylesheet" href="/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="/css/magnific-popup.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
-	<link rel="stylesheet" href="/css/ionicons.min.css">
+<link rel="stylesheet" href="/css/ionicons.min.css">
 
-	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="/css/jquery.timepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-	<link rel="stylesheet" href="/css/flaticon.css">
-	<link rel="stylesheet" href="/css/icomoon.css">
-	<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/flaticon.css">
+<link rel="stylesheet" href="/css/icomoon.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-	<%@ include file="./part/header.jsp" %>
+	<%@ include file="./part/header.jsp"%>
 
-	<div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_1.jpg');">
+	<div class="hero-wrap js-fullheight"
+		style="background-image: url('/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-				<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+				data-scrollax-parent="true">
+				<div class="col-md-9 text-center ftco-animate"
+					data-scrollax=" properties: { translateY: '70%' }">
 					<!-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">主页</a></span> <span>酒店</span></p> -->
-					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">酒店</h1>
+					<h1 class="mb-3 bread"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">酒店</h1>
 				</div>
 			</div>
 		</div>
@@ -58,12 +68,16 @@
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
-									<input name="city" type="text" class="form-control" placeholder="请输入您要所搜的城市">
+									<input name="city" type="text" class="form-control"
+										placeholder="请输入您要所搜的城市">
 								</div>
 								<div class="form-group">
 									<div class="select-wrap one-third">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="level" id="" class="form-control" placeholder="Keyword search">
+										<div class="icon">
+											<span class="ion-ios-arrow-down"></span>
+										</div>
+										<select name="level" id="" class="form-control"
+											placeholder="Keyword search">
 											<option value="">请选择酒店星级</option>
 											<option value="五星级/豪华">五星级/豪华</option>
 											<option value="四星级/高档">四星级/高档</option>
@@ -75,7 +89,8 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<input name="brandName" type="text" id="checkin_date" class="form-control" placeholder="请输入您要搜索的酒店品牌">
+									<input name="brandName" type="text" id="checkin_date"
+										class="form-control" placeholder="请输入您要搜索的酒店品牌">
 								</div>
 								<!-- <div class="form-group">
 						              	<div class="range-slider">
@@ -89,23 +104,31 @@
 										</div>
 		              			</div> -->
 								<div class="form-group">
-									<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+									<input type="submit" value="Search"
+										class="btn btn-primary py-3 px-5">
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
-				
-				<c:if test="${not empty resObj }">
-					<c:set var="hotelDes" value="${resObj.dataList[0] }"></c:set>
-				</c:if>
+
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<div class="single-slider owl-carousel">
-								<c:forEach var="imageUrl" items="${hotelDes.imageUrls }">
+								<c:choose>
+									<c:when test="${fn:length(placesDes.imageUrls) > 20 }">
+										<c:set var="end" value="20"></c:set>
+									</c:when>
+									<c:otherwise>
+										<c:set var="end" value="${fn:length(placesDes.imageUrls) }"></c:set>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach begin="1" end="20" var="imageUrl"
+									items="${hotelDes.imageUrls }">
 									<div class="item">
-										<div class="hotel-img" style="background-image: url(${imageUrl });"></div>
+										<div class="hotel-img"
+											style="background-image: url(${imageUrl });"></div>
 									</div>
 								</c:forEach>
 							</div>
@@ -114,62 +137,78 @@
 							<h2>${hotelDes.title }</h2>
 							<span>${hotelDes.openingHours }</span>
 							<p class="rate mb-5">
-								<span class="loc"><a href="#"><i class="icon-map"></i>${hotelDes.address }</a></span>
-								<span class="star">
-									<fmt:parseNumber var="rating2" type="number" value="${hotelDes.rating }" />
-									<c:forEach begin="1" end="${rating2 }">
-										<i class="icon-star"></i> 
-									</c:forEach>
-									<c:if test="${hotelDes.rating%1 > 0}">
-										<i class="icon-star-half"></i> 
-									</c:if>
-									${hotelDes.rating } 分</span>
+								<span class="loc"><a href="#"><i
+										class="icon-map-marker"></i>${hotelDes.address }</a></span><br /> <span
+									class="star"> <fmt:parseNumber var="rating2"
+										type="number" value="${hotelDes.rating }" /> <c:forEach
+										begin="1" end="${rating2 }">
+										<i class="icon-star"></i>
+									</c:forEach> <c:if test="${hotelDes.rating%1 > 0}">
+										<i class="icon-star-half"></i>
+									</c:if> ${hotelDes.rating } 分
+								</span>
 							</p>
 							<p>${hotelDes.description }</p>
-							<div class="d-md-flex mt-5 mb-5">
-								<ul class="ml-md-5">
-									<h4>标签</h4>
-									<c:if test="${not empty hotelDes.tags }">
-										<c:forEach var="tag" items="${hotelDes.tags }">
-											<li>${tag }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-								<ul class="ml-md-5">
-									<h4>基本服务</h4>
-									<c:if test="${not empty hotelDes.services }">
-										<c:forEach var="service" items="${hotelDes.services }">
-											<li>${service.name }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-								<ul class="ml-md-5">
-									<h4>其他服务</h4>
-									<c:if test="${not empty hotelDes.assistServices }">
-										<c:forEach var="assistService" items="${hotelDes.assistServices }">
-											<li>${assistService }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
-								<ul class="ml-md-5">
-									<h4>酒店设施</h4>
-									<c:if test="${not empty hotelDes.facilities }">
-										<c:forEach var="facilities" items="${hotelDes.facilities }">
-											<li>${facilities }</li>
-										</c:forEach>
-									</c:if>
-									<c:if test="${not empty hotelDes.infrastructures }">
-										<c:forEach var="infrastructure" items="${hotelDes.infrastructures }">
-											<li>${infrastructure }</li>
-										</c:forEach>
-									</c:if>
-								</ul>
+							<div class="about-author d-flex p-4 bg-light">
+								<div class="desc">
+									<div>
+										<div class="tagcloud">
+											<h3>
+												<span class="icon-person"></span>标签
+											</h3>
+											<c:if test="${not empty hotelDes.tags }">
+												<c:forEach var="tag" items="${hotelDes.tags }">
+													<a class="tag-cloud-link"> ${tag }</a>
+												</c:forEach>
+											</c:if>
+										</div>
+										<span></span>
+									</div>
+								</div>
 							</div>
-							<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her
-								hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.
-								Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+							<div class="about-author d-flex p-4 bg-light">
+								<div class="desc">
+									<div>
+										<div class="tagcloud">
+											<h3>
+												<span class="icon-person"></span>基本服务
+											</h3>
+											<c:if test="${not empty hotelDes.assistServices }">
+												<c:forEach var="assistService"
+													items="${hotelDes.assistServices }">
+													<a class="tag-cloud-link"> ${assistService }</a>
+												</c:forEach>
+											</c:if>
+										</div>
+										<span></span>
+									</div>
+								</div>
+							</div>
+							<div class="about-author d-flex p-4 bg-light">
+								<div class="desc">
+									<div>
+										<div class="tagcloud">
+											<h3>
+												<span class="icon-person"></span>酒店设施
+											</h3>
+											<c:if test="${not empty hotelDes.facilities }">
+												<c:forEach var="facilities" items="${hotelDes.facilities }">
+													<a class="tag-cloud-link"> ${facilities }</a>
+												</c:forEach>
+											</c:if>
+											<c:if test="${not empty hotelDes.infrastructures }">
+												<c:forEach var="infrastructure"
+													items="${hotelDes.infrastructures }">
+													<a class="tag-cloud-link"> ${infrastructure }</a>
+												</c:forEach>
+											</c:if>
+										</div>
+										<span></span>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
+						<!-- <div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
 							<h4 class="mb-4"><a href="#">发现附近</a></h4>
 							<div class="row">
 								<div class="col-md-4">
@@ -260,23 +299,34 @@
 									</div>
 								</div>
 							</div>
-						</div>
-
+						</div> -->
 					</div>
-				</div> <!-- .col-md-8 -->
+				</div>
+				<!-- .col-md-8 -->
 			</div>
 		</div>
-	</section> <!-- .section -->
+	</section>
+	<!-- .section -->
 
 
- <%@ include file="./part/footer.jsp" %>
+	<div class="col-md-8 ftco-animate" style="margin-left: 350px">
+		<div class="pt-5 mt-5">
+			<h3 class="mb-5">精彩评论</h3>
+			<ul class="comment-list">
 
-
+			</ul>
+			<!-- END comment-list -->
+		</div>
+	</div>
 
 	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+	</div>
 
 
 	<script src="/js/jquery.min.js"></script>
@@ -291,12 +341,106 @@
 	<script src="/js/aos.js"></script>
 	<script src="/js/jquery.animateNumber.min.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
-	<script src="/js/jquery.timepicker.min.js"></script>
 	<script src="/js/scrollax.min.js"></script>
 
-	<script src="/js/google-map.js"></script>
 	<script src="/js/main.js"></script>
 
 </body>
+<script type="text/javascript">
+	$(document).ready(function() {
+		//getHotelComment();
+	});
+	var commentPage = 1;
+	$(window).scroll(function() {
+		var scrollTop = $(this).scrollTop();
+		var scrollHeight = $(document).height();
+		var windowHeight = $(this).height();
+		if (scrollTop + windowHeight == scrollHeight) {
+			// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+			if (commentPage > 0) {
+				//getHotelComment();
+			} else {
+				return;
+			}
+		}
+	});
+	function getHotelComment() {
+		$
+				.ajax({
+					url : '/comment/hotel/${hotelDes.id }?pageToken='
+							+ commentPage,
+					method : 'get',
+					ContentType : "application/x-www-form-urlencoded;charset=utf-8",
+					dataType : 'json',
+					success : function(ret) {
+						var dataList = "";
+						if (ret.retcode == "100002") {
+							var str = "<li class=\"comment\">"
+									+ "<div class=\"comment-body\">"
+									+ "<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
+									+ "</div>" + "</li>"
+							$('.comment-list').append(str);
+							return;
+						}
 
+						$
+								.each(
+										ret.data,
+										function(i, comment) {
+											var str = "<li class=\"comment\">"
+													+ "<div class=\"vcard bio\">"
+													+ "<img src=\"\/images\/avatar.jpg\" alt=\"avatar\">"
+													+ "</div>"
+													+ "<div class=\"comment-body\">"
+													+ "<h3>"
+													+ comment.commenterScreenName
+													+ "</h3>"
+													+ "<div class=\"meta\">"
+													+ comment.publishDateStr
+													+ "</div>"
+													+ "<div class=\"tagcloud\">"
+													+ "<a class=\"tag-cloud-link\">"
+													+ comment.commenterType
+													+ "</a>"
+													+ "<a class=\"tag-cloud-link\">"
+													+ eval("("
+															+ comment.subobjects
+															+ ")")[0].name
+													+ "</a>"
+													+ "<a class=\"tag-cloud-link\">评分："
+													+ comment.rating
+													+ "分</a>"
+													+ "</div>"
+													+ "<p>"
+													+ comment.content
+													+ "</p>"
+													+ "</div>"
+													+ "<ul class=\"children\">"
+													+ "<li class=\"comment\">"
+													+ "<div class=\"vcard bio\">"
+													+ "<img src=\"\/images\/avatar.jpg\" alt=\"avatar\">"
+													+ "</div>"
+													+ "<div class=\"comment-body\">"
+													+ "<h3>酒店回复</h3>"
+													+ "<p>"
+													+ eval("("
+															+ comment.replies
+															+ ")")[0].content
+													+ "</p>"
+													+ "</div>"
+													+ "</li>"
+													+ "</ul>"
+													+ "</li>"
+											dataList = dataList + str
+										});
+						if (ret.hasNext == true) {
+							commentPage += 1;
+						} else {
+							commentPage = 0;
+						}
+						$('.comment-list').append(dataList);
+					}
+				});
+	}
+</script>
 </html>
