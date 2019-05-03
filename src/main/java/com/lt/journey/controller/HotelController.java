@@ -1,6 +1,8 @@
 package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +17,22 @@ import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
 import com.lt.journey.model.News;
+import com.lt.journey.model.NewsParam;
 import com.lt.journey.service.HotelService;
 import com.lt.journey.service.NewsService;
+import com.lt.journey.util.CatLabel2;
 import com.lt.journey.util.HotelInfo;
+import com.lt.journey.util.NewsInfo;
 
 @Controller
 @RequestMapping("/")
 public class HotelController {
 
-	private final int pageSize = 9;
+	private static final int pageSize = 9;
+
+	private static final int pageSize_news = 20;
+
+//	private static final String catLabel2_小吃 = CatLabel2.小吃.toString();
 
 	@Autowired
 	private HotelService hotelService;
@@ -43,7 +52,7 @@ public class HotelController {
 		model.addAttribute(hotelList);
 
 		//旅游新闻资讯
-		List<News> newsList = newsService.findNewsRecommend("1", (Integer.parseInt(pageToken)-1)*pageSize, pageSize);
+		List<News> newsList = newsService.findNewsRecommend("1", (Integer.parseInt(pageToken)-1)*pageSize_news, pageSize_news);
 		model.addAttribute(newsList);
 
 		int count = hotelService.findHotelCount();
@@ -62,7 +71,7 @@ public class HotelController {
 	}
 	
 	@RequestMapping("/hotel/search")
-	public String searchHotel(Model model, HotelParam hotelParam, HttpServletRequest req) throws UnsupportedEncodingException {
+	public String searchHotel(Model model, HotelParam hotelParam, String pageToken_news, HttpServletRequest req) throws UnsupportedEncodingException {
 		String city = hotelParam.getCity();
 		if (city != null && city != "") {
 			hotelParam.setCity(new String(city.getBytes("ISO-8859-1"), "utf-8"));		
@@ -79,6 +88,26 @@ public class HotelController {
 		//请求“酒店信息API”，并将返回结果放入model
 		HotelInfo.getHotelInfo(hotelParam, model, Hotel.class); 
 		model.addAttribute("reqURI", req.getRequestURI());
+		
+//		//旅游资讯
+//		Calendar calendar = Calendar.getInstance(); 
+//		calendar.setTime(new Date());
+//		long endTime = calendar.getTimeInMillis();
+//		calendar.add(Calendar.DATE, -15);
+//		long startTime = calendar.getTimeInMillis();
+//		
+//		newsParam.setCatLabel2(catLabel2_小吃);
+//		String time = ""+startTime/1000L+","+endTime/1000L;
+//		newsParam.setCreateDateRange(time);
+//		newsParam.setPublishDateRange(time);
+//		NewsInfo.getNewsInfo(newsParam, model);
+		if (pageToken_news == null || pageToken_news.equals("")) {
+			pageToken_news = "1";
+		}
+		List<News> newsList = newsService.findNewsRecommend("2", (Integer.parseInt(pageToken_news)-1)*pageSize_news, pageSize_news);
+		model.addAttribute(newsList);
+		model.addAttribute("pageToken_news", Integer.parseInt(pageToken_news) + 1 + "");
+		
 		return "hotel";
 	}
 
@@ -93,6 +122,9 @@ public class HotelController {
 			HotelDes hotelDes = hotelService.findHotel(id);
 			model.addAttribute(hotelDes);
 		}
+		//旅游新闻资讯
+		List<News> newsList = newsService.findNewsRecommend("3", 0, pageSize_news);
+		model.addAttribute(newsList);
 		return "hotel-single";
 	}
 }

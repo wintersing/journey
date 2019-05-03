@@ -21,11 +21,9 @@ public class HotelServiceImpl implements HotelService {
 	private GeoPointDao geoPointDao;
 
 	@Override
-	public void addHotel(List<HotelDes> hotelList) {
+	public void addHotel(List<? extends Object> hotelList) {
 		// TODO Auto-generated method stub
-		List hotelList_ = hotelList;
-		List<Object> hotelObjList = hotelList_;
-		geoPointDao.addGeoPoint(hotelObjList);
+		geoPointDao.addGeoPoint(hotelList);
 		hotelDao.addHotel(hotelList);
 	}
 

@@ -110,6 +110,16 @@
 							</div>
 						</form>
 					</div>
+					<div class="sidebar-wrap ftco-animate">
+						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
+						<c:forEach var="newsItem" items="${newsList }">
+							<p>
+								<a target="_blank" class="news" href="${newsItem.url }">${newsItem.title }</a>
+							</p>
+						</c:forEach>
+
+					</div>
+
 				</div>
 
 				<div class="col-lg-9">
@@ -351,19 +361,26 @@
 		//getHotelComment();
 	});
 	var commentPage = 1;
-	$(window).scroll(function() {
-		var scrollTop = $(this).scrollTop();
-		var scrollHeight = $(document).height();
-		var windowHeight = $(this).height();
-		if (scrollTop + windowHeight == scrollHeight) {
-			// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-			if (commentPage > 0) {
-				//getHotelComment();
-			} else {
-				return;
-			}
-		}
-	});
+	$(window)
+			.scroll(
+					function() {
+						var scrollTop = $(this).scrollTop();
+						var scrollHeight = $(document).height();
+						var windowHeight = $(this).height();
+						if (scrollTop + windowHeight == scrollHeight) {
+							// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+							if (commentPage > 0) {
+								//getHotelComment();
+								var str = "<li class=\"comment\">"
+										+ "<div class=\"comment-body\">"
+										+ "<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">你所查找的酒店暂无评论</h3>"
+										+ "</div>" + "</li>"
+								$('.comment-list').append(str);
+							} else {
+								return;
+							}
+						}
+					});
 	function getHotelComment() {
 		$
 				.ajax({
@@ -377,7 +394,7 @@
 						if (ret.retcode == "100002") {
 							var str = "<li class=\"comment\">"
 									+ "<div class=\"comment-body\">"
-									+ "<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
+									+ "<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">你所查找的酒店暂无评论</h3>"
 									+ "</div>" + "</li>"
 							$('.comment-list').append(str);
 							return;

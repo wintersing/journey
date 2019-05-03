@@ -4,10 +4,10 @@
 <mapper namespace="com.lt.journey.dao.NewsDao">
 
 	<insert id="addNews" parameterType="java.util.List">
-		INSERT IGNORE INTO news(id, title, url) values
+		INSERT IGNORE INTO news(id, title, url, catLabel2, recommend) values
 		<foreach collection="list" item="news" separator=",">
 			(
-				#{news.id},#{news.title},#{news.url}
+				#{news.id},#{news.title},#{news.url},#{news.catLabel2},#{news.recommend}
 			)
 		</foreach>
 	</insert>

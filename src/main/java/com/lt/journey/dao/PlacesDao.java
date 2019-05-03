@@ -11,7 +11,7 @@ import com.lt.journey.model.PlacesDes;
 
 @Repository
 public interface PlacesDao {
-	public void addPlaces(List<PlacesDes> placesList);
+	public void addPlaces(List<? extends Object> placesList);
 	
 	@Select("select cityid from places_city where cityName = #{cityName}")
 	public String findCityidByCityName(@Param("cityName")String cityName);

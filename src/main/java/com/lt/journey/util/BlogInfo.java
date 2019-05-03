@@ -19,6 +19,7 @@ import com.lt.journey.model.BlogParam;
 public class BlogInfo {
 
 	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+//	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("apikey.properties");
 	
 	private static final String url = propertiesAll.getProperty("Blog_Url");
 	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
@@ -31,8 +32,8 @@ public class BlogInfo {
 		
 		//发送Get请求
 		String ret = HttpRequest.sendGet(url, param.toString());
-//		String dataStr = CommonsUtils.unicodeToString(ret);
-//		System.out.println(dataStr);
+		String dataStr = CommonsUtils.unicodeToString(ret);
+		System.out.println(dataStr);
 		if (ret == null) {
 			throw new MessageException("Search No Result");
 		}
@@ -54,12 +55,12 @@ public class BlogInfo {
 				blogtemp.setPosterScreenName(CommonsUtils.unicodeToString(blogtemp.getPosterScreenName()));
 			} else if(blog instanceof BlogDes) {
 				BlogDes blogtemp = (BlogDes) blog;
-				System.out.println(blogtemp == blog);
+//				System.out.println(blogtemp == blog);
 				blogtemp.setCityid(cityid);
 				blogtemp.setCity(CommonsUtils.unicodeToString(blogtemp.getCity()));
 				blogtemp.setPosterScreenName(CommonsUtils.unicodeToString(blogtemp.getPosterScreenName()));
-				String string = CommonsUtils.unicodeToString(blogtemp.getContent()).replaceAll("\\n", "\\\\n");
-				blogtemp.setContent(string);
+//				String string = CommonsUtils.unicodeToString(blogtemp.getContent()).replaceAll("\\n", "\\\\n");
+//				blogtemp.setContent(string);
 			}
 		}
 		
@@ -77,8 +78,8 @@ public class BlogInfo {
 		.append("&sort=").append(blogParam.getSort()).append("&pageToken=").append(blogParam.getPageToken());
 		
 		String ret = HttpRequest.sendGet(url, param.toString());
-//		String dataStr = CommonsUtils.unicodeToString(ret);
-//		System.out.println(dataStr);
+		String dataStr = CommonsUtils.unicodeToString(ret);
+		System.out.println(dataStr);
 		JSONObject dataObj = JSON.parseObject(ret);
 		JSONArray blogList = dataObj.getJSONArray("data");
 

@@ -4,8 +4,10 @@ import com.lt.journey.model.User;
 
 public interface UserService{
     
-    public User findUserByMobile(String mobile);
+    public User findUserByPhone(String mobile);
 
 	public void addUser(User user);
+
+	public User findUserByUsername(String username);
     
 }

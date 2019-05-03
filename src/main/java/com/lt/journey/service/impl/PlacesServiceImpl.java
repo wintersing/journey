@@ -2,7 +2,6 @@ package com.lt.journey.service.impl;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +21,8 @@ public class PlacesServiceImpl implements PlacesService {
 	@Autowired
 	private PlacesDao placesDao;
 	
-	public void addPlaces(List<PlacesDes> placesList) {
-		List placesList_ = placesList;
-		List<Object> placesObjList = placesList_;
-		geoPointDao.addGeoPoint(placesObjList);
+	public void addPlaces(List<? extends Object> placesList) {
+		geoPointDao.addGeoPoint(placesList);
 		placesDao.addPlaces(placesList);
 	}
 	

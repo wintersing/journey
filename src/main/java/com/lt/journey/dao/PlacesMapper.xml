@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lt.journey.dao.PlacesDao">
-	<insert id="addplaces" parameterType="java.util.List">
+	<insert id="addPlaces" parameterType="java.util.List">
 		INSERT IGNORE INTO places
 		(`id`,`location`,`rating`,`rank`,`url`,`country`,title,subtitle,city,imageUrls,tipInfo,
 		openingHours,description,price,commentCount,recommend,keyValues,geoPointID)

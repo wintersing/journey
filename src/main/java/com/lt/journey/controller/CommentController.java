@@ -13,8 +13,8 @@ import com.lt.commons.utils.HttpRequest;
 @RequestMapping("/")
 public class CommentController {
 
-//	private final String path = "/apikey.properties";
 	private static final String path = "src/main/resources/apikey.properties";
+//	private static final String path = "classpath:apikey.properties";
 	private static final String url = CommonsUtils.getProperties(path, "comment_url");
 	private static final String Hotel_comment_url = CommonsUtils.getProperties(path, "Hotel_comment_url");
 	private static final String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");

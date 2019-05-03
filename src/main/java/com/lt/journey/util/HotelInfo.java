@@ -18,6 +18,7 @@ import com.lt.journey.model.HotelParam;
 
 public class HotelInfo {
 	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+//	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("apikey.properties");
 	
 	private static final String url = propertiesAll.getProperty("Hotel_Url");
 	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");

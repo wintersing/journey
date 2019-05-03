@@ -32,12 +32,12 @@ public class NewTest {
 		long startTime = calendar.getTimeInMillis();
 		
 		NewsParam newsParam = new NewsParam();
-		newsParam.setCatLabel2("小吃");
+		newsParam.setCatLabel2("建筑");
 		String time = ""+startTime/1000L+","+endTime/1000L;
 		newsParam.setCreateDateRange(time);
 		newsParam.setPublishDateRange(time);
 		newsParam.setSize("50");
-		List<News> newsList = NewsInfo.getNewsInfo(newsParam);
+		List<News> newsList = NewsInfo.getNewsInfo(newsParam, null);
 		
 		newsService.addNews(newsList);
 	}

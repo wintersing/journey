@@ -88,53 +88,15 @@
 					</div>
 					<div class="sidebar-wrap ftco-animate">
 						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
+						<c:forEach var="newsItem" items="${newsList }">
+							<p>
+								<a target="_blank" class="news"
+									href="${newsItem.url }">${newsItem.title }</a>
+							</p>
+						</c:forEach>
 
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<p>
-							<a target="_blank" class="news"
-								href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-								另一老兵众筹"买梯子"</a>
-						</p>
-
-						<div>
-							<label class="form-check-label" for="exampleCheck1">
-								<p>
-									<a target="_blank" class="news"
-										href="http:\/\/mini.eastday.com\/mobile\/181221171918949.html">美国老兵筹款要建边境墙后
-										另一老兵众筹"买梯子"</a>
-								</p>
-							</label>
-						</div>
 					</div>
-				
+
 					<!-- <div class="sidebar-wrap ftco-animate">
         			<h3 class="heading mb-4">Star Rating</h3>
         			<form method="post" class="star-rating">

@@ -205,14 +205,20 @@
 		        var strArr = str.split('');
 		        var imageUrls = eval("("+blogDes.imageUrls+")")  ;
 		        var contents = "";
+		        var imageUrlsLength = 0;
 		        $.each(strArr, function (i, content) {
 		        	
 		          content = "<pre style=\"white-space: pre-wrap; word-wrap: break-word;\">" + content + "</pre>";
 		          contents = contents + content;
-		          if (imageUrls != null && i < imageUrls.length) {
-		          	contents = contents + "<img src=\""+imageUrls[i]+"\"></p>";
+		          if (imageUrls != undefined && i <= imageUrls.length) {
+		          	contents = contents + "<p><img src=\""+imageUrls[i]+"\"></p>";
 				  }
 		        });
+		        if (imageUrlsLength < imageUrls.length) {
+					for (var i = imageUrlsLength; i < imageUrls.length; i++) {
+						contents = contents + "<p><img src=\""+imageUrls[i]+"\"></p>";
+					}
+				}
 		        $('#content').append(contents);
 			}
 		});

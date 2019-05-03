@@ -1,254 +1,280 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE HTML>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Splash &mdash; Free Website Template, Free HTML5 Template
-	by FreeHTML5.co</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description"
-	content="Free HTML5 Website Template by FreeHTML5.co" />
-<meta name="keywords"
-	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-<meta name="author" content="FreeHTML5.co" />
+	<title>旅游攻略,自由行 - 人在旅途</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Facebook and Twitter integration -->
-<meta property="og:title" content="" />
-<meta property="og:image" content="" />
-<meta property="og:url" content="" />
-<meta property="og:site_name" content="" />
-<meta property="og:description" content="" />
-<meta name="twitter:title" content="" />
-<meta name="twitter:image" content="" />
-<meta name="twitter:url" content="" />
-<meta name="twitter:card" content="" />
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+	
+	<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/css/animate.css">
+	
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
+	
+	<link rel="stylesheet" href="/css/aos.css">
+	
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	
+	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/css/jquery.timepicker.css">
+	
+	<link rel="stylesheet" href="/css/flaticon.css">
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<link rel="stylesheet" href="/css/style.css">
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
-	rel="stylesheet">
-
-<!-- Animate.css -->
-<!-- <link rel="stylesheet" href="css/animate.css"> -->
-<!-- Bootstrap  -->
-<link rel="stylesheet" href="/css/bootstrap.css">
-
-<!-- Theme style  -->
-<link rel="stylesheet" href="/css/style.login.css">
-<style type="text/css">
-.sendMessages {
-	display: inline-block;
-	padding: 32px 0px 0px 16px;
-}
-
-.register {
-	padding-top: 12px;
-}
-.nav{
-	padding-right: 300px;
-}
-.title{
-	width: 20%
-}
-.nav-{
-	top:20px
-}
-</style>
+    <link rel="stylesheet" href="/css/bootstrap_.css">
+    <link rel="stylesheet" href="/css/style.login_.css">
 
 
 </head>
 
 <body>
-	<div id="page">
 
-		<div class="page-inner">
-			<nav class="gtco-nav nav-" role="navigation">
-				<div class="gtco-container">
+	<%@ include file="./part/header.jsp" %>
 
-					<div class="row">
-						<div class="col-sm-4 col-xs-12 title">
-							<div id="gtco-logo">
-								<a href="/">人在旅途 <em>.</em></a>
-							</div>
-						</div>
-						<div class="col-xs-8 text-right menu-1 nav">
-							<ul>
-								<li><a href="">主页</a></li>
-								<li><a href="/placesView">目的地</a></li>
-								<li><a href="/hotelView">酒店</a></li>
-								<li><a
-									href="/tavelNotesView">游记</a></li>
-								<li><a href="/placesView">火车票</a></li>
-								<li><a
-									href="/contactView">联系</a></li>
-							</ul>
+	<div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_1.jpg');">
+		<header id="gtco-header" class="gtco-cover hero-wrap" role="banner">
+			<div class="gtco-container">
+				<div>
+					<div style="position:absolute; height:150px;margin-top: 100px;" class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+						<div style="margin-top: -200px;" class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left" data-scrollax=" properties: { translateY: '70%' }">
+							<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">发现 <br>一个新的地方</h1>
+							<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">寻找当地专家住宿，吃饭，购物或参观的好地方</p>
 						</div>
 					</div>
-
-				</div>
-			</nav>
-
-			<header id="gtco-header" class="gtco-cover" role="banner"
-				style="background-image: url(images/destination-1.jpg)">
-				<div class="overlay"></div>
-				<div class="gtco-container">
-					<div class="row">
-						<div class="col-md-12 col-md-offset-0 text-left">
-
-
-							<div class="row row-mt-15em">
-								<div class="col-md-7 mt-text animate-box"
-									data-animate-effect="fadeInUp">
-									<span class="intro-text-small">欢迎来到人在旅途</span>
-									<h1>发现一个新的地方</h1>
-								</div>
-								<div class="col-md-4 col-md-push-1 animate-box"
-									data-animate-effect="fadeInRight">
-									<div class="form-wrap">
-										<div class="tab">
-											<ul class="tab-menu">
-												<li class="gtco-first"><a href="#" data-tab="signup">登陆</a></li>
-												<li class="gtco-second"><a href="#"
-													data-tab="login">注册</a></li>
-											</ul>
-											<div class="tab-content">
-												<div id="login" class="tab-content-inner " data-content="signup">
-													<form action="#">
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="username">用户名</label> <input type="text"
-																	class="form-control" id="username">
-															</div>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="password">密码</label> <input type="password"
-																	class="form-control" id="password">
-															</div>
-														</div>
-
-														<div class="row form-group">
-															<div class="col-md-12">
-																<input type="submit" class="btn btn-primary" value="登陆">
-															</div>
-														</div>
-													</form>
+					<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+						<div class="form-wrap">
+							<div class="tab">
+								<ul class="tab-menu">
+								<c:choose>
+									<c:when test="${reqURI eq '/loginView' }">
+										<li class="gtco-first active"><a href="#" data-tab="signup">登陆</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="gtco-first"><a href="#" data-tab="signup">登陆</a></li>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${reqURI eq '/registerView' }">
+										<li class="gtco-second active"><a href="#" data-tab="login">注册</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="gtco-second"><a href="#" data-tab="login">注册</a></li>
+									</c:otherwise>
+								</c:choose>
+								</ul>
+								<div class="tab-content">
+								<c:choose>
+									<c:when test="${reqURI eq '/loginView' }">
+										<div class="tab-content-inner active" data-content="signup">
+									</c:when>
+									<c:otherwise>
+										<div class="tab-content-inner" data-content="signup">
+									</c:otherwise>
+								</c:choose>
+										<form id="login" action="/" method="post">
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="username">用户名</label>
+													<input name="username" type="text" class="form-control" id="username">
 												</div>
-
-												<div id="register" class="tab-content-inner" data-content="login">
-													<form action="#">
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="username">手机号码</label> <input type="text"
-																	class="form-control" id="phone">
-															</div>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="password">用户名</label> <input type="password"
-																	class="form-control" id="password">
-															</div>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12">
-																<label for="password2">密码</label> <input type="password"
-																	class="form-control" id="password2">
-															</div>
-														</div>
-														<div class="row">
-															<div class="col-md-7">
-																<label for="password2">验证码</label> <input type="text"
-																	class="form-control" id="code">
-															</div>
-															<div class="sendMessages">
-																<input id="getCode" onclick="sendMessages()"
-																	type="button" class="btn btn-default btn-sm" value="发送" />
-															</div>
-														</div>
-														<div class="row form-group">
-															<div class="col-md-12 register">
-																<input type="submit" class="btn btn-primary" value="注册">
-															</div>
-														</div>
-													</form>
-												</div>
-
 											</div>
-										</div>
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="password">密码</label>
+													<input name="username" type="password" class="form-control" id="password">
+												</div>
+											</div>
+
+											<div class="row form-group">
+												<div class="col-md-12">
+													<input onclick="login();" type="button" class="btn btn-primary" value="登陆">
+												</div>
+											</div>
+										</form>
 									</div>
+								<c:choose>
+									<c:when test="${reqURI eq '/registerView' }">
+										<div class="tab-content-inner active" data-content="login">
+									</c:when>
+									<c:otherwise>
+										<div class="tab-content-inner" data-content="login">
+									</c:otherwise>
+								</c:choose>
+										<form id="register" action="/" method="post">
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="username_register">用户名</label>
+													<input name="username" type="text" class="form-control" id="username_register">
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="password_register">密码</label>
+													<input name="password" type="password" class="form-control" id="password_register">
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-12">
+													<label for="phone">手机号码</label>
+													<input name="phone" type="text" class="form-control" id="phone">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-7">
+													<label for="code">验证码</label>
+													<input name="code" type="text" class="form-control" id="code">
+												</div>
+												<div class="sendMessages">
+													<input id="getCode" onclick="sendMessages()" type="button"
+														class="btn btn-default btn-sm" value="发送" />
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-12 register">
+													<input onclick="register();" type="button" class="btn btn-primary" value="注册">
+												</div>
+											</div>
+										</form>
+									</div>
+
 								</div>
 							</div>
-
-
 						</div>
 					</div>
 				</div>
-			</header>
-		</div>
+			</div>
+		</header>
+	</div>
 
-		<!-- jQuery -->
-		<script src="/js/jquery.min.login.js"></script>
-		<!-- Waypoints -->
-		<script src="/js/jquery.waypoints.min.login.js"></script>
-		<!-- Carousel -->
-		<script src="/js/owl.carousel.min.js"></script>
-		<!-- Main -->
-		<script src="/js/main.login.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/aos.js"></script>
+	<script src="/js/scrollax.min.js"></script>
 
-		<script>
-			var InterValObj; //timer变量，控制时间 
-			var count = 5; //间隔函数，1秒执行 
-			var curCount; //当前剩余秒数 
-			var code = ""; //验证码 
-			// var codeLength = 6; //验证码长度 
-			function sendMessages() {
-				curCount = count;
-				// var phone = $("#phone").val()
-				var phone = "15779819842";
-				if (phone != "") {
-					//设置button效果，开始计时 
-					$("#getCode").attr("disabled", "true");
-					$("#getCode").val(curCount + "秒");
-					InterValObj = window.setInterval(SetRemainTimes, 1000); //启动计时器，1秒执行一次 
-					//向后台发送处理数据 
-					//    $.ajax({
-					//       url: "getCode.action",
-					//       dataType: "json",
-					//       type: "get",
-					//       data: "phone=" + phone,
-					//       success: function(data) {
-					//          //保存验证码
-					//          $("#code").val(data);
-					//       }
-					//    });
-				} else {
-					alert("手机号码不能为空！！！！！！");
-				}
+	<script src="/js/main.js"></script>
+	<script src="/js/jquery.min.login.js"></script>
+	<script src="/js/main.login.js"></script>
+	<script>
+
+            var InterValObj; //timer变量，控制时间 
+            var count = 5; //间隔函数，1秒执行 
+            var curCount; //当前剩余秒数 
+            var code = ""; //验证码 
+            // var codeLength = 6; //验证码长度 
+            function sendMessages() {
+                curCount = count;
+                var phone = $("#phone").val();
+                if (isMobile(phone)) {
+                    //设置button效果，开始计时 
+                    $("#getCode").attr("disabled", "true");
+                    $("#getCode").val(curCount + "秒");
+                    InterValObj = window.setInterval(SetRemainTimes, 1000); //启动计时器，1秒执行一次 
+                    //向后台发送处理数据 
+                    $.ajax({
+                       url: "/sendSMScode",
+                       dataType: "json",
+                       type: "get",
+                       data: {"phone":phone},
+                       success: function(data) {
+                          //保存验证码
+                          if (data.status) {
+							alert("验证码发送成功！");
+						} else {
+							alert(data.msg);
+						}
+                       }
+                    });
+                } else {
+                    alert("客官，请填写正确的手机号码！");
+                }
+            }
+            //timer处理函数 
+            function SetRemainTimes() {
+                if (curCount == 0) {
+                    window.clearInterval(InterValObj); //停止计时器 
+                    $("#getCode").removeAttr("disabled"); //启用按钮 
+                    $("#getCode").val("发送");
+                    code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效   
+                } else {
+                    curCount--;
+                    $("#getCode").val(curCount + "秒");
+                }
 			}
-			//timer处理函数 
-			function SetRemainTimes() {
-				if (curCount == 0) {
-					window.clearInterval(InterValObj); //停止计时器 
-					$("#getCode").removeAttr("disabled"); //启用按钮 
-					$("#getCode").val("发送");
-					code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效   
-				} else {
-					curCount--;
-					$("#getCode").val(curCount + "秒");
+            //注册
+            function register() {
+                var username = $("#username_register").val();
+                var password = $("#password_register").val();
+                var phone = $("#phone").val();
+                var code = $("#code").val();
+                if (!isMatcher(username) || !isMatcher(password)) {
+                	return alert("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头");
+                }
+                if (!isMobile(phone)) {
+                	return alert("客官，请填写正确的手机号码！");
+                }
+                if (code.length != 6) {
+                	return alert("请填写正确的验证码！");
 				}
+            	$.ajax({
+                    url: "/register",
+                    dataType: "json",
+                    type: "post",
+                    data: {"username":username,"password":password,"phone":phone,"code":code},
+                    success: function(data) {
+                       //保存验证码
+                       if (data.status) {
+                    	   document.getElementById('register').submit();
+						} else {
+							alert(data.msg);
+						}
+                    }
+                 });
 			}
-			$(document).ready(function(){
-				var url = window.location.pathname;
-				if(url == "/journey/loginView"){
-					$(".gtco-first").addClass("active");
-					$("#login").addClass("active");
-				} else if(url == "/journey/registerView"){
-					$(".gtco-second").addClass("active");
-					$("#register").addClass("active");
-				}
-			})
-		</script>
+            //登录
+            function login() {
+                var username = $("#username").val();
+                var password = $("#password").val();
+                if (!isMatcher(username) || !isMatcher(password)) {
+                	return alert("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头");
+                }
+            	$.ajax({
+                    url: "/login",
+                    dataType: "json",
+                    type: "post",
+                    data: {"username":username,"password":password},
+                    success: function(data) {
+                       //保存验证码
+                       if (data.status) {
+                    	   document.getElementById('login').submit();
+						} else {
+							alert(data.msg);
+						}
+                    }
+                 });
+			}
+            
+            
+            //校验手机号码
+            function isMobile(mobile) {
+            	return /^1[34578]\d{9}$/.test(mobile);
+			}
+            //校验用户名，密码
+            function isMatcher(str) {
+            	return /^[a-zA-Z][a-zA-Z0-9_-]{5,19}$/.test(str);
+			}
+        </script>
 </body>
 
 </html>

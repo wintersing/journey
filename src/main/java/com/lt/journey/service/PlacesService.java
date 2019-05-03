@@ -7,7 +7,7 @@ import com.lt.journey.model.PlacesDes;
 
 public interface PlacesService {
 
-	public void addPlaces(List<PlacesDes> placesList);
+	public void addPlaces(List<? extends Object> placesList);
 
 	String findCityidByCityName(String cityName);
 

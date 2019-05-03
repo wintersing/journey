@@ -12,7 +12,7 @@ import com.lt.journey.model.HotelDes;
 @Repository
 public interface HotelDao {
 
-	public void addHotel(List<HotelDes> hotelList);
+	public void addHotel(List<? extends Object> hotelList);
 	
 	@Select("select * from hotel where recommend = #{recommend} limit #{offset}, #{pageSize}")
 	public List<Hotel> findHotelRecommend(@Param("recommend")String recommend, @Param("offset")int offset, @Param("pageSize")int pageSize);

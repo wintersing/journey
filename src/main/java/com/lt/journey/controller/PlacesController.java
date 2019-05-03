@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.Blog;
 import com.lt.journey.model.BlogParam;
+import com.lt.journey.model.News;
 import com.lt.journey.model.Places;
 import com.lt.journey.model.PlacesDes;
 import com.lt.journey.model.PlacesParam;
 import com.lt.journey.service.BlogService;
+import com.lt.journey.service.NewsService;
 import com.lt.journey.service.PlacesService;
 import com.lt.journey.util.BlogInfo;
 import com.lt.journey.util.PlacesInfo;
@@ -30,8 +32,13 @@ public class PlacesController {
 
 	@Autowired
 	private BlogService blogService;
+
+	@Autowired
+	private NewsService newsService;
 	
 	private static final int pageSize = 9;
+
+	private static final int pageSize_news = 17;
 	
 	private static final int pageSize_blog = 9;
 
@@ -79,7 +86,7 @@ public class PlacesController {
 		placesParam.setCityName(cityName);
 		placesParam.setSort(sort);
 		placesParam.setPageToken(pageToken);
-		PlacesInfo.getPlacesInfo(placesParam, model);
+		PlacesInfo.getPlacesInfo(placesParam, model, Places.class);
 
 		//旅游日记
 		BlogParam blogParam = new BlogParam();
@@ -103,6 +110,9 @@ public class PlacesController {
 			PlacesDes placesDes = placesService.findPlaces(id);
 			model.addAttribute(placesDes);
 		}
+		//旅游新闻资讯
+		List<News> newsList = newsService.findNewsRecommend("4", 0, pageSize_news);
+		model.addAttribute(newsList);
 		return "places-single";
 	}
 

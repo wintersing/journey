@@ -3,6 +3,8 @@ package com.lt.journey.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +50,7 @@ public class TrainController {
 		List<Train> trainList = TrainInfo.getTrainInfo(trainParam, model);
 
 		if (trainList == null) return "msg";
-		
+
 		return "train";
 	}
 

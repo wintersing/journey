@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.lt.journey.exception.MessageException;
+import com.lt.journey.model.Places;
 import com.lt.journey.model.PlacesDes;
 import com.lt.journey.model.PlacesParam;
 import com.lt.journey.service.PlacesService;
@@ -33,26 +37,14 @@ public class PlacesTest {
 	
 	
 	@Test
-	public void name1() {
-		String[] asd = {"123","456","789"};
-		System.out.println(Arrays.toString(asd));
+	public void name2() throws MessageException {
+		String cityid = placesService.findCityidByCityName("韩国");
+		PlacesParam placesParam = new PlacesParam();
+		placesParam.setCityid(cityid);
+		placesParam.setSort("1");
+		List<PlacesDes> placesList = PlacesInfo.getPlacesInfo(placesParam, null, PlacesDes.class);
+		placesService.addPlaces(placesList);
 	}
-	
-	
-//	@Test
-//	public void name2() {
-//		String cityid = placesService.findCityidByCityName("泰国");
-//		PlacesParam placesParam = new PlacesParam();
-//		placesParam.setCityid(cityid);
-//		placesParam.setSort("1");
-//		Map<String, Object> dataMap = PlacesInfo.getPlacesInfo(placesParam);
-//		Object placesListObj = dataMap.get("placesList");
-//		if (placesListObj instanceof List) {
-//			List placesList_ = (List) placesListObj;
-//			List<PlacesDes> placesList = (List<PlacesDes>) placesList_;
-//			placesService.addPlaces(placesList);
-//		}
-//	}
 	
 }
 

@@ -19,5 +19,5 @@ public class Blog {
 	private String posterId;
 	private String publishDateStr;
 	private String posterScreenName;
-	private String recommend = "0";
+	private String recommend = "0";//1-主页推荐,1-
 }

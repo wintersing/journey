@@ -22,12 +22,13 @@ import com.lt.journey.model.PlacesParam;
 public class PlacesInfo {
 
 	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+//	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("apikey.properties");
 
 	private static final String url = propertiesAll.getProperty("Journey_Url");
 	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
 
 	
-	public static List<Places> getPlacesInfo(PlacesParam placesParam, Model model) throws MessageException {
+	public static <T> List<T> getPlacesInfo(PlacesParam placesParam, Model model, Class<T> clazz) throws MessageException {
 		StringBuffer param = new StringBuffer();
 		param.append("apikey=" + apikey);
 		Map<String, Object> map = CommonsUtils.beantoMap(placesParam);
@@ -45,16 +46,18 @@ public class PlacesInfo {
 			throw new MessageException("Search No Result");
 		}
 		String placesListStr = dataObj.getJSONArray("data") + "";
-		List<Places> placesList = JSONObject.parseArray(placesListStr, Places.class);
+		List<T> placesList = JSONObject.parseArray(placesListStr, clazz);
 
-		model.addAttribute(placesList);
-		model.addAttribute("pageToken", dataObj.getString("pageToken"));
-		if (dataObj.getBooleanValue("hasNext") == true) {
-			model.addAttribute("hasNext", "1");
-		} else {
-			model.addAttribute("hasNext", "0");
+		if (model != null) {
+			model.addAttribute(placesList);
+			model.addAttribute("pageToken", dataObj.getString("pageToken"));
+			if (dataObj.getBooleanValue("hasNext") == true) {
+				model.addAttribute("hasNext", "1");
+			} else {
+				model.addAttribute("hasNext", "0");
+			}
+			model.addAttribute(placesParam);
 		}
-		model.addAttribute(placesParam);
 		
 		return placesList;
 	}

@@ -213,7 +213,7 @@
 							</c:when>
 							<c:otherwise>
 							<c:if test="${hasNext eq 1 }">
-								<div class="form-group"><a href="${reqURI }?${urlParam }">
+								<div class="form-group"><a href="${reqURI }?${urlParam }&pageToken_news=${pageToken_news }">
 									<input type="submit" value="下一页"
 										class="btn btn-primary py-3 px-5"></a>
 								</div>
