@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,9 +42,18 @@ import javax.xml.bind.Unmarshaller;
  */
 public class CommonsUtils {
 	
-	public static String format(String format, String data){
-		SimpleDateFormat formatter2 = new SimpleDateFormat(format);
-		return formatter2.format(new Date(data));
+	/**
+	 * MM/dd/yyyy格式转yyyy-MM-dd格式
+	 * @param format
+	 * @param date
+	 * @return
+	 * @throws ParseException
+	 */
+	public static String format(String date) throws ParseException{
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");  
+		Date date_=sdf.parse(date); 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+	    return dateFormat.format(date_);
 	}
 
 	// Bean --> Map 1: 利用Introspector和PropertyDescriptor 将Bean --> Map

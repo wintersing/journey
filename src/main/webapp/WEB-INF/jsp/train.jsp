@@ -70,9 +70,11 @@ h3, .space {
 .entry{
 	pointer-events: none;
 }
+.position {
+    width:800px;
+}
 </style>
 </head>
-
 <body>
 
 
@@ -140,7 +142,7 @@ h3, .space {
 							</div>
 						</form>
 					</div>
-					<div class="sidebar-wrap ftco-animate">
+					<!-- <div class="sidebar-wrap ftco-animate">
 						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
 						<div>
 							<label class="form-check-label" for="exampleCheck1">
@@ -187,7 +189,7 @@ h3, .space {
 								</p>
 							</label>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<!-- END-->
 				<c:choose>
@@ -303,7 +305,7 @@ h3, .space {
 											</div>
 										</div>
 									</div>
-									<div class="list">
+									<!-- <div class="list">
 										<div class="destination">
 											<div class="text p-7">
 												<p class="bottom-area d-flex space">
@@ -320,7 +322,7 @@ h3, .space {
 												</p>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 							</c:forEach>
 							<div class="row mt-5">
@@ -378,147 +380,7 @@ h3, .space {
 
 					</c:when>
 					<c:otherwise>
-						<div class="col-lg-9">
-							<div class="row list-head">
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7">
-											<h3>车次</h3>
-										</div>
-									</div>
-								</div>
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7">
-											<h3>发时/到时</h3>
-										</div>
-									</div>
-								</div>
-
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7">
-											<h3>出站/到站</h3>
-										</div>
-									</div>
-								</div>
-
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7">
-											<h3>运行时间</h3>
-										</div>
-									</div>
-								</div>
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7">
-											<h3>参考票价</h3>
-										</div>
-									</div>
-								</div>
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7">
-											<h3>剩余票数</h3>
-										</div>
-									</div>
-								</div>
-								<div class="tab-header">
-									<div class="destination header">
-										<div class="text p-7"></div>
-									</div>
-								</div>
-							</div>
-							<div class="row list-body">
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<h3>G107</h3>
-										</div>
-									</div>
-								</div>
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<h3>08:05</h3>
-											<h3>13:46</h3>
-										</div>
-									</div>
-								</div>
-
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<h3>北京南</h3>
-											<h3>上海虹桥</h3>
-										</div>
-									</div>
-								</div>
-
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<h3>5小时41分钟</h3>
-										</div>
-									</div>
-								</div>
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<h3>商务座 ¥1748</h3>
-											<h3>特等座 ¥1053</h3>
-											<h3>一等座 ¥933</h3>
-											<h3>二等座 ¥553</h3>
-										</div>
-									</div>
-								</div>
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<h3>余0 张</h3>
-											<h3>余0 张</h3>
-											<h3>余0 张</h3>
-											<h3>余0 张</h3>
-										</div>
-									</div>
-								</div>
-								<div class="list">
-									<div class="destination">
-										<div class="text p-7">
-											<p class="bottom-area d-flex space">
-												<span class="ml-auto"><a href="#">现在预定</a></span>
-											</p>
-											<p class="bottom-area d-flex space">
-												<span class="ml-auto"><a href="#">现在预定</a></span>
-											</p>
-											<p class="bottom-area d-flex space">
-												<span class="ml-auto"><a href="#">现在预定</a></span>
-											</p>
-											<p class="bottom-area d-flex space">
-												<span class="ml-auto"><a href="#">现在预定</a></span>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="row mt-5">
-								<div class="col text-center">
-									<div class="block-27">
-										<ul>
-											<li><a href="#">&lt;</a></li>
-											<li class="active"><span>1</span></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#">5</a></li>
-											<li><a href="#">&gt;</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
+						<div class="col-lg-9"><img class="position" src="/images/train.png"></div>
 					</c:otherwise>
 				</c:choose>
 

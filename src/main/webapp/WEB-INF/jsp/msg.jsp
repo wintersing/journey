@@ -19,14 +19,17 @@
 <body>
 
     <div>
-    <c:if test="${msg eq 'Search No Result' }"></c:if>
+    <c:if test="${msg eq 'Search No Result' }">
         <img class="position" src="/images/no-result.png">
+    </c:if>
     </div>
-    <c:if test="${msg eq 'Page Not Found' }"></c:if>
+    <c:if test="${msg eq 'Page Not Found' }">
         <img class="position" src="/images/404.png">
+    </c:if>
     </div>
-    <c:if test="${msg eq 'Server Internal Error' }"></c:if>
+    <c:if test="${msg eq 'Server Internal Error' }">
         <img class="position" src="/images/error.png">
+    </c:if>
     </div>
 
 </body>

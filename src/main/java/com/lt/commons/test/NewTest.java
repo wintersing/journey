@@ -1,5 +1,6 @@
 package com.lt.commons.test;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,12 +17,21 @@ import com.lt.journey.model.NewsParam;
 import com.lt.journey.service.NewsService;
 import com.lt.journey.util.NewsInfo;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:spring-*.xml","classpath*:mybatis-config.xml" })
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = { "classpath*:spring-*.xml","classpath*:mybatis-config.xml" })
 public class NewTest {
 	
 	@Autowired
 	private NewsService newsService;
+
+	@Test
+	public void name12() throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");  
+		Date date=sdf.parse("5/29/2019"); 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+	    String string = dateFormat.format(date);
+	    System.out.println(string); 
+	}
 	
 	@Test
 	public void name() {

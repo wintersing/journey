@@ -1,58 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
-	<title>旅游攻略,自由行 - 人在旅途</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>旅游攻略,自由行 - 人在旅途</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
+	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="/css/animate.css">
 
-	<link rel="stylesheet" href="/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="/css/magnific-popup.css">
+<link rel="stylesheet" href="/css/owl.carousel.min.css">
+<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="/css/magnific-popup.css">
 
-	<link rel="stylesheet" href="/css/aos.css">
+<link rel="stylesheet" href="/css/aos.css">
 
-	<link rel="stylesheet" href="/css/ionicons.min.css">
+<link rel="stylesheet" href="/css/ionicons.min.css">
 
-	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="/css/jquery.timepicker.css">
+<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="/css/jquery.timepicker.css">
 
 
-	<link rel="stylesheet" href="/css/flaticon.css">
-	<link rel="stylesheet" href="/css/icomoon.css">
-	<link rel="stylesheet" href="/css/style.css">
-	<style type="text/css">
-		.text{
-			margin-right: 15px
-		}
-		.comment-pad{
-			padding-top: 100px;
-		}
-	</style>
+<link rel="stylesheet" href="/css/flaticon.css">
+<link rel="stylesheet" href="/css/icomoon.css">
+<link rel="stylesheet" href="/css/style.css">
+<style type="text/css">
+.text {
+	margin-right: 15px
+}
+
+.comment-pad {
+	padding-top: 100px;
+}
+</style>
 </head>
 
 <body>
 
 	<%@ include file="./part/header.jsp"%>
 
-	<div class="hero-wrap js-fullheight" style="background-image: url('/images/bg_1.jpg');">
+	<div class="hero-wrap js-fullheight"
+		style="background-image: url('/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-				<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+				data-scrollax-parent="true">
+				<div class="col-md-9 text-center ftco-animate"
+					data-scrollax=" properties: { translateY: '70%' }">
 					<!-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">主页</a></span> <span>酒店</span></p> -->
-					<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">景点</h1>
+					<h1 class="mb-3 bread"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">景点</h1>
 				</div>
 			</div>
 		</div>
@@ -67,7 +77,8 @@
 						<form action="#">
 							<div class="fields">
 								<div class="form-group">
-									<input name="cityName" type="text" class="form-control" value="${placesParam.cityName }" placeholder="请输入您要所搜的城市">
+									<input name="cityName" type="text" class="form-control"
+										value="${placesParam.cityName }" placeholder="请输入您要所搜的城市">
 								</div>
 								<!-- <div class="form-group">
 									<div class="range-slider">
@@ -81,7 +92,8 @@
 										</div>
 		             				</div> -->
 								<div class="form-group">
-									<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+									<input type="submit" value="Search"
+										class="btn btn-primary py-3 px-5">
 								</div>
 							</div>
 						</form>
@@ -90,8 +102,7 @@
 						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
 						<c:forEach var="newsItem" items="${newsList }">
 							<p>
-								<a target="_blank" class="news"
-									href="${newsItem.url }">${newsItem.title }</a>
+								<a target="_blank" class="news" href="${newsItem.url }">${newsItem.title }</a>
 							</p>
 						</c:forEach>
 
@@ -133,7 +144,7 @@
 							</form>
         		</div> -->
 				</div>
-				
+
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-md-12 ftco-animate">
@@ -146,68 +157,69 @@
 										<c:set var="end" value="${fn:length(placesDes.imageUrls) }"></c:set>
 									</c:otherwise>
 								</c:choose>
-								<c:forEach begin="1" end="${end }" var="imageUrl" items="${placesDes.imageUrls }">
+								<c:forEach begin="1" end="${end }" var="imageUrl"
+									items="${placesDes.imageUrls }">
 									<div class="item">
-										<div class="hotel-img" style="background-image: url(${imageUrl });"></div>
+										<div class="hotel-img"
+											style="background-image: url(${imageUrl });"></div>
 									</div>
 								</c:forEach>
 							</div>
 						</div>
 						<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
 							<p>
-								<h2>${placesDes.title }</h2>
-								<h5>${placesDes.subtitle }</h5>
-								评分：<span class="star">
-									<fmt:parseNumber var="rating2" type="number" value="${placesDes.rating }" />
-									<c:forEach begin="1" end="${rating2 }">
-										<i class="icon-star"></i> 
-									</c:forEach>
-									<c:if test="${placesDes.rating%1 > 0}">
-										<i class="icon-star-half"></i> 
-									</c:if>
-									${placesDes.rating } 分</span>
-								</span>
-								<div class="two">
-									门票：<span class="price">
-										<c:choose>
-											<c:when test="${placesDes.price > '0' }">
+							<h2>${placesDes.title }</h2>
+							<h5>${placesDes.subtitle }</h5>
+							评分：<span class="star"> <fmt:parseNumber var="rating2"
+									type="number" value="${placesDes.rating }" /> <c:forEach
+									begin="1" end="${rating2 }">
+									<i class="icon-star"></i>
+								</c:forEach> <c:if test="${placesDes.rating%1 > 0}">
+									<i class="icon-star-half"></i>
+								</c:if> ${placesDes.rating } 分
+							</span> </span>
+							<div class="two">
+								门票：<span class="price"> <c:choose>
+										<c:when test="${placesDes.price > '0' }">
 												
 												￥${placesDes.price }
 												
 											</c:when>
-											<c:otherwise>
-												<span style="font-size: 15px">免费开放</span>
-											</c:otherwise>
-										</c:choose>
-									</span>
-								</div>
+										<c:otherwise>
+											<span style="font-size: 15px">免费开放</span>
+										</c:otherwise>
+									</c:choose>
+								</span>
+							</div>
 							</p>
 							<span>开放时间: ${placesDes.openingHours }</span>
 							<p class="rate mb-5">
 								<span class="loc"><i class="icon-map"></i>${placesDes.city }</span>
 								<span class="loc"><i class="icon-map-marker"></i>${placesDes.location }</span>
-								<span><a href="/hotel/search?lon=${placesDes.geoPoint.lon }&lat=${placesDes.geoPoint.lat }&distance=3km" class="reply">>>附近酒店</a></span>
+								<span><a
+									href="/hotel/search?lon=${placesDes.geoPoint.lon }&lat=${placesDes.geoPoint.lat }&distance=3km"
+									class="reply">>>附近酒店</a></span>
 							</p>
 							<h4>景区描述</h4>
 							<p>${placesDes.description }</p>
 							<h4>小提示</h4>
-							<span>
-								${placesDes.tipInfo }
-							</span>
+							<span> ${placesDes.tipInfo } </span>
 						</div>
-<div class="pt-5 mt-5">
-							<div class="comment-form-wrap pt-5">
+						<div class="pt-5 mt-5 comment">
+							<!-- <div class="comment-form-wrap pt-5">
 								<h3 class="mb-5">发表评论</h3>
 								<form action="#" class="p-5 bg-light">
 									<div class="form-group">
-										<textarea name="comment" id="message" cols="30" rows="4" class="form-control"></textarea>
+										<textarea name="comment" id="message" cols="30" rows="4"
+											class="form-control"></textarea>
 									</div>
 									<div class="form-group">
-										<input type="submit" value="发表" class="btn py-3 px-4 btn-primary">
+										<input type="submit" value="发表"
+											class="btn py-3 px-4 btn-primary">
 									</div>
 
 								</form>
-							</div>
+							</div> -->
 
 							<div class="comment-pad">
 								<h3 class="mb-5">精彩评论</h3>
@@ -218,34 +230,36 @@
 							<!-- END comment-list -->
 
 						</div>
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+						<!-- loader -->
+						<div id="ftco-loader" class="show fullscreen">
+							<svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+									stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none"
+									stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+						</div>
 
 
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.easing.1.3.js"></script>
-	<script src="/js/jquery.waypoints.min.js"></script>
-	<script src="/js/jquery.stellar.min.js"></script>
-	<script src="/js/owl.carousel.min.js"></script>
-	<script src="/js/jquery.magnific-popup.min.js"></script>
-	<script src="/js/aos.js"></script>
-	<script src="/js/jquery.animateNumber.min.js"></script>
-	<script src="/js/bootstrap-datepicker.js"></script>
-	<script src="/js/scrollax.min.js"></script>
+						<script src="/js/jquery.min.js"></script>
+						<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+						<script src="/js/popper.min.js"></script>
+						<script src="/js/bootstrap.min.js"></script>
+						<script src="/js/jquery.easing.1.3.js"></script>
+						<script src="/js/jquery.waypoints.min.js"></script>
+						<script src="/js/jquery.stellar.min.js"></script>
+						<script src="/js/owl.carousel.min.js"></script>
+						<script src="/js/jquery.magnific-popup.min.js"></script>
+						<script src="/js/aos.js"></script>
+						<script src="/js/jquery.animateNumber.min.js"></script>
+						<script src="/js/bootstrap-datepicker.js"></script>
+						<script src="/js/scrollax.min.js"></script>
 
-	<script src="/js/google-map.js"></script>
-	<script src="/js/main.js"></script>
-
+						<script src="/js/main.js"></script>
 </body>
 <script type="text/javascript">
-	$(document).ready(function() { 
+	$(document).ready(function() {
 		getPalcesComment();
-	}); 
+	});
 	var commentPage = 1;
 	$(window).scroll(function() {
 		var scrollTop = $(this).scrollTop();
@@ -256,58 +270,76 @@
 			//var commentPage = $("#commentPage").val();
 			if (commentPage > 0) {
 				getPalcesComment();
-			}else{
+			} else {
 				return;
 			}
 		}
 	});
 	function getPalcesComment() {
-		$.ajax({
-			url: '/comment/sight/${placesDes.id }?pageToken='+commentPage,  
-		    method: 'get',  
-		    ContentType: "application/x-www-form-urlencoded;charset=utf-8",
-		    dataType: 'json',  
-		    success: function (ret) {
-				var dataList = "";
-				//判断第一次请求是否有结果
-				if (ret.retcode == "100002" && commentPage == 1) {
-					var str ="<li class=\"comment\">"
-						+"<div class=\"comment-body\">"
-							+"<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
-						+"</div>"
-					+"</li>"
-					$('.comment-list').append(str);
-					return;
-				}
-				
-				$.each(ret.data, function (i, comment){
-					var str ="<li class=\"comment\">"
-						+"<div class=\"vcard bio\">"
-							+"<img src=\""+comment.avatarUrl+"\" alt=\"Image placeholder\">"
-						+"</div>"
-						+"<div class=\"comment-body\">"
-							+"<h3>"+comment.commenterScreenName+"</h3>"
-							+"<div style=\"padding-bottom: 10px;\">"
-								+"<span class=\"text\">"+comment.ratingDist[0].key +"&nbsp;*&nbsp;"+ comment.ratingDist[0].value+"</span>"
-								+"<span class=\"text\">"+comment.ratingDist[1].key +"&nbsp;*&nbsp;"+ comment.ratingDist[1].value+"</span>"
-								+"<span class=\"text\">"+comment.ratingDist[2].key +"&nbsp;*&nbsp;"+ comment.ratingDist[2].value+"</span>"
-							+"</div>"
-							+"<p>"+comment.content+"</p>"
-							+"<div class=\"meta\">"+comment.publishDateStr.replace("T", " ")+"</div>"
-						+"</div>"
-					+"</li>"
-					dataList = dataList +str
+		$
+				.ajax({
+					url : '/comment/sight/${placesDes.id }?pageToken='
+							+ commentPage,
+					method : 'get',
+					ContentType : "application/x-www-form-urlencoded;charset=utf-8",
+					dataType : 'json',
+					success : function(ret) {
+						var dataList = "";
+						//判断第一次请求是否有结果
+						if (ret.retcode == "100002") {
+							commentPage = 0;
+							var str = "<div class=\"comment-body\" style=\"padding-left:20px;font-size: 20px;text-align:center;color: #f1a904;\">"
+									+ "------你已经看到我的底线了------" + "</div>"
+							$('.comment').append(str);
+							return;
+						}
+
+						$.each(ret.data, function(i, comment) {
+							var str = "<li class=\"comment\">"
+									+ "<div class=\"vcard bio\">"
+									+ "<img src=\""+comment.avatarUrl+"\" alt=\"Image placeholder\">"
+									+ "</div>"
+									+ "<div class=\"comment-body\">"
+									+ "<h3>"
+									+ comment.commenterScreenName
+									+ "</h3>"
+									+ "<div style=\"padding-bottom: 10px;\">"
+									+ "<span class=\"text\">"
+									+ comment.ratingDist[0].key
+									+ "&nbsp;*&nbsp;"
+									+ comment.ratingDist[0].value
+									+ "</span>"
+									+ "<span class=\"text\">"
+									+ comment.ratingDist[1].key
+									+ "&nbsp;*&nbsp;"
+									+ comment.ratingDist[1].value
+									+ "</span>"
+									+ "<span class=\"text\">"
+									+ comment.ratingDist[2].key
+									+ "&nbsp;*&nbsp;"
+									+ comment.ratingDist[2].value
+									+ "</span>"
+									+ "</div>"
+									+ "<p>"
+									+ comment.content
+									+ "</p>"
+									+ "<div class=\"meta\">"
+									+ comment.publishDateStr
+											.replace("T", " ")
+									+ "</div>"
+									+ "</div>"
+									+ "</li>"
+							dataList = dataList + str
+						});
+						if (ret.hasNext == true) {
+							commentPage += 1;
+						} else {
+							commentPage = 0;
+						}
+						$('.comment-list').append(dataList);
+					}
 				});
-				if (ret.hasNext == true) {
-					commentPage+=1;
-				}else{
-					commentPage = 0;
-				}
-				$('.comment-list').append(dataList);
-			}
-		});
 	}
-	
 </script>
 </html>
 

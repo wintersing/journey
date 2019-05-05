@@ -29,7 +29,7 @@ public class BlogTest {
 	public void name() throws MessageException {
 		BlogParam blogParam = new BlogParam();
 //		blogParam.setId("100041");
-		blogParam.setCityid("1096");//1,1005,1096,360,26
+		blogParam.setCityid("26");//1,1005,1096,360,26
 		blogParam.setSort("0");
 		blogParam.setPageToken("0");
 //		List<Blog> blogList = BlogInfo.getBlogInfo(blogParam, model, Blog.class);
@@ -39,15 +39,4 @@ public class BlogTest {
 		blogService.addBlog(blogDesList);
 	}
 	
-	@Test
-	public void asd() {
-		String s = "E:\njbx\nx9\nio9";  
-        String ss;  
-//把路径s中的'\'换为'\\',为何还要整8个'\'？我以为4个就行了。  
-        ss = s.replaceAll("\\n", "\\\\\\\\n"); 
-        System.out.println("s= " + s);  
-        System.out.println("ss=" + ss);  
-//		System.out.println("asd\njbx");
-//		System.out.println("asd\\\\njbx");
-	}
 }

@@ -1,5 +1,8 @@
 package com.lt.journey.controller;
 
+import java.util.Properties;
+
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +15,15 @@ import com.lt.commons.utils.HttpRequest;
 @Controller
 @RequestMapping("/")
 public class CommentController {
-
-	private static final String path = "src/main/resources/apikey.properties";
-//	private static final String path = "classpath:apikey.properties";
-	private static final String url = CommonsUtils.getProperties(path, "comment_url");
-	private static final String Hotel_comment_url = CommonsUtils.getProperties(path, "Hotel_comment_url");
-	private static final String apikey = CommonsUtils.getProperties(path, "IDataAPI_APIKEY");
+	@Test
+	public void SMSrandom() {
+		System.out.println(CommentController.class.getResource(""));
+	}
+	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
+//	private static final String path = "apikey.properties";
+	private static final String url = propertiesAll.getProperty("comment_url");
+	private static final String Hotel_comment_url = propertiesAll.getProperty("Hotel_comment_url");
+	private static final String apikey = propertiesAll.getProperty( "IDataAPI_APIKEY");
 
 	@RequestMapping(value = "/comment/{parent}/{id}", produces = "application/json; charset=utf-8")
 	@ResponseBody

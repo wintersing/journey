@@ -4,16 +4,14 @@
 <mapper namespace="com.lt.journey.dao.PlacesDao">
 	<insert id="addPlaces" parameterType="java.util.List">
 		INSERT IGNORE INTO places
-		(`id`,`location`,`rating`,`rank`,`url`,`country`,title,subtitle,city,imageUrls,tipInfo,
-		openingHours,description,price,commentCount,recommend,keyValues,geoPointID)
+		(`id`,`location`,`rating`,`country`,title,subtitle,city,imageUrls,tipInfo,
+		openingHours,description,price,commentCount,recommend,geoPointID)
 		values
 		<foreach collection="list" item="placesDes" separator=",">
 			(
 			#{placesDes.id},
 			#{placesDes.location},
 			#{placesDes.rating},
-			#{placesDes.rank},
-			#{placesDes.url},
 			#{placesDes.country},
 			#{placesDes.title},
 			#{placesDes.subtitle},
@@ -25,7 +23,6 @@
 			#{placesDes.price},
 			#{placesDes.commentCount},
 			#{placesDes.recommend},
-			#{placesDes.keyValues},
 			(SELECT `id` as `geoPointID` from geopoint where
 			`lon` = ${placesDes.geoPoint.lon} AND `lat` = ${placesDes.geoPoint.lat}))
 		</foreach>
@@ -35,8 +32,6 @@
 		<id column="id" property="id"/>
 		<result column="location" property="location"/>
 		<result column="rating" property="rating"/>
-		<result column="rank" property="rank"/>
-		<result column="url" property="url"/>
 		<result column="country" property="country"/>
 		<result column="title" property="title"/>
 		<result column="subtitle" property="subtitle"/>

@@ -33,7 +33,7 @@ public class BlogInfo {
 		//发送Get请求
 		String ret = HttpRequest.sendGet(url, param.toString());
 		String dataStr = CommonsUtils.unicodeToString(ret);
-		System.out.println(dataStr);
+//		System.out.println(dataStr);
 		if (ret == null) {
 			throw new MessageException("Search No Result");
 		}
@@ -79,7 +79,7 @@ public class BlogInfo {
 		
 		String ret = HttpRequest.sendGet(url, param.toString());
 		String dataStr = CommonsUtils.unicodeToString(ret);
-		System.out.println(dataStr);
+//		System.out.println(dataStr);
 		JSONObject dataObj = JSON.parseObject(ret);
 		JSONArray blogList = dataObj.getJSONArray("data");
 

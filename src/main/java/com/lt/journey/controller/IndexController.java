@@ -41,7 +41,13 @@ public class IndexController {
 		model.addAttribute(placesList);
 		model.addAttribute(hotelList);
 		model.addAttribute(blogList);
+		
+		int[] radom = new int[4];
+		for (int i = 0; i < 4; i++) {
+			radom[i] = (int)(2+Math.random()*9);
+		}
+		model.addAttribute("radom",radom);
 		return "index";
 	}
-	
+	//target/classes
 }

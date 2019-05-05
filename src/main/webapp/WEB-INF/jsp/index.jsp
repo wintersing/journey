@@ -72,10 +72,10 @@
 							aria-selected="true" onclick="search_('train')">目的地</a> <a
 							class="nav-link" id="v-pills-2-tab" data-toggle="pill"
 							href="#v-pills-2" role="tab" aria-controls="v-pills-2"
-							aria-selected="false" onclick="search_('hotel')">火车</a> <a
+							aria-selected="false" onclick="search_('hotel')">酒店</a> <a
 							class="nav-link" id="v-pills-3-tab" data-toggle="pill"
 							href="#v-pills-3" role="tab" aria-controls="v-pills-3"
-							aria-selected="false">酒店</a>
+							aria-selected="false">火车</a>
 					</div>
 				</div>
 				<div class="col-md-12 tab-wrap">
@@ -90,12 +90,12 @@
 									<div class="col-md align-items-end"></div>
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">目的地</label>
+											<label for="cityName">目的地</label>
 											<div class="form-field">
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input name="cityName" type="text" class="form-control"
+												<input id="cityName" name="cityName" type="text" class="form-control"
 													placeholder="目的地">
 											</div>
 										</div>
@@ -116,71 +116,16 @@
 
 						<div class="tab-pane fade" id="v-pills-2" role="tabpanel"
 							aria-labelledby="v-pills-performance-tab">
-							<form name="search_form" action="/train/search"
-								class="search-destination">
-								<div class="row">
-									<input type="hidden" name="page" value="1"> <input
-										type="hidden" name="limit" value="0">
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">出发地</label>
-											<div class="form-field">
-												<div class="icon">
-													<span class="icon-my_location"></span>
-												</div>
-												<input name="departureCityName" type="text"
-													class="form-control" placeholder="出发地">
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">目的地</label>
-											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
-												</div>
-												<input name="arrivalCityName" type="text"
-													class="form-control" placeholder="目的地">
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-items-end">
-										<div class="form-group">
-											<label for="#">出发日期</label>
-											<div class="form-field">
-												<div class="icon">
-													<span class="icon-map-marker"></span>
-												</div>
-												<input name="departureDate" type="text"
-													class="form-control checkin_date" placeholder="出发日期">
-											</div>
-										</div>
-									</div>
-									<div class="col-md align-self-end">
-										<div class="form-group">
-											<div class="form-field">
-												<input type="submit" value="Search"
-													class="form-control btn btn-primary">
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-
-						<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
-							aria-labelledby="v-pills-effect-tab">
 							<form action="/hotel/search" class="search-destination">
 								<div class="row">
 									<div class="col-md align-items-end">
 										<div class="form-group">
-											<label for="#">目的地</label>
+											<label for="city">目的地</label>
 											<div class="form-field">
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input name="city" type="text" class="form-control"
+												<input id="city" name="city" type="text" class="form-control"
 													placeholder="请输入您要所搜的城市">
 											</div>
 										</div>
@@ -228,6 +173,62 @@
 									</div>
 								</div>
 							</form>
+						</div>
+
+						<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
+							aria-labelledby="v-pills-effect-tab">
+							<form name="search_form" action="/train/search"
+								class="search-destination">
+								<div class="row">
+									<input type="hidden" name="page" value="1"> <input
+										type="hidden" name="limit" value="0">
+									<div class="col-md align-items-end">
+										<div class="form-group">
+											<label for="departureCityName">出发地</label>
+											<div class="form-field">
+												<div class="icon">
+													<span class="icon-my_location"></span>
+												</div>
+												<input id="departureCityName" name="departureCityName" type="text"
+													class="form-control" placeholder="出发地">
+											</div>
+										</div>
+									</div>
+									<div class="col-md align-items-end">
+										<div class="form-group">
+											<label for="#">目的地</label>
+											<div class="form-field">
+												<div class="icon">
+													<span class="icon-map-marker"></span>
+												</div>
+												<input name="arrivalCityName" type="text"
+													class="form-control" placeholder="目的地">
+											</div>
+										</div>
+									</div>
+									<div class="col-md align-items-end">
+										<div class="form-group">
+											<label for="#">出发日期</label>
+											<div class="form-field">
+												<div class="icon">
+													<span class="icon-map-marker"></span>
+												</div>
+												<input name="departureDate" type="text"
+													class="form-control checkin_date" placeholder="出发日期">
+											</div>
+										</div>
+									</div>
+									<div class="col-md align-self-end">
+										<div class="form-group">
+											<div class="form-field">
+												<input type="submit" value="Search"
+													class="form-control btn btn-primary">
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							
 						</div>
 					</div>
 				</div>
@@ -331,8 +332,7 @@
 							class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
 								<div class="text">
-									<strong class="number" data-number="100000">0</strong> <span>Happy
-										Customers</span>
+									<strong class="number" data-number="${radom[0] }">0</strong> <span>猜</span>
 								</div>
 							</div>
 						</div>
@@ -340,8 +340,7 @@
 							class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
 								<div class="text">
-									<strong class="number" data-number="40000">0</strong> <span>Destination
-										Places</span>
+									<strong class="number" data-number="${radom[1] }">0</strong> <span>猜</span>
 								</div>
 							</div>
 						</div>
@@ -349,7 +348,7 @@
 							class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
 								<div class="text">
-									<strong class="number" data-number="87000">0</strong> <span>Hotels</span>
+									<strong class="number" data-number="${radom[2] }">0</strong> <span>数</span>
 								</div>
 							</div>
 						</div>
@@ -357,7 +356,7 @@
 							class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
 								<div class="text">
-									<strong class="number" data-number="56400">0</strong> <span>Restaurant</span>
+									<strong class="number" data-number="${radom[3] }">0</strong> <span>字</span>
 								</div>
 							</div>
 						</div>

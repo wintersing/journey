@@ -319,14 +319,11 @@
 	<!-- .section -->
 
 
-	<div class="col-md-8 ftco-animate" style="margin-left: 350px">
-		<div class="pt-5 mt-5">
-			<h3 class="mb-5">精彩评论</h3>
-			<ul class="comment-list">
-
-			</ul>
+	<div class="col-md-8 ftco-animate" >
+		<div class="comment-body" style="padding-left:50%;font-size: 20px;text-align:center;color: #f1a904;">
+		------你已经看到我的底线了------
+		</div> 
 			<!-- END comment-list -->
-		</div>
 	</div>
 
 	<!-- loader -->
@@ -357,107 +354,6 @@
 
 </body>
 <script type="text/javascript">
-	$(document).ready(function() {
-		//getHotelComment();
-	});
-	var commentPage = 1;
-	$(window)
-			.scroll(
-					function() {
-						var scrollTop = $(this).scrollTop();
-						var scrollHeight = $(document).height();
-						var windowHeight = $(this).height();
-						if (scrollTop + windowHeight == scrollHeight) {
-							// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
-							if (commentPage > 0) {
-								//getHotelComment();
-								var str = "<li class=\"comment\">"
-										+ "<div class=\"comment-body\">"
-										+ "<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">你所查找的酒店暂无评论</h3>"
-										+ "</div>" + "</li>"
-								$('.comment-list').append(str);
-							} else {
-								return;
-							}
-						}
-					});
-	function getHotelComment() {
-		$
-				.ajax({
-					url : '/comment/hotel/${hotelDes.id }?pageToken='
-							+ commentPage,
-					method : 'get',
-					ContentType : "application/x-www-form-urlencoded;charset=utf-8",
-					dataType : 'json',
-					success : function(ret) {
-						var dataList = "";
-						if (ret.retcode == "100002") {
-							var str = "<li class=\"comment\">"
-									+ "<div class=\"comment-body\">"
-									+ "<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">你所查找的酒店暂无评论</h3>"
-									+ "</div>" + "</li>"
-							$('.comment-list').append(str);
-							return;
-						}
-
-						$
-								.each(
-										ret.data,
-										function(i, comment) {
-											var str = "<li class=\"comment\">"
-													+ "<div class=\"vcard bio\">"
-													+ "<img src=\"\/images\/avatar.jpg\" alt=\"avatar\">"
-													+ "</div>"
-													+ "<div class=\"comment-body\">"
-													+ "<h3>"
-													+ comment.commenterScreenName
-													+ "</h3>"
-													+ "<div class=\"meta\">"
-													+ comment.publishDateStr
-													+ "</div>"
-													+ "<div class=\"tagcloud\">"
-													+ "<a class=\"tag-cloud-link\">"
-													+ comment.commenterType
-													+ "</a>"
-													+ "<a class=\"tag-cloud-link\">"
-													+ eval("("
-															+ comment.subobjects
-															+ ")")[0].name
-													+ "</a>"
-													+ "<a class=\"tag-cloud-link\">评分："
-													+ comment.rating
-													+ "分</a>"
-													+ "</div>"
-													+ "<p>"
-													+ comment.content
-													+ "</p>"
-													+ "</div>"
-													+ "<ul class=\"children\">"
-													+ "<li class=\"comment\">"
-													+ "<div class=\"vcard bio\">"
-													+ "<img src=\"\/images\/avatar.jpg\" alt=\"avatar\">"
-													+ "</div>"
-													+ "<div class=\"comment-body\">"
-													+ "<h3>酒店回复</h3>"
-													+ "<p>"
-													+ eval("("
-															+ comment.replies
-															+ ")")[0].content
-													+ "</p>"
-													+ "</div>"
-													+ "</li>"
-													+ "</ul>"
-													+ "</li>"
-											dataList = dataList + str
-										});
-						if (ret.hasNext == true) {
-							commentPage += 1;
-						} else {
-							commentPage = 0;
-						}
-						$('.comment-list').append(dataList);
-					}
-				});
-	}
+	
 </script>
 </html>

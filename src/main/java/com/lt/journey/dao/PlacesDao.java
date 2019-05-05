@@ -16,7 +16,7 @@ public interface PlacesDao {
 	@Select("select cityid from places_city where cityName = #{cityName}")
 	public String findCityidByCityName(@Param("cityName")String cityName);
 
-	@Select("select * from places where recommend = #{recommend} limit #{offset}, #{pageSize}")
+	@Select("select * from places where recommend = #{recommend} ORDER BY updatetime DESC limit #{offset}, #{pageSize}")
 	public List<Places> findPlacesRecommend(@Param("recommend")String recommend, @Param("offset")int offset, @Param("pageSize")int pageSize);
 
 	@Select("select count(*) from places where recommend = #{recommend}")

@@ -214,7 +214,7 @@
 		          	contents = contents + "<p><img src=\""+imageUrls[i]+"\"></p>";
 				  }
 		        });
-		        if (imageUrlsLength < imageUrls.length) {
+		        if (imageUrls != undefined && imageUrlsLength < imageUrls.length) {
 					for (var i = imageUrlsLength; i < imageUrls.length; i++) {
 						contents = contents + "<p><img src=\""+imageUrls[i]+"\"></p>";
 					}
@@ -249,12 +249,11 @@
 		    success: function (ret) {
 				var dataList = "";
 				if (ret.retcode == "100002") {
-					var str ="<li class=\"comment\">"
-						+"<div class=\"comment-body\">"
-							+"<h3 style=\"font-size: 25px;text-align:center;color: #f9be37;\">暂无评论</h3>"
-						+"</div>"
-					+"</li>"
-					$('.comment-list').append(str);
+					commentPage = 0;
+					var str ="<div class=\"comment-body\" style=\"padding-left:50%;font-size: 20px;text-align:center;color: #f1a904;\">"
+					+"------你已经看到我的底线了------"
+					+"</div>"
+					$('.col-md-8').append(str);
 					return;
 				}
 				

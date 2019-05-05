@@ -5,10 +5,9 @@ import lombok.Data;
 @Data
 public class PlacesDes {
 	private String location;
+	private String updatatime;
 	private Double rating;
-	private String rank;			//综合排名
 	private String id;
-	private String url;
 	private String country;
 	private String city;
 	private String title;
@@ -21,7 +20,6 @@ public class PlacesDes {
 	private Integer commentCount;
 	private GeoPoint geoPoint;
 	private String recommend = "0";		//是否推荐(1-推荐，0-不推荐)
-	private String[] keyValues;		
 //	private String telephones;
 //	private String district;
 //	private String level;

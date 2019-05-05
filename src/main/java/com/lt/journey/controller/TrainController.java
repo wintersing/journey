@@ -1,6 +1,7 @@
 package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class TrainController {
 	}
 
 	@RequestMapping("/train/search")
-	public String searchTrain(Model model, TrainParam trainParam) throws UnsupportedEncodingException {
+	public String searchTrain(Model model, TrainParam trainParam) throws UnsupportedEncodingException, ParseException {
 
 		trainParam.setDepartureCityName(new String(trainParam.getDepartureCityName().getBytes("ISO-8859-1"), "utf-8"));
 		trainParam.setArrivalCityName(new String(trainParam.getArrivalCityName().getBytes("ISO-8859-1"), "utf-8"));
@@ -40,7 +41,7 @@ public class TrainController {
 			trainParam.setDepartureCityCode(departureCityCode);
 			trainParam.setArrivalCityCode(arrivalCityCode);
 			// 处理时间格式
-			trainParam.setDepartureDate(CommonsUtils.format("yyyy-MM-dd", trainParam.getDepartureDate()));
+			trainParam.setDepartureDate(CommonsUtils.format(trainParam.getDepartureDate()));
 		}
 		// 起始值
 		Integer page = trainParam.getPage();

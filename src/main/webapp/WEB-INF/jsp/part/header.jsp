@@ -26,7 +26,7 @@
 				<ul class="navbar-nav ml-auto">
 				<c:choose>
 					<c:when test="${not empty sessionScope.user_session }">
-						<li class="nav-item"><a class="nav-link" style="width:170px">欢迎,XXXXXXXXXX</a></li>
+						<li class="nav-item"><a class="nav-link" style="width:170px">欢迎,${sessionScope.user_session.username }</a></li>
 						<span class="split">|</span>
 						<li class="nav-item"><a href="/logout?reqURI=${reqURI }" style="width:100px" class="nav-link">退出</a></li>
 					</c:when>
