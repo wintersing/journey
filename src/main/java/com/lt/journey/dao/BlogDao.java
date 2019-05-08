@@ -14,7 +14,7 @@ public interface BlogDao {
 
 	public void addBlog(List<BlogDes> blogList);
 	
-	@Select("select id,from_unixtime(publishDate,'%Y-%m-%d') as publishDate,cityid,imageUrls,avatarUrl,likeCount,commentCount,viewCount,favoriteCount,city,title,posterId,publishDateStr,posterScreenName,recommend from blog where recommend = #{recommend} limit #{offset}, #{pageSize}")
+	@Select("select * from blog where recommend = #{recommend} ORDER BY updatetime DESC limit #{offset}, #{pageSize}")
 	public List<Blog> findBlog(@Param("recommend")String recommend, @Param("offset")int offset, @Param("pageSize")int pageSize);
 
 	@Select("select count(*) from blog where recommend = 2")

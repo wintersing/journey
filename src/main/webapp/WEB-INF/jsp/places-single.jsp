@@ -324,8 +324,7 @@
 									+ comment.content
 									+ "</p>"
 									+ "<div class=\"meta\">"
-									+ comment.publishDateStr
-											.replace("T", " ")
+									+ getDate(comment.publishDate)
 									+ "</div>"
 									+ "</div>"
 									+ "</li>"
@@ -339,6 +338,13 @@
 						$('.comment-list').append(dataList);
 					}
 				});
+	}
+	function getDate(str) {
+		var now = new Date(str),
+		y = now.getFullYear(),
+		m = now.getMonth() + 1,
+		d = now.getDate();
+		return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
 	}
 </script>
 </html>

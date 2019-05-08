@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Hotel {
 	private String[] imageUrls;
+	private String updatetime;
 	private String title;
 	private String rating;
 //	private String[] facilities;		//屋内设施

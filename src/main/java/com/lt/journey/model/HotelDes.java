@@ -9,6 +9,7 @@ public class HotelDes {
 	private String id;					//酒店id
 	private String brandName;			//品牌名称
 	private String businessDistrict;	//商圈
+	private String updatetime;
 	private GeoPoint geoPoint;
 	private String openingHours;
 	private String commentCount;

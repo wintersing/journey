@@ -13,7 +13,7 @@ public interface NewsDao {
 
 	public void addNews(List<News> newsList);
 
-	@Select("select * from news where recommend = #{recommend} limit #{i}, #{pageSize}")
+	@Select("select * from news where recommend = #{recommend} ORDER BY updatetime DESC limit #{i}, #{pageSize}")
 	public List<News> findNewsRecommend(@Param("recommend")String recommend, @Param("i")int i, @Param("pageSize")int pageSize);
 
 }

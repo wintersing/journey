@@ -11,6 +11,7 @@ public class PlacesDes {
 	private String country;
 	private String city;
 	private String title;
+	private String updatetime;
 	private String subtitle;
 	private String[] imageUrls;		
 	private String tipInfo;			//提示信息

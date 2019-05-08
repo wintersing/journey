@@ -8,6 +8,7 @@ public class Places {
 	private String location;
 	private Double rating;
 	private String id;
+	private String updatetime;
 	private String city;
 	private String country;
 	private String title;

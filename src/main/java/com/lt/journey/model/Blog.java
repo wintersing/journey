@@ -7,8 +7,6 @@ public class Blog {
 	private String id;
 	private String cityid;
 	private String publishDate;
-//	private String[] imageUrls;
-//	private String url;
 	private String avatarUrl;
 	private String likeCount;
 	private String commentCount;

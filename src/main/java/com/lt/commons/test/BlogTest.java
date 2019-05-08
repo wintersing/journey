@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.ui.Model;
 
 import com.lt.journey.exception.MessageException;
-import com.lt.journey.model.Blog;
 import com.lt.journey.model.BlogDes;
 import com.lt.journey.model.BlogParam;
 import com.lt.journey.service.BlogService;

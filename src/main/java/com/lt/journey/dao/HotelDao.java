@@ -14,7 +14,7 @@ public interface HotelDao {
 
 	public void addHotel(List<? extends Object> hotelList);
 	
-	@Select("select * from hotel where recommend = #{recommend} limit #{offset}, #{pageSize}")
+	@Select("select * from hotel where recommend = #{recommend} ORDER BY updatetime DESC limit #{offset}, #{pageSize}")
 	public List<Hotel> findHotelRecommend(@Param("recommend")String recommend, @Param("offset")int offset, @Param("pageSize")int pageSize);
 
 	public List<Hotel> findHotelDes(@Param("id")String id);

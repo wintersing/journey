@@ -269,7 +269,7 @@
 							var str = str +"<h3>用户名</h3>"
 						}
 						var str = str +"<p>"+comment.content+"</p>"
-							+"<div class=\"meta\">"+comment.publishDateStr.replace("T", " ")+"</div>"
+							+"<div class=\"meta\">"+getDate(comment.publishDate)+"</div>"
 						+"</div>"
 					+"</li>"
 					dataList = dataList +str
@@ -282,6 +282,13 @@
 				$('.comment-list').append(dataList);
 			}
 		});
+	}
+	function getDate(str) {
+		var now = new Date(str),
+		y = now.getFullYear(),
+		m = now.getMonth() + 1,
+		d = now.getDate();
+		return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
 	}
   </script>
 </body>
