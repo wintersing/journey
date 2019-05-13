@@ -206,20 +206,22 @@
 							<span> ${placesDes.tipInfo } </span>
 						</div>
 						<div class="pt-5 mt-5 comment">
-							<!-- <div class="comment-form-wrap pt-5">
+						 <div class="comment-form-wrap pt-5">
 								<h3 class="mb-5">发表评论</h3>
-								<form action="#" class="p-5 bg-light">
+								<form id="form-comment-add" class="p-5 bg-light">
+								<input id="parent" type="hidden" value="sight" name="parent">
+								<input id="parentID" type="hidden" value="${placesDes.id }" name="parentID">
 									<div class="form-group">
-										<textarea name="comment" id="message" cols="30" rows="4"
+										<textarea name="content" id="content" cols="60" rows="4"
 											class="form-control"></textarea>
 									</div>
 									<div class="form-group">
-										<input type="submit" value="发表"
+										<input type="button" value="发表" onclick="addComment();"
 											class="btn py-3 px-4 btn-primary">
 									</div>
 
 								</form>
-							</div> -->
+							</div> 
 
 							<div class="comment-pad">
 								<h3 class="mb-5">精彩评论</h3>
@@ -253,6 +255,11 @@
 						<script src="/js/jquery.animateNumber.min.js"></script>
 						<script src="/js/bootstrap-datepicker.js"></script>
 						<script src="/js/scrollax.min.js"></script>
+						
+						<script src="/js/layer/2.4/layer.js"></script>
+						<script src="/js/jquery.validation/1.14.0/jquery.validate.js"></script> 
+						<script src="/js/jquery.validation/1.14.0/validate-methods.js"></script> 
+						<script src="/js/jquery.validation/1.14.0/messages_zh.js"></script> 
 
 						<script src="/js/main.js"></script>
 </body>
@@ -261,6 +268,7 @@
 		getPalcesComment();
 	});
 	var commentPage = 1;
+	var data = 0;
 	$(window).scroll(function() {
 		var scrollTop = $(this).scrollTop();
 		var scrollHeight = $(document).height();
@@ -278,8 +286,7 @@
 	function getPalcesComment() {
 		$
 				.ajax({
-					url : '/comment/sight/${placesDes.id }?pageToken='
-							+ commentPage,
+					url : '/comment/sight/${placesDes.id }?pageToken='+commentPage+'&data='+data,
 					method : 'get',
 					ContentType : "application/x-www-form-urlencoded;charset=utf-8",
 					dataType : 'json',
@@ -303,23 +310,6 @@
 									+ "<h3>"
 									+ comment.commenterScreenName
 									+ "</h3>"
-									+ "<div style=\"padding-bottom: 10px;\">"
-									+ "<span class=\"text\">"
-									+ comment.ratingDist[0].key
-									+ "&nbsp;*&nbsp;"
-									+ comment.ratingDist[0].value
-									+ "</span>"
-									+ "<span class=\"text\">"
-									+ comment.ratingDist[1].key
-									+ "&nbsp;*&nbsp;"
-									+ comment.ratingDist[1].value
-									+ "</span>"
-									+ "<span class=\"text\">"
-									+ comment.ratingDist[2].key
-									+ "&nbsp;*&nbsp;"
-									+ comment.ratingDist[2].value
-									+ "</span>"
-									+ "</div>"
 									+ "<p>"
 									+ comment.content
 									+ "</p>"
@@ -333,7 +323,12 @@
 						if (ret.hasNext == true) {
 							commentPage += 1;
 						} else {
-							commentPage = 0;
+							if (ret.hasNext_data != undefined && ret.hasNext_data == true) {
+								commentPage = 1;
+								data=1;
+							} else {
+								commentPage = 0;
+							}
 						}
 						$('.comment-list').append(dataList);
 					}
@@ -346,6 +341,30 @@
 		d = now.getDate();
 		return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d) + " " + now.toTimeString().substr(0, 8);
 	}
+	
+	function addComment() {
+        var parent = $("#parent").val();
+        var parentID = $("#parentID").val();
+        var content = $("#content").val();
+        if (content == "") {
+        	layer.msg('请输入评论！',{icon:2,time:1000});
+			return;
+		}
+		$.ajax({
+			url : '/addComment',
+			method : 'post',
+			data:{"parent":parent,"parentID":parentID,"content":content},
+			ContentType : "application/x-www-form-urlencoded;charset=utf-8",
+			dataType : 'json',
+			success : function(ret) {
+				if (ret.status) {
+					layer.msg('评论成功！',{icon:1,time:1000});
+				} else {
+					layer.msg(ret.msg,{icon:2,time:1000});
+				}
+			}
+		});
+}
 </script>
 </html>
 

@@ -175,7 +175,7 @@ public class UserController {
 			return jsonObject.toString();
 		}
 		
-		req.getSession().setAttribute("user_session", user);
+		req.getSession().setAttribute("user_session", _user);
 		jsonObject.put("status", true);
 		jsonObject.put("msg", "注册成功！");
 		return jsonObject.toString();
