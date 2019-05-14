@@ -61,7 +61,7 @@
 		</div>
 	</div>
 
-	<section class="ftco-section justify-content-end ftco-search">
+	<section class="ftco-section justify-content-end ftco-search" style="margin-left: -70px;">
 		<div class="container-wrap ml-auto">
 			<div class="row no-gutters">
 				<div class="col-md-12 nav-link-wrap">
@@ -275,7 +275,7 @@
 								<div class="d-flex">
 									<div class="one">
 										<h3>
-											<a href="#">${placesItem.title }</a>
+											<a href="/places/${placesItem.id }?recommend=1">${placesItem.title }</a>
 										</h3>
 										<p class="rate">
 											<fmt:parseNumber var="rating" type="number"
@@ -308,7 +308,7 @@
 								<hr>
 								<p class="bottom-area d-flex">
 									<span><i class="icon-map-o"></i>${placesItem.city }</span> <span
-										class="ml-auto"><a href="#">发现</a></span>
+										class="ml-auto"><a href="/places/${placesItem.id }?recommend=1">查看</a></span>
 								</p>
 							</div>
 						</div>
@@ -324,10 +324,10 @@
 	<section class="ftco-section ftco-counter img" id="section-counter"
 		style="background-image: url(images/bg_1.jpg);"
 		data-stellar-background-ratio="0.5">
-		<div class="container">
+		<div style="height: -20px;" class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-10">
-					<div class="row">
+					<!-- <div class="row">
 						<div
 							class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 							<div class="block-18 text-center">
@@ -360,7 +360,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -403,7 +403,7 @@
 								<div class="d-flex">
 									<div class="one">
 										<h3>
-											<a href="#">${hotelItem.title }</a>
+											<a href="/hotel/${hotelItem.id }?recommend=1">${hotelItem.title }</a>
 										</h3>
 										<p class="rate">
 											<fmt:parseNumber var="rating2" type="number"
@@ -426,7 +426,7 @@
 								<hr>
 								<p class="bottom-area d-flex">
 									<span><i class="icon-map-o"></i> ${hotelItem.city },${hotelItem.district }</span>
-									<span class="ml-auto"><a href="#">预定</a></span>
+									<span class="ml-auto"><a href="/hotel/${hotelItem.id }?recommend=1">查看</a></span>
 								</p>
 							</div>
 						</div>
@@ -450,9 +450,9 @@
 			</div>
 			<div class="row ftco-animate">
 				<div class="col-md-12">
-					<div class="carousel-testimony owl-carousel ftco-owl">
+					<div class="carousel-testimony owl-carousel ftco-owl" style="font-size:20px;">
 					<c:forEach var="blogItem" items="${blogList }">
-						<div class="item">
+						<div class="item" style="height:340px;">
 							<div class="testimony-wrap p-4 pb-5">
 								<div class="user-img mb-5"
 									style="background-image: url(${blogItem.avatarUrl })">
@@ -490,7 +490,7 @@
 	</section>
 
 
-	<section class="ftco-section bg-light">
+	<section class="ftco-section bg-light" >
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
@@ -501,7 +501,7 @@
 		</div>
 	</section>
 
-	<section class="ftco-section-parallax">
+	<!-- <section class="ftco-section-parallax">
 		<div class="parallax-img d-flex align-items-center">
 			<div class="container">
 				<div class="row d-flex justify-content-center">
@@ -526,7 +526,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 
 	<%@ include file="./part/footer.jsp"%>
 

@@ -53,7 +53,7 @@
 					data-scrollax=" properties: { translateY: '70%' }">
 					<p class="breadcrumbs"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-						<span class="mr-2"><a href="">Home</a></span> <span>Places</span>
+						<span class="mr-2"><a href=""></a></span> <span></span>
 					</p>
 					<h1 class="mb-3 bread"
 						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">景点</h1>
@@ -98,8 +98,8 @@
 							</c:choose>
 								</h3>
 								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span>${fn:substring(blogItem.publishDateStr,0,10) }</a></div>
-									<div><a href="#"><span class="icon-map-marker"></span> ${blogItem.city }</a></div>
+									<div><a><span class="icon-calendar"></span>${fn:substring(blogItem.publishDateStr,0,10) }</a></div>
+									<div><a><span class="icon-map-marker"></span> ${blogItem.city }</a></div>
 								</div>
 							</div>
 						</div>
@@ -174,7 +174,7 @@
 												<hr>
 												<p class="bottom-area d-flex">
 													<span><i class="icon-map-o"></i><span style="padding-left: 6px;">${placesItem.city }</span></span>
-													<span class="ml-auto"><a href="#">发现</a></span>
+													<span class="ml-auto"><a href="#">查看</a></span>
 												</p>
 											</div>
 										</div>

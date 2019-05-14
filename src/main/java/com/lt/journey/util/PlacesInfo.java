@@ -13,7 +13,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.exception.MessageException;
-import com.lt.journey.model.Places;
 import com.lt.journey.model.PlacesDes;
 import com.lt.journey.model.PlacesParam;
 

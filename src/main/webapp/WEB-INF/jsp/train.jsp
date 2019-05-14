@@ -430,6 +430,10 @@ h3, .space {
 				$("#toRight > a").prop("class","entry");
 				$("#li-${maxPage } > a").prop("class","entry");
 			}
+			
+			if ("${timeError}" != "") {
+				alert("时间填写错误！");
+			}
 		}); 
 		
 	</script>

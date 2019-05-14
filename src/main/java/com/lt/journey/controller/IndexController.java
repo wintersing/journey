@@ -2,8 +2,6 @@ package com.lt.journey.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,11 +40,6 @@ public class IndexController {
 		model.addAttribute(hotelList);
 		model.addAttribute(blogList);
 		
-		int[] radom = new int[4];
-		for (int i = 0; i < 4; i++) {
-			radom[i] = (int)(2+Math.random()*9);
-		}
-		model.addAttribute("radom",radom);
 		return "index";
 	}
 	//target/classes

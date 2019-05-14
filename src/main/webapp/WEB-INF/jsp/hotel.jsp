@@ -175,7 +175,7 @@
 									<hr>
 									<p class="bottom-area d-flex">
 										<span><i class="icon-map-o"></i><span style="padding-left: 5px;">${hotelItem.city },${hotelItem.district }</span></span> 
-										<span class="ml-auto"><a href="#">预定</a></span>
+										<span class="ml-auto"><a href="#">查看</a></span>
 									</p>
 								</div>
 							</div>

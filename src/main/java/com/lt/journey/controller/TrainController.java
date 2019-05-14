@@ -2,10 +2,11 @@ package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +42,12 @@ public class TrainController {
 			trainParam.setDepartureCityCode(departureCityCode);
 			trainParam.setArrivalCityCode(arrivalCityCode);
 			// 处理时间格式
-			trainParam.setDepartureDate(CommonsUtils.format(trainParam.getDepartureDate()));
+			String time = CommonsUtils.format(trainParam.getDepartureDate());
+			if (time.compareTo(new SimpleDateFormat("yyyy-MM-dd").format(new Date())) == -1) {
+				model.addAttribute("timeError", true);
+				return "train";
+			}
+			trainParam.setDepartureDate(time);
 		}
 		// 起始值
 		Integer page = trainParam.getPage();
@@ -53,6 +59,13 @@ public class TrainController {
 		if (trainList == null) return "msg";
 
 		return "train";
+	}
+	
+	@Test
+	public void name() {
+		String s1 = "2019-05-14"; 
+		String s2 = "2019-05-13"; 
+		System.out.println( s1.compareTo(s2) ); // -1 (前面相等,s1长度小1) 
 	}
 
 }

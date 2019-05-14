@@ -8,7 +8,6 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 
 import org.junit.Test;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,6 @@ import com.lt.commons.utils.HttpRequest;
 import com.lt.journey.model.Comment;
 import com.lt.journey.model.User;
 import com.lt.journey.service.CommentService;
-import com.sun.tools.extcheck.Main;
 
 @Controller
 @RequestMapping("/")
@@ -29,8 +27,8 @@ public class CommentController {
 
 	private static Properties propertiesAll = CommonsUtils.getPropertiesAll("src/main/resources/apikey.properties");
 //	private static final String path = "apikey.properties";
+//	private static final String Hotel_comment_url = propertiesAll.getProperty("Hotel_comment_url");
 	private static final String url = propertiesAll.getProperty("comment_url");
-	private static final String Hotel_comment_url = propertiesAll.getProperty("Hotel_comment_url");
 	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
 
 	private static final int pageSize = 10;

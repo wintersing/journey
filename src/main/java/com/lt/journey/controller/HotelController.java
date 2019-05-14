@@ -1,8 +1,6 @@
 package com.lt.journey.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +15,9 @@ import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
 import com.lt.journey.model.News;
-import com.lt.journey.model.NewsParam;
 import com.lt.journey.service.HotelService;
 import com.lt.journey.service.NewsService;
-import com.lt.journey.util.CatLabel2;
 import com.lt.journey.util.HotelInfo;
-import com.lt.journey.util.NewsInfo;
 
 @Controller
 @RequestMapping("/")

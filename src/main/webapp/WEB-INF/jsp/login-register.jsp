@@ -113,25 +113,25 @@
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="username_register">用户名</label>
-													<input name="username" type="text" class="form-control" id="username_register">
+													<input value="" name="username" type="text" class="form-control" id="username_register">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="password_register">密码</label>
-													<input name="password" type="password" class="form-control" id="password_register">
+													<input value="" name="password" type="password" class="form-control" id="password_register">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="phone">手机号码</label>
-													<input name="phone" type="text" class="form-control" id="phone">
+													<input value="" name="phone" type="text" class="form-control" id="phone">
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-md-7">
 													<label for="code">验证码</label>
-													<input name="code" type="text" class="form-control" id="code">
+													<input value="" name="code" type="text" class="form-control" id="code">
 												</div>
 												<div class="sendMessages">
 													<input id="getCode" onclick="sendMessages()" type="button"
