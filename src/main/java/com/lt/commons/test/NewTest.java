@@ -33,6 +33,16 @@ public class NewTest {
 	    System.out.println(string); 
 	}
 	
+
+	@Test
+	public void name112() throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");  
+		Date date=sdf.parse("5/29/2019"); 
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+	    String string = dateFormat.format(date);
+	    System.out.println(string); 
+	}
+	
 	@Test
 	public void name() {
 		Calendar calendar = Calendar.getInstance(); 
