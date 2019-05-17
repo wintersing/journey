@@ -41,18 +41,17 @@ public class TrainController {
 			String arrivalCityCode = trainService.findCityCode(trainParam.getArrivalCityName());
 			trainParam.setDepartureCityCode(departureCityCode);
 			trainParam.setArrivalCityCode(arrivalCityCode);
-			// 处理时间格式
-			String time = CommonsUtils.format(trainParam.getDepartureDate());
-			if (time.compareTo(new SimpleDateFormat("yyyy-MM-dd").format(new Date())) == -1) {
-				model.addAttribute("timeError", true);
-				return "train";
-			}
-			trainParam.setDepartureDate(time);
+//			// 处理时间格式
+//			String time = CommonsUtils.format(trainParam.getDepartureDate());
+//			if (time.compareTo(new SimpleDateFormat("yyyy-MM-dd").format(new Date())) == -1) {
+//				model.addAttribute("timeError", true);
+//				return "train";
+//			}
+//			trainParam.setDepartureDate(time);
 		}
 		// 起始值
 		Integer page = trainParam.getPage();
 		trainParam.setStart((page-1) * trainParam.getLimit());
-
 		// 得到火车余票信息
 		List<Train> trainList = TrainInfo.getTrainInfo(trainParam, model);
 
@@ -61,11 +60,11 @@ public class TrainController {
 		return "train";
 	}
 	
-	@Test
-	public void name() {
-		String s1 = "2019-05-14"; 
-		String s2 = "2019-05-13"; 
-		System.out.println( s1.compareTo(s2) ); // -1 (前面相等,s1长度小1) 
-	}
+//	@Test
+//	public void name() {
+//		String s1 = "2019-05-14"; 
+//		String s2 = "2019-05-13"; 
+//		System.out.println( s1.compareTo(s2) ); // -1 (前面相等,s1长度小1) 
+//	}
 
 }

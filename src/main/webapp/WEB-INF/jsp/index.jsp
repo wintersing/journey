@@ -177,7 +177,7 @@
 
 						<div class="tab-pane fade" id="v-pills-3" role="tabpanel"
 							aria-labelledby="v-pills-effect-tab">
-							<form name="search_form" action="/train/search"
+							<form name="search_form" action="/train/search" autocomplete="off"
 								class="search-destination">
 								<div class="row">
 									<input type="hidden" name="page" value="1"> <input
@@ -213,8 +213,8 @@
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input name="departureDate" type="text"
-													class="form-control checkin_date" placeholder="出发日期">
+												<input id="departureDate" name="departureDate" type="text"
+													class="form-control test-item" placeholder="出发日期">
 											</div>
 										</div>
 									</div>
@@ -558,6 +558,22 @@
 
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/laydate/laydate.js"></script> <!-- 改成你的路径 -->
+	<script>
+	laydate.render({
+	  elem: '#departureDate',
+	  min:getDate(),
+	  	trigger: 'click'
+	});
+
+	function getDate() {
+	    var now = new Date(),
+	    y = now.getFullYear(),
+	    m = now.getMonth() + 1,
+	    d = now.getDate();
+	    return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
+	}
+	</script>
 </body>
 
 </html>

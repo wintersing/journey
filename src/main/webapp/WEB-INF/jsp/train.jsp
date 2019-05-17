@@ -103,7 +103,7 @@ h3, .space {
 				<div class="col-lg-3 sidebar order-md-last ftco-animate">
 					<div class="sidebar-wrap ftco-animate">
 						<h3 class="heading mb-4">查询火车余票</h3>
-						<form action="/train/search">
+						<form action="/train/search"  autocomplete="off">
 							<div class="fields">
 								<div class="form-group">
 									<div class="form-field">
@@ -129,8 +129,9 @@ h3, .space {
 												<div class="icon">
 													<span class="icon-map-marker"></span>
 												</div>
-												<input name="departureDate" type="text" 
-													class="form-control checkin_date" placeholder="出发日期">
+												<input id="departureDate" name="departureDate" type="text" 
+													class="form-control test-item" placeholder="出发日期"
+													 value="${trainParam.departureDate }">
 											</div>
 										</div>
 									</div>
@@ -414,11 +415,10 @@ h3, .space {
 	<script src="/js/aos.js"></script>
 	<script src="/js/jquery.animateNumber.min.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
-	<script src="/js/jquery.timepicker.min.js"></script>
 	<script src="/js/scrollax.min.js"></script>
 
-	<script src="/js/google-map.js"></script>
 	<script src="/js/main.js"></script>
+	<script src="/js/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 	<script type="text/javascript">
 		$(document).ready(function(){ 
 		   $("#li-${page }").prop("class","active");
@@ -436,6 +436,19 @@ h3, .space {
 			}
 		}); 
 		
+		laydate.render({
+		  elem: '#departureDate',
+		  min:getDate(),
+		  trigger: 'click'
+		});
+		
+		function getDate() {
+		    var now = new Date(),
+		    y = now.getFullYear(),
+		    m = now.getMonth() + 1,
+		    d = now.getDate();
+		    return y + "-" + (m < 10 ? "0" + m : m) + "-" + (d < 10 ? "0" + d : d);
+		}
 	</script>
 </body>
 
