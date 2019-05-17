@@ -113,19 +113,19 @@
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="username_register">用户名</label>
-													<input value="" name="username" type="text" class="form-control" id="username_register">
+													<input value="" name="username" type="text" class="form-control" id="username_register" autocomplete="off">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="password_register">密码</label>
-													<input value="" name="password" type="password" class="form-control" id="password_register">
+													<input name="password" type="password" class="form-control" id="password_register" autocomplete="new-password">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="phone">手机号码</label>
-													<input value="" name="phone" type="text" class="form-control" id="phone">
+													<input name="phone" type="text" class="form-control" id="phone">
 												</div>
 											</div>
 											<div class="row">

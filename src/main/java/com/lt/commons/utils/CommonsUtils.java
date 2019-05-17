@@ -42,6 +42,17 @@ import javax.xml.bind.Unmarshaller;
  */
 public class CommonsUtils {
 	
+
+	/**
+	 * 得到相应格式的当前时间
+	 * yyyy-MM-dd 
+	 * hh:mm:ss,12时
+	 * HH:mm:ss,24时
+	 */
+	public static String formatDate(String date) {
+	    return new SimpleDateFormat(date).format(new Date());
+	}
+	
 	/**
 	 * MM/dd/yyyy格式转yyyy-MM-dd格式
 	 * @param format

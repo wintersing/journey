@@ -36,11 +36,8 @@ public class NewTest {
 
 	@Test
 	public void name112() throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");  
-		Date date=sdf.parse("5/29/2019"); 
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
-	    String string = dateFormat.format(date);
-	    System.out.println(string); 
+	    System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+	    System.out.println(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date())); 
 	}
 	
 	@Test

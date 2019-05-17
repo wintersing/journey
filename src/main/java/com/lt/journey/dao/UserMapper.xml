@@ -9,6 +9,6 @@
 			select replace(uuid(),'-','')
 		</selectKey>
 		insert into user values
-		(#{id},#{username},#{password},#{code},#{phone})
+		(#{id},#{username},#{password},#{code},#{phone},#{createTime})
 	</insert>
 </mapper>

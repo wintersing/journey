@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lt.commons.utils.CommonsUtils;
 import com.lt.journey.model.User;
 import com.lt.journey.service.UserService;
 
@@ -145,6 +146,7 @@ public class UserController {
 			return jsonObject.toString();
 		}
 		req.getSession().removeAttribute("code");
+		user.setCreateTime(CommonsUtils.formatDate("yyyy-MM-dd HH:mm:ss"));
 		userService.addUser(user);
 		req.getSession().setAttribute("user_session", user);
 		jsonObject.put("status", true);
