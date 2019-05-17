@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
 import com.lt.journey.service.HotelService;
@@ -22,7 +23,7 @@ public class HotelTest {
 	private HotelService hotelService;
 	
 	@Test
-	public void name() {
+	public void name() throws MessageException {
 		HotelParam hotelParam = new HotelParam();
 		hotelParam.setCity("宁波");
 		hotelParam.setLevel("五星级/豪华");

@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
+import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.Train;
 import com.lt.journey.model.TrainParam;
 
@@ -22,8 +23,9 @@ public class TrainInfo {
 	 * @param trainParam
 	 * @param isCount
 	 * @return
+	 * @throws MessageException 
 	 */
-	public static List<Train> getTrainInfo(TrainParam trainParam, Model model) {
+	public static List<Train> getTrainInfo(TrainParam trainParam, Model model) throws MessageException {
 		StringBuffer param = new StringBuffer();
 		param.append("r=train/trainTicket/getTickets");
 		param.append("&primary[departureDate]=").append(trainParam.getDepartureDate());
@@ -36,7 +38,10 @@ public class TrainInfo {
 		String dataStr = HttpRequest.sendGet(url, param.toString());
 		
 		JSONObject dataObj = JSON.parseObject(dataStr);
-		
+		String retcode = dataObj.getString("retcode");
+		if (retcode.equals("100002")) {
+			throw new MessageException("Search No Result");
+		}
 		JSONObject trainObj = dataObj.getJSONObject("data");
 		
 		if (trainParam.getLimit() == 0) {

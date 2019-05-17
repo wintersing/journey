@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
@@ -66,7 +67,7 @@ public class HotelController {
 	}
 	
 	@RequestMapping("/hotel/search")
-	public String searchHotel(Model model, HotelParam hotelParam, String pageToken_news, HttpServletRequest req) throws UnsupportedEncodingException {
+	public String searchHotel(Model model, HotelParam hotelParam, String pageToken_news, HttpServletRequest req) throws UnsupportedEncodingException, MessageException {
 		String city = hotelParam.getCity();
 		if (city != null && city != "") {
 			hotelParam.setCity(new String(city.getBytes("ISO-8859-1"), "utf-8"));		

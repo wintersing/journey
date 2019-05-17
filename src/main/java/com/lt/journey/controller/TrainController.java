@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lt.commons.utils.CommonsUtils;
+import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.Train;
 import com.lt.journey.model.TrainParam;
 import com.lt.journey.service.TrainService;
@@ -31,7 +32,7 @@ public class TrainController {
 	}
 
 	@RequestMapping("/train/search")
-	public String searchTrain(Model model, TrainParam trainParam) throws UnsupportedEncodingException, ParseException {
+	public String searchTrain(Model model, TrainParam trainParam) throws UnsupportedEncodingException, ParseException, MessageException {
 
 		trainParam.setDepartureCityName(new String(trainParam.getDepartureCityName().getBytes("ISO-8859-1"), "utf-8"));
 		trainParam.setArrivalCityName(new String(trainParam.getArrivalCityName().getBytes("ISO-8859-1"), "utf-8"));

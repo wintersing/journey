@@ -12,6 +12,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lt.commons.utils.CommonsUtils;
 import com.lt.commons.utils.HttpRequest;
+import com.lt.journey.exception.MessageException;
 import com.lt.journey.model.Hotel;
 import com.lt.journey.model.HotelDes;
 import com.lt.journey.model.HotelParam;
@@ -23,7 +24,7 @@ public class HotelInfo {
 	private static final String url = propertiesAll.getProperty("Hotel_Url");
 	private static final String apikey = propertiesAll.getProperty("IDataAPI_APIKEY");
 
-	public static <T> List<T> getHotelInfo(HotelParam hotelParam, Model model, Class<T> clazz) {
+	public static <T> List<T> getHotelInfo(HotelParam hotelParam, Model model, Class<T> clazz) throws MessageException {
 		//拼接参数
 		StringBuffer param = new StringBuffer();
 		param.append("apikey=").append(apikey);
@@ -38,6 +39,10 @@ public class HotelInfo {
 		String dataStr = HttpRequest.sendGet(url, param.toString());
 //		System.out.println(dataStr);
 		JSONObject dataObj = JSON.parseObject(dataStr);
+		String retcode = dataObj.getString("retcode");
+		if (retcode.equals("100002")) {
+			throw new MessageException("Search No Result");
+		}
 		String hotelListStr = dataObj.getJSONArray("data").toString();
 
 		List<T> hotelList = JSONObject.parseArray(hotelListStr, clazz);
@@ -102,7 +107,7 @@ public class HotelInfo {
 	}
 
 	@Test
-	public void name() {//23.40800373，113.39481756
+	public void name() throws MessageException {//23.40800373，113.39481756
 		HotelParam hotelParam = new HotelParam();
 		hotelParam.setLat("23.40800373");
 		hotelParam.setLon("113.39481756");
