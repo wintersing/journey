@@ -22,8 +22,8 @@ public interface HotelDao {
 	@Select("select count(*) from hotel where recommend = 2")
 	public int findHotelCount();
 
-	@Select("select cityid from hotel_city where cityName = #{cityName }")
-	public String findCityidByCityName(@Param("cityName")String cityName);
+//	@Select("select cityid from hotel_city where cityName = #{cityName }")
+//	public String findCityidByCityName(@Param("cityName")String cityName);
 
 	@Select("select * from hotel where id = #{id }")
 	public HotelDes findHotel(@Param("id")String id);

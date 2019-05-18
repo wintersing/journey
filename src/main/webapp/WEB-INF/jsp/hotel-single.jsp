@@ -181,7 +181,7 @@
 									<div>
 										<div class="tagcloud">
 											<h3>
-												<span class="icon-person"></span>基本服务
+												<span class="icon-person"></span>协助服务
 											</h3>
 											<c:if test="${not empty hotelDes.assistServices }">
 												<c:forEach var="assistService"

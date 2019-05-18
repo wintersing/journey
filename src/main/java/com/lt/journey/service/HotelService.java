@@ -13,7 +13,7 @@ public interface HotelService {
 
 	public int findHotelCount();
 
-	public String findCityidByCityName(String cityName);
+//	public String findCityidByCityName(String cityName);
 
 	public HotelDes findHotel(String id);
 

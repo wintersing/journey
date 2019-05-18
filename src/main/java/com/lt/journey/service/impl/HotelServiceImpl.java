@@ -39,11 +39,11 @@ public class HotelServiceImpl implements HotelService {
 		return hotelDao.findHotelCount();
 	}
 
-	@Override
-	public String findCityidByCityName(String cityName) {
-		// TODO Auto-generated method stub
-		return hotelDao.findCityidByCityName(cityName);
-	}
+//	@Override
+//	public String findCityidByCityName(String cityName) {
+//		// TODO Auto-generated method stub
+//		return hotelDao.findCityidByCityName(cityName);
+//	}
 
 	@Override
 	public HotelDes findHotel(String id) {

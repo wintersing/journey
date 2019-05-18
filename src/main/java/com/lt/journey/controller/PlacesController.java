@@ -71,6 +71,9 @@ public class PlacesController {
 	public String searchPlaces(Model model, String cityid, String cityName, String sort, String pageToken,
 			HttpServletRequest req) throws UnsupportedEncodingException, MessageException {
 		//景点
+		if (cityName.equals("")) {
+			return "forward:/places";
+		}
 		PlacesParam placesParam = new PlacesParam();
 		if (cityid == null) {
 			cityName = new String(cityName.getBytes("ISO-8859-1"), "utf-8");

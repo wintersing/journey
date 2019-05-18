@@ -14,8 +14,12 @@ public class MessageExceptionResolver implements HandlerExceptionResolver {
 		// TODO Auto-generated method stub
 		ModelAndView mav = new ModelAndView();
 		
+		System.out.println(e.getMessage());
 		if (e instanceof MessageException) {
 			mav.addObject("msg", e.getMessage());
+			mav.setViewName("msg");
+		}else {
+			mav.addObject("msg", "Server Internal Error");
 			mav.setViewName("msg");
 		}
 		
