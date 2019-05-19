@@ -109,7 +109,7 @@
 						</form>
 					</div>
 					<div class="sidebar-wrap ftco-animate">
-						<h3 style="color: darkgoldenrod;" class="heading mb-4">旅游新闻资讯</h3>
+						<h3 style="color: darkgoldenrod;" class="heading mb-4">新闻资讯</h3>
 						<c:forEach var="newsItem" items="${newsList }">
 							<p>
 								<a target="_blank" class="news"

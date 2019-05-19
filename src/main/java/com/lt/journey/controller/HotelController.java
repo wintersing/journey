@@ -84,19 +84,8 @@ public class HotelController {
 		//请求“酒店信息API”，并将返回结果放入model
 		HotelInfo.getHotelInfo(hotelParam, model, Hotel.class); 
 		model.addAttribute("reqURI", req.getRequestURI());
-		
-//		//旅游资讯
-//		Calendar calendar = Calendar.getInstance(); 
-//		calendar.setTime(new Date());
-//		long endTime = calendar.getTimeInMillis();
-//		calendar.add(Calendar.DATE, -15);
-//		long startTime = calendar.getTimeInMillis();
-//		
-//		newsParam.setCatLabel2(catLabel2_小吃);
-//		String time = ""+startTime/1000L+","+endTime/1000L;
-//		newsParam.setCreateDateRange(time);
-//		newsParam.setPublishDateRange(time);
-//		NewsInfo.getNewsInfo(newsParam, model);
+
+
 		if (pageToken_news == null || pageToken_news.equals("")) {
 			pageToken_news = "1";
 		}

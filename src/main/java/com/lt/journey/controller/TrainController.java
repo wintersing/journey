@@ -61,11 +61,4 @@ public class TrainController {
 		return "train";
 	}
 	
-//	@Test
-//	public void name() {
-//		String s1 = "2019-05-14"; 
-//		String s2 = "2019-05-13"; 
-//		System.out.println( s1.compareTo(s2) ); // -1 (前面相等,s1长度小1) 
-//	}
-
 }

@@ -56,7 +56,6 @@ public class BlogController {
 		blogParam.setSort("0");
 		BlogInfo.getBlogInfo(blogParam, model, Blog.class);
 	
-	
 		model.addAttribute("pageToken", pageToken);
 		model.addAttribute("cityid", cityid);
 		model.addAttribute("id", id);

@@ -207,21 +207,21 @@
 						</div>
 						<div class="pt-5 mt-5 comment">
 						 <div class="comment-form-wrap pt-5">
-								<h3 class="mb-5">发表评论</h3>
-								<form id="form-comment-add" class="p-5 bg-light">
-								<input id="parent" type="hidden" value="sight" name="parent">
-								<input id="parentID" type="hidden" value="${placesDes.id }" name="parentID">
-									<div class="form-group">
-										<textarea name="content" id="content" cols="60" rows="4"
-											class="form-control"></textarea>
-									</div>
-									<div class="form-group">
-										<input type="button" value="发表" onclick="addComment();"
-											class="btn py-3 px-4 btn-primary">
-									</div>
+							<h3 class="mb-5">发表评论</h3>
+							<form id="form-comment-add" class="p-5 bg-light">
+							<input id="parent" type="hidden" value="sight" name="parent">
+							<input id="parentID" type="hidden" value="${placesDes.id }" name="parentID">
+								<div class="form-group">
+									<textarea name="content" id="content" cols="60" rows="4"
+										class="form-control"></textarea>
+								</div>
+								<div class="form-group">
+									<input type="button" value="发表" onclick="addComment();"
+										class="btn py-3 px-4 btn-primary">
+								</div>
 
-								</form>
-							</div> 
+							</form>
+						</div> 
 
 							<div class="comment-pad">
 								<h3 class="mb-5">精彩评论</h3>
@@ -284,55 +284,54 @@
 		}
 	});
 	function getPalcesComment() {
-		$
-				.ajax({
-					url : '/comment/sight/${placesDes.id }?pageToken='+commentPage+'&data='+data,
-					method : 'get',
-					ContentType : "application/x-www-form-urlencoded;charset=utf-8",
-					dataType : 'json',
-					success : function(ret) {
-						var dataList = "";
-						//判断第一次请求是否有结果
-						if (ret.retcode == "100002") {
-							commentPage = 0;
-							var str = "<div class=\"comment-body\" style=\"padding-left:20px;font-size: 20px;text-align:center;color: #f1a904;\">"
-									+ "------你已经看到我的底线了------" + "</div>"
-							$('.comment').append(str);
-							return;
-						}
+		$.ajax({
+			url : '/comment/sight/${placesDes.id }?pageToken='+commentPage+'&data='+data,
+			method : 'get',
+			ContentType : "application/x-www-form-urlencoded;charset=utf-8",
+			dataType : 'json',
+			success : function(ret) {
+				var dataList = "";
+				//判断第一次请求是否有结果
+				if (ret.retcode == "100002") {
+					commentPage = 0;
+					var str = "<div class=\"comment-body\" style=\"padding-left:20px;font-size: 20px;text-align:center;color: #f1a904;\">"
+							+ "------你已经看到我的底线了------" + "</div>"
+					$('.comment').append(str);
+					return;
+				}
 
-						$.each(ret.data, function(i, comment) {
-							var str = "<li class=\"comment\">"
-									+ "<div class=\"vcard bio\">"
-									+ "<img src=\""+comment.avatarUrl+"\" alt=\"Image placeholder\">"
-									+ "</div>"
-									+ "<div class=\"comment-body\">"
-									+ "<h3>"
-									+ comment.commenterScreenName
-									+ "</h3>"
-									+ "<p>"
-									+ comment.content
-									+ "</p>"
-									+ "<div class=\"meta\">"
-									+ getDate(comment.publishDate)
-									+ "</div>"
-									+ "</div>"
-									+ "</li>"
-							dataList = dataList + str
-						});
-						if (ret.hasNext == true) {
-							commentPage += 1;
-						} else {
-							if (ret.hasNext_data != undefined && ret.hasNext_data == true) {
-								commentPage = 1;
-								data=1;
-							} else {
-								commentPage = 0;
-							}
-						}
-						$('.comment-list').append(dataList);
-					}
+				$.each(ret.data, function(i, comment) {
+					var str = "<li class=\"comment\">"
+							+ "<div class=\"vcard bio\">"
+							+ "<img src=\""+comment.avatarUrl+"\" alt=\"Image placeholder\">"
+							+ "</div>"
+							+ "<div class=\"comment-body\">"
+							+ "<h3>"
+							+ comment.commenterScreenName
+							+ "</h3>"
+							+ "<p>"
+							+ comment.content
+							+ "</p>"
+							+ "<div class=\"meta\">"
+							+ getDate(comment.publishDate)
+							+ "</div>"
+							+ "</div>"
+							+ "</li>"
+					dataList = dataList + str
 				});
+				if (ret.hasNext == true) {
+					commentPage += 1;
+				} else {
+					if (ret.hasNext_data != undefined && ret.hasNext_data == true) {
+						commentPage = 1;
+						data=1;
+					} else {
+						commentPage = 0;
+					}
+				}
+				$('.comment-list').append(dataList);
+			}
+		});
 	}
 	function getDate(str) {
 		var now = new Date(str),
@@ -364,7 +363,7 @@
 				}
 			}
 		});
-}
+	}
 </script>
 </html>
 
