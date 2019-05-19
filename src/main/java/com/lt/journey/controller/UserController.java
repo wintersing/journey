@@ -88,7 +88,6 @@ public class UserController {
 				jsonObject.put("msg", "客官，该手机号已注册！");
 				return jsonObject.toString();
 			}
-			
 			//发送验证码
 			String random = SMSrandom();
 			String tpl_value = "#code#=" + random;
@@ -106,8 +105,6 @@ public class UserController {
 				jsonObject.put("msg", "验证码发送失败，请稍后尝试！");
 				return jsonObject.toJSONString();
 			}
-
-
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			jsonObject.put("status", false);
@@ -167,13 +164,13 @@ public class UserController {
 		User _user = userService.findUserByUsername(user.getUsername());
 		if (_user == null) {
 			jsonObject.put("status", false);
-			jsonObject.put("msg", "该用户名还未注册，请先注册！");
+			jsonObject.put("msg", "用户名或密码错误！！");
 			return jsonObject.toString();
 		}
 		
 		if (!_user.getPassword().equals(user.getPassword())) {
 			jsonObject.put("status", false);
-			jsonObject.put("msg", "密码错误！");
+			jsonObject.put("msg", "用户名或密码错误！");
 			return jsonObject.toString();
 		}
 		

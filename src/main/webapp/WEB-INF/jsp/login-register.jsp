@@ -47,7 +47,7 @@
 					<div style="position:absolute; height:150px;margin-top: 100px;" class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
 						<div style="margin-top: -200px;" class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left" data-scrollax=" properties: { translateY: '70%' }">
 							<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">发现 <br>一个新的地方</h1>
-							<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">寻找当地专家住宿，吃饭，购物或参观的好地方</p>
+							<p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">每个人心中，都会有一个古镇情怀，流水江南，烟笼人家</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
@@ -90,7 +90,7 @@
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="password">密码</label>
-													<input name="username" type="password" class="form-control" id="password">
+													<input name="password" type="password" class="form-control" id="password">
 												</div>
 											</div>
 
@@ -119,7 +119,7 @@
 											<div class="row form-group">
 												<div class="col-md-12">
 													<label for="password_register">密码</label>
-													<input name="password" type="password" class="form-control" id="password_register" autocomplete="new-password">
+													<input name="password" type="password" class="form-control" id="password_register" autocomplete="new-password">		
 												</div>
 											</div>
 											<div class="row form-group">
@@ -169,10 +169,10 @@
 	<script>
 
             var InterValObj; //timer变量，控制时间 
-            var count = 5; //间隔函数，1秒执行 
+            var count = 60; //间隔函数，1秒执行 
             var curCount; //当前剩余秒数 
             var code = ""; //验证码 
-            // var codeLength = 6; //验证码长度 
+            //发送验证码
             function sendMessages() {
                 curCount = count;
                 var phone = $("#phone").val();
