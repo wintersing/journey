@@ -42,13 +42,6 @@ public class TrainController {
 			String arrivalCityCode = trainService.findCityCode(trainParam.getArrivalCityName());
 			trainParam.setDepartureCityCode(departureCityCode);
 			trainParam.setArrivalCityCode(arrivalCityCode);
-//			// 处理时间格式
-//			String time = CommonsUtils.format(trainParam.getDepartureDate());
-//			if (time.compareTo(new SimpleDateFormat("yyyy-MM-dd").format(new Date())) == -1) {
-//				model.addAttribute("timeError", true);
-//				return "train";
-//			}
-//			trainParam.setDepartureDate(time);
 		}
 		// 起始值
 		Integer page = trainParam.getPage();
