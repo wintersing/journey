@@ -416,7 +416,8 @@ h3, .space {
 	<script src="/js/jquery.animateNumber.min.js"></script>
 	<script src="/js/bootstrap-datepicker.js"></script>
 	<script src="/js/scrollax.min.js"></script>
-
+	
+	<script src="/js/layer/2.4/layer.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/laydate/laydate.js"></script> <!-- 改成你的路径 -->
 	<script type="text/javascript">
@@ -432,7 +433,8 @@ h3, .space {
 			}
 			
 			if ("${timeError}" != "") {
-				alert("时间填写错误！");
+            	layer.msg("时间填写错误！",{icon:2,time:1000});
+				//alert("时间填写错误！");
 			}
 		}); 
 		

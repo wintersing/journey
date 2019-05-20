@@ -38,8 +38,8 @@ public class TrainInfo {
 		String dataStr = HttpRequest.sendGet(url, param.toString());
 		
 		JSONObject dataObj = JSON.parseObject(dataStr);
-		String retcode = dataObj.getString("retcode");
-		if (retcode.equals("100002")) {
+		String code = dataObj.getString("code");
+		if (code.equals("100002")) {
 			throw new MessageException("Search No Result");
 		}
 		JSONObject trainObj = dataObj.getJSONObject("data");

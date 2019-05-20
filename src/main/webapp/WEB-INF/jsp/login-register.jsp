@@ -162,7 +162,8 @@
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/aos.js"></script>
 	<script src="/js/scrollax.min.js"></script>
-
+	
+	<script src="/js/layer/2.4/layer.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/jquery.min.login.js"></script>
 	<script src="/js/main.login.js"></script>
@@ -190,14 +191,17 @@
                        success: function(data) {
                           //保存验证码
                           if (data.status) {
-							alert("验证码发送成功！");
+                        	  layer.msg('验证码发送成功！',{icon:1,time:1000});
+							//alert("验证码发送成功！");
 						} else {
-							alert(data.msg);
+							layer.msg(data.msg,{icon:2,time:1000});
+							//alert(data.msg);
 						}
                        }
                     });
                 } else {
-                    alert("客官，请填写正确的手机号码！");
+                	layer.msg('客官，请填写正确的手机号码！',{icon:2,time:1000});
+                    //alert("客官，请填写正确的手机号码！");
                 }
             }
             //timer处理函数 
@@ -219,13 +223,16 @@
                 var phone = $("#phone").val();
                 var code = $("#code").val();
                 if (!isMatcher(username) || !isMatcher(password)) {
-                	return alert("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头");
+                	return layer.msg('用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头',{icon:2,time:1000});
+                	//return alert("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头");
                 }
                 if (!isMobile(phone)) {
-                	return alert("客官，请填写正确的手机号码！");
+                	return layer.msg('客官，请填写正确的手机号码！',{icon:2,time:1000});
+                	//return alert("客官，请填写正确的手机号码！");
                 }
                 if (code.length != 6) {
-                	return alert("请填写正确的验证码！");
+                	return layer.msg('请填写正确的验证码！',{icon:2,time:1000});
+                	//return alert("请填写正确的验证码！");
 				}
             	$.ajax({
                     url: "/register",
@@ -237,7 +244,8 @@
                        if (data.status) {
                     	   document.getElementById('register').submit();
 						} else {
-							alert(data.msg);
+		                	layer.msg(data.msg,{icon:2,time:1000});
+							//alert(data.msg);
 						}
                     }
                  });
@@ -247,7 +255,8 @@
                 var username = $("#username").val();
                 var password = $("#password").val();
                 if (!isMatcher(username) || !isMatcher(password)) {
-                	return alert("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头");
+                	return layer.msg("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头",{icon:2,time:2000});
+                	//return alert("用户名，密码在6-20个字母内，可以有数字、下划线或减号，以字母开头");
                 }
             	$.ajax({
                     url: "/login",
@@ -259,7 +268,8 @@
                        if (data.status) {
                     	   document.getElementById('login').submit();
 						} else {
-							alert(data.msg);
+		                	layer.msg(data.msg,{icon:2,time:1000});
+							//alert(data.msg);
 						}
                     }
                  });
