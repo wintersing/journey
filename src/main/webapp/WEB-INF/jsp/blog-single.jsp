@@ -204,6 +204,7 @@
   <script src="/js/main.js"></script>
   <script>
     $(document).ready(function () {
+	   	layer.msg('正在加载游记内容，请稍等！',{icon:1,time:1400});
     	$.ajax({
 			url: "/blog/${id }",
 		    method: 'get',  
